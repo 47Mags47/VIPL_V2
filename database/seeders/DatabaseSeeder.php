@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CalendarEventSeeder::class);
         $this->call(PackageStatusSeeder::class);
+        $this->call(PackageFileStatusSeeder::class);
 
         if(env('APP_ENV') === 'local'){
             $this->call(DevSeeder::class);

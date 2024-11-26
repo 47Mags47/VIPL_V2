@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('main__package_files', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('path');
+            $table->string('status_code');
 
             $table->foreignUuid('package_id')->constrained('main__packages');
+            $table->foreign('status_code')->references('code')->on('glossary__package_file_statuses');
 
             $table->timestamps();
         });
