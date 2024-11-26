@@ -1,0 +1,28 @@
+@use "./../abstracts/mixins" as *
+
+.table-box
+    @include flex(column)
+    .table-options
+        width: 100%
+        @include content-box
+        @include flex($justy: space-between)
+        .button-box
+            @include flex()
+    table
+        width: 100%
+        border-collapse: separate
+        border-spacing: 0
+        thead, tbody
+            tr
+                &:first-child th
+                    border-top: 1px solid black
+                th,td
+                    border-bottom: 1px solid black
+                    border-right: 1px solid black
+                    &:first-child
+                        border-left: 1px solid black
+                    >div *
+                        font-size: 1rem
+        caption
+            font-size: 1.2rem
+            font-weight: bold

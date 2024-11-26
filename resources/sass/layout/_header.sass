@@ -1,0 +1,12 @@
+@use "./../abstracts" as *
+
+header
+    @include flex($justy:space-between)
+    @include content-box
+    width: 100%
+    height: $header-height
+    background: $header-background
+    align-items: center
+    a
+        font-weight: bold
+        text-transform: uppercase

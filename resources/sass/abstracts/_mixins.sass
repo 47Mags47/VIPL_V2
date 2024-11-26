@@ -1,0 +1,15 @@
+@mixin animate()
+    transition: .5s
+
+@mixin content-box
+    padding: 5px 50px
+
+@mixin flex($direction:row, $gap:10px, $justy:start, $align:flex-start)
+    display: flex
+    flex-direction: $direction
+    gap: $gap
+    justify-content: $justy
+    align-items: $align
+
+@mixin link()
+    @include animated

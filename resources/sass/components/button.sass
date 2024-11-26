@@ -1,0 +1,23 @@
+@use '../abstracts' as *
+
+.button
+    @include animate
+    width: auto
+    min-width: 75px
+    height: auto
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+    padding: 5px 10px
+
+    font-weight: 600
+    border-radius: 7px
+    cursor: pointer
+
+.blue-button
+    @extend .button
+    background: $blue-button-background
+    &:hover
+        background: $blue-button-background-hover
