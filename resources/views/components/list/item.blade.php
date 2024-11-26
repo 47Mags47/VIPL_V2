@@ -1,3 +1,3 @@
 <li>
-    {{ $slot }}
+    {{ $title ?? $slot }}
 </li>

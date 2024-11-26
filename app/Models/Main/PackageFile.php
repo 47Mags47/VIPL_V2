@@ -25,12 +25,22 @@ class PackageFile extends Model
 
     ### Связи
     ##################################################
-    public function status(){
+    public function status()
+    {
         return $this->belongsTo(PackageFileStatus::class, 'status_code', 'code');
     }
 
     public function data()
     {
         return $this->hasMany(PackageData::class, 'file_id', 'id');
+    }
+
+    public function scopeErrors()
+    {
+        $counter = 0;
+        foreach ($this->data as $row) {
+            $counter = $counter + ($row->errors ? collect($row->errors)->count() : 0);
+        }
+        return $counter;
     }
 }

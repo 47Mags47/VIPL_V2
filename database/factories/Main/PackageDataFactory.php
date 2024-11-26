@@ -18,8 +18,16 @@ class PackageDataFactory extends Factory
      */
     public function definition(): array
     {
+        $error_count = rand(0,2);
+        $errors = [];
+        foreach (range(0, $error_count) as $i) {
+            $errors[$i] = 'Тестовая ошибка';
+        }
+
         return [
             'file_id' => PackageFile::all()->random(1)->first(),
+            'errors' => $errors,
+
             'first_name' => fake()->firstName(),
             'middle_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),

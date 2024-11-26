@@ -19,6 +19,7 @@
         </x-slot:thead>
         <x-slot:tbody>
             @foreach ($data as $row)
+
                 <x-table.row>
                     <x-table.cell :title="$row->last_name" />
                     <x-table.cell :title="$row->first_name" />

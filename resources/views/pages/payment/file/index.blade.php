@@ -8,6 +8,7 @@
                 <x-table.hcell title="UUID" />
                 <x-table.hcell title="Статус" />
                 <x-table.hcell title="Записей" />
+                <x-table.hcell title="Ошибок" />
                 <x-table.hcell />
             </x-table.row>
         </x-slot:thead>
@@ -17,6 +18,7 @@
                     <x-table.cell :title="$file->id" />
                     <x-table.cell :title="$file->status->name" />
                     <x-table.cell :title="$file->data->count()" />
+                    <x-table.cell :title="$file->errors()" />
                     <x-table.cell>
                         <x-link.blue-button :href="route('payment.data.index', compact('file'))" title="Перейти" />
                     </x-table.cell>
