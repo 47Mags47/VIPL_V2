@@ -24,7 +24,7 @@ class Calendar
     public function getPeriodEvents(){
         return collect($this->period->toArray())->map(fn($day)=> [
             'day'=> $day,
-            'events' => CalendarEvent::whereBetween('date', [$this->startOfPeriod, $this->endOfPeriod])->get()
+            'events' => CalendarEvent::where('date', $day)->get()
         ])->chunk(7);
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Models\Main;
 
 use App\Models\Glossary\CalendarEventStatus;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CalendarEvent extends Model
 {
+    use HasFactory;
+
     ### Настройки
     ##################################################
     protected $table = 'main__calendar_events';
@@ -26,8 +28,12 @@ class CalendarEvent extends Model
 
     ### Связи
     ##################################################
-    public function status(): HasOne
+    public function status()
     {
-        return $this->hasOne(CalendarEventStatus::class, 'code', 'status_code');
+        return $this->belongsTo(CalendarEventStatus::class, 'status_code', 'code');
+    }
+
+    public function packages(){
+        return $this->hasMany(Package::class, 'event_id');
     }
 }
