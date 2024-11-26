@@ -3,6 +3,9 @@
 
 @section('content')
     <x-table.box>
+        <x-slot:buttons>
+            <x-link.blue-button :href="route('calendar.event.create')" title="Добавить"/>
+        </x-slot:buttons>
         <x-slot:thead>
             <x-table.row>
                 <x-table.hcell title="Статус" />
