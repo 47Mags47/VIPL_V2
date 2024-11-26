@@ -19,7 +19,7 @@ class PackageDataFactory extends Factory
     public function definition(): array
     {
         return [
-            'file_uuid' => PackageFile::all()->random(1)->first(),
+            'file_id' => PackageFile::all()->random(1)->first(),
             'first_name' => fake()->firstName(),
             'middle_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),

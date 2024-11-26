@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('main__package_data', function (Blueprint $table) {
             $table->id();
             $table->json('errors')->nullable();
-            $table->foreignUuid('file_uuid')->constrained('main__package_files', 'uuid');
+            $table->foreignUuid('file_id')->constrained('main__package_files');
 
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();

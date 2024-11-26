@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('main__package_files', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('path');
 
-            $table->foreignUuid('package_uuid')->constrained('main__packages', 'uuid');
+            $table->foreignUuid('package_id')->constrained('main__packages');
 
             $table->timestamps();
         });

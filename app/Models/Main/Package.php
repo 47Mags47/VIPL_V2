@@ -4,18 +4,18 @@ namespace App\Models\Main;
 
 use App\Models\Glossary\PackageStatus;
 use App\Models\Main\PackageFile;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     ### Настройки
     ##################################################
     protected
-        $table = 'main__packages',
-        $primary = 'uuid';
+        $table = 'main__packages';
 
     ### Функции
     ##################################################
@@ -37,7 +37,7 @@ class Package extends Model
 
     public function files()
     {
-        return $this->hasMany(PackageFile::class, 'package_uuid', 'uuid');
+        return $this->hasMany(PackageFile::class, 'package_id', 'id');
     }
 
     public function data(){

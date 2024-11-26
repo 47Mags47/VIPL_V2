@@ -16,13 +16,13 @@
         <x-slot:tbody>
             @foreach ($packages as $package)
                 <x-table.row>
-                    <x-table.cell :title="$package->uuid" />
+                    <x-table.cell :title="$package->id" />
                     <x-table.cell :title="$package->status->name" />
                     <x-table.cell :title="$package->comment" />
                     <x-table.cell :title="$package->files->count()" />
                     <x-table.cell :title="$package->data->count()" />
                     <x-table.cell>
-                        <x-link.blue-button href="" title="Перейти" />
+                        <x-link.blue-button :href="route('payment.file.index', compact('package'))" title="Перейти" />
                     </x-table.cell>
                 </x-table.row>
             @endforeach

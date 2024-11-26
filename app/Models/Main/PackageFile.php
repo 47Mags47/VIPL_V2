@@ -2,12 +2,13 @@
 
 namespace App\Models\Main;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PackageFile extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     ### Настройки
     ##################################################
@@ -23,7 +24,8 @@ class PackageFile extends Model
 
     ### Связи
     ##################################################
-    public function data(){
-        return $this->hasMany(PackageData::class, 'file_uuid', 'uuid');
+    public function data()
+    {
+        return $this->hasMany(PackageData::class, 'file_id', 'id');
     }
 }

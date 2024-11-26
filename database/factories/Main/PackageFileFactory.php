@@ -19,9 +19,9 @@ class PackageFileFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => Str::uuid(),
+            'id' => Str::uuid(),
             'path' => 'test/data/file/path.test',
-            'package_uuid' => Package::all()->random(1)->first()->first(),
+            'package_id' => Package::all()->random(1)->first()->first(),
         ];
     }
 }

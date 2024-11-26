@@ -19,7 +19,7 @@ class PackageFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => Str::uuid(),
+            'id' => Str::uuid(),
             'status_code' => 'created',
             'comment' => null,
             'event_id' => CalendarEvent::all()->random(1)->first()->code,
