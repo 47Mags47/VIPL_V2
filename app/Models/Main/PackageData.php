@@ -16,7 +16,8 @@ class PackageData extends Model
     public
         $timestamps = false,
         $casts = [
-            'errors' => 'json'
+            'errors' => 'json',
+            'birth' => 'date'
         ];
 
     ### Функции

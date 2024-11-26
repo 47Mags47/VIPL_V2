@@ -27,7 +27,7 @@ class PackageDataFactory extends Factory
             'summ' => rand(100, 9999) . '.' . rand(0, 99),
             'pasp' => rand(100000, 999999),
             'birth' => collect(CarbonImmutable::create(1980)->toPeriod(now())->toArray())->random(1)->first(),
-            'kbk' => null,
+            'kbk' => '88810030240170090321',
             'snils' => rand(100, 999) . '-' . rand(100, 999) . '-' . rand(100, 999) . ' ' . rand(10, 99),
         ];
     }
