@@ -1,13 +1,24 @@
-<x-page>
-    <x-slot:page-name>
-        {{ env('APP_NAME') }}
-        @hasSection('page-name')
-            - @yield('page-name')
-        @endif
-    </x-slot:page-name>
+<!DOCTYPE html>
+<html lang="ru">
 
-    <x-slot:content>
-        <x-header.box />
-        @yield('content')
-    </x-slot:content>
-</x-page>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {{-- ### Заголовок страницы
+    ################################################## --}}
+    <title>Выплаты - @yield('page-name')</title>
+
+    {{-- ### Подключаем стили
+    ################################################## --}}
+    @vite('resources/sass/app.sass')
+
+</head>
+
+<body>
+    @include('include/header')
+    @yield('content')
+</body>
+
+</html>
