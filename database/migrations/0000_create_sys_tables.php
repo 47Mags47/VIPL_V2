@@ -11,6 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
+        ### CACHE
+        ##################################################
+        Schema::create('sys__cache', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->mediumText('value');
+            $table->integer('expiration');
+        });
+
+        Schema::create('sys__cache_locks', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->string('owner');
+            $table->integer('expiration');
+        });
+
+        ### JOBS
+        ##################################################
         Schema::create('sys__jobs', function (Blueprint $table) {
             $table->id();
             $table->string('queue')->index();
@@ -43,6 +59,23 @@ return new class extends Migration
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
         });
+
+        ### USER
+        ##################################################
+        Schema::create('sys__sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
+
+        Schema::create('sys__password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
     }
 
     /**
@@ -50,8 +83,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('sys__cache');
+        Schema::dropIfExists('sys__cache_locks');
         Schema::dropIfExists('sys__jobs');
         Schema::dropIfExists('sys__job_batches');
         Schema::dropIfExists('sys__failed_jobs');
+        Schema::dropIfExists('sys__sessions');
+        Schema::dropIfExists('sys__password_reset_tokens');
     }
 };
