@@ -39,4 +39,8 @@ class Package extends Model
     {
         return $this->hasMany(PackageFile::class, 'package_uuid', 'uuid');
     }
+
+    public function data(){
+        return $this->through('files')->has('data');
+    }
 }
