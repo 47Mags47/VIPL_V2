@@ -1,1 +1,1 @@
-<a class="default-link {{ $attributes['class'] }}" href="{{ $href }}">{{ $title }}</a>
+<a class="default-link {{ $attributes['class'] }}" href="{{ $href }}">{{ $title ?? $slot }}</a>

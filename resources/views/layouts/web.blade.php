@@ -13,7 +13,7 @@
     {{-- ### Подключаем стили
     ################################################## --}}
     @vite('resources/sass/app.sass')
-
+    @vite('resources/js/app.js')
 </head>
 
 <body>

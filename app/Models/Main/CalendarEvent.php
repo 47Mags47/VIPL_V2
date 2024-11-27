@@ -33,6 +33,11 @@ class CalendarEvent extends Model
         return $this->belongsTo(CalendarEventStatus::class, 'status_code', 'code');
     }
 
+    public function generator()
+    {
+        return $this->belongsTo(CalendarGenerator::class, 'generator_id');
+    }
+
     public function packages(){
         return $this->hasMany(Package::class, 'event_id');
     }
