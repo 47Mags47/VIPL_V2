@@ -17,7 +17,7 @@
                     <x-table.row>
                         <x-table.cell :title="$event->status->name" />
                         <x-table.cell :title="$event->title" />
-                        <x-table.cell :title="$event->daate->format('d.m.Y')" />
+                        <x-table.cell :title="$event->date->format('d.m.Y')" />
                     </x-table.row>
                 @endforeach
             </x-slot:tbody>

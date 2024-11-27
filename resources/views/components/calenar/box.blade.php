@@ -24,7 +24,7 @@
                         <x-list.box>
                             @foreach ($day['events'] as $event)
                                 <x-list.item>
-                                    <x-link.default href="" :title="$event->title" />
+                                    <x-link.default href="" :title="$event->title . ' (' . $event->status->name . ')'" />
                                 </x-list.item>
                             @endforeach
                         </x-list.box>
