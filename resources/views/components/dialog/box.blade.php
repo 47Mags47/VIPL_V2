@@ -1,11 +1,16 @@
 <dialog>
-    @isset($header)
-        <h3>{{ $header }}</h3>
-    @endisset
+    <div class="close-button-box">
 
-    {{ $content }}
+    </div>
+    <div class="body">
+        @isset($header)
+            <h2>{{ $header }}</h2>
+        @endisset
 
-    @isset($footer)
-        {{ $footer }}
-    @endisset
+        {{ $content }}
+
+        @isset($footer)
+            {{ $footer }}
+        @endisset
+    </div>
 </dialog>

@@ -30,20 +30,6 @@
                                     (c {{ $date_start->format('d.m.Y') }} по {{ $date_end->format('d.m.Y') }})
                                 </x-link.default>
                             </span>
-                            <x-dialog.box>
-                                <x-slot:header>Заголовок</x-slot:header>
-                                <x-slot:content>
-                                    <x-text.info label="Дата начала" :value="$generator->date_start" />
-                                    <x-text.info label="Дата окончания" :value="$generator->date_end" />
-                                    <x-text.info label="Переод" :value="$generator->calculation->name" />
-                                    <x-text.info label="Описание" :value="$generator->title" />
-                                    <x-text.info label="Статус" :value="$generator->date_start" />
-                                    <x-text.info label="Дата" :value="$generator->status->name" />
-                                </x-slot:content>
-                                <x-slot:footer>
-                                    <x-link.blue-button href="" title="test" />
-                                </x-slot:footer>
-                            </x-dialog.box>
                         </x-table.cell>
                         <x-table.cell :title="$event->date->format('d.m.Y')" />
                     </x-table.row>

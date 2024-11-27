@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web\calendar;
 
 use App\Core\Classes\Calendar;
 use App\Http\Controllers\Controller;
+use App\Models\Main\CalendarEvent;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 

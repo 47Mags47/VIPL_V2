@@ -1,4 +1,4 @@
-<div class="table-box">
+<div class="table-box {{ $attributes['class'] }}">
     @isset($filters)
         <x-table.filters.box :$filters/>
     @endisset
@@ -15,7 +15,7 @@
             @endisset
         </div>
     </div>
-    <table @class(['w100' => isset($w100),])>
+    <table @class([$attributes['table-class']])>
         @isset($colgroup)
             {{ $colgroup }}
         @endisset

@@ -1,4 +1,4 @@
-<td>
+<td {{ $attributes }}>
     <div>
         {{ $title ?? $slot }}
     </div>

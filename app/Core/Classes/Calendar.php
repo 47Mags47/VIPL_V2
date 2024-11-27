@@ -12,15 +12,16 @@ class Calendar
         $endOfPeriod,
         $period;
     private
-        $month;
+        $month,
+        $monthEnd;
 
     public function __construct(int $year, int $month)
     {
         $this->month = CarbonImmutable::create($year, $month, 1);
-        $monthEnd = $this->month->endOfMonth();
+        $this->monthEnd = $this->month->endOfMonth();
 
         $this->startOfPeriod = $this->month->startOfWeek();
-        $this->endOfPeriod = $monthEnd->endOfWeek();
+        $this->endOfPeriod = $this->monthEnd->endOfWeek();
 
         $this->period = $this->startOfPeriod->toPeriod($this->endOfPeriod);
     }
@@ -28,6 +29,7 @@ class Calendar
     public function getPeriodEvents(){
         return collect($this->period->toArray())->map(fn($day)=> [
             'day'=> $day,
+            'thisMounth' => $day->between($this->month, $this->monthEnd),
             'events' => CalendarEvent::where('date', $day)->get()
         ])->chunk(7);
     }

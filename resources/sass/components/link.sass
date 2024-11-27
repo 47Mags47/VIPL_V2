@@ -1,7 +1,20 @@
 @use "./../abstracts" as *
 
-a, a button
+a
     @include animate
     color: $link-color
     &:hover
         color: $link-color-hover
+
+a.default-link
+    position: relative
+    &::before
+        @include animate
+        bottom: 0
+        content: ''
+        width: 0
+        height: 1px
+        position: absolute
+        background: $link-color
+    &:hover::before
+        width: 100%

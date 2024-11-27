@@ -1,0 +1,12 @@
+@use "./../abstracts/mixins" as *
+
+ul.list-box
+    @include flex($direction: column, $gap: 2px)
+    li:before
+        font-size: 25%
+        vertical-align: middle
+        content: "\f111"
+        font-family: 'Font Awesome 6 Free'
+        display: inline-block
+        margin-left: calc( var(--icon-space) * -1 )
+        width: var(--icon-space)

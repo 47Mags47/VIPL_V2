@@ -11,5 +11,6 @@ Route::prefix('calendar')->controller(CalendarController::class)->group(function
         Route::get('/index', 'index')->name('calendar.event.index');
         Route::get('/create', 'create')->name('calendar.event.create');
         Route::post('/store', 'store')->name('calendar.event.store');
+        Route::prefix('{event}')->group(function () {});
     });
 });
