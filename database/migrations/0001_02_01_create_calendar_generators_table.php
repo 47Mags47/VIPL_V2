@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('main__calendar__generators', function (Blueprint $table) {
+            $table->id();
             $table->date('date_start');
             $table->string('calculation_code');
             $table->string('title');

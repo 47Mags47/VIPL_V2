@@ -3,7 +3,9 @@
 namespace Database\Factories\Main;
 
 use App\Models\Glossary\CalendarEventStatus;
+use App\Models\Main\CalendarGenerator;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonPeriod;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,14 +20,13 @@ class CalendarEventFactory extends Factory
      */
     public function definition(): array
     {
-        $startOfMount = CarbonImmutable::now()->startOfMonth();
-        $endOfMonth = CarbonImmutable::now()->endOfMonth();
-        $period = $startOfMount->toPeriod($endOfMonth);
+        $generator = CalendarGenerator::all()->random(1)->first();
 
         return [
+            'generator_id' => $generator->id,
             'status_code' => CalendarEventStatus::all()->random(1)->first()->code,
             'title' => 'Тестовое событие',
-            'date' => collect($period->toArray())->random(1)->first(),
+            'date' => now(),
         ];
     }
 }

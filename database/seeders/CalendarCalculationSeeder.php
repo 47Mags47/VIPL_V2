@@ -13,10 +13,10 @@ class CalendarCalculationSeeder extends Seeder
      */
     public function run(): void
     {
-        CalendarGeneratorCalculation::create(['code' => 'daily',        'name'=> 'Ежедневно',       'calculate' => '1 day'      ]);
-        CalendarGeneratorCalculation::create(['code' => 'weekly',       'name'=> 'Еженедельно',     'calculate' => '1 week'     ]);
-        CalendarGeneratorCalculation::create(['code' => 'monthly',      'name'=> 'Ежемесячно',      'calculate' => '1 month'    ]);
-        CalendarGeneratorCalculation::create(['code' => 'quarterly',    'name'=> 'Ежеквартально',   'calculate' => '1 quarter'  ]);
-        CalendarGeneratorCalculation::create(['code' => 'yearly',       'name'=> 'Ежегодно',        'calculate' => '1 year'     ]);
+        CalendarGeneratorCalculation::create(['code' => 'daily',        'name'=> 'Ежедневно',       'step' => '1 day'      ]);
+        CalendarGeneratorCalculation::create(['code' => 'weekly',       'name'=> 'Еженедельно',     'step' => '1 week'     ]);
+        CalendarGeneratorCalculation::create(['code' => 'monthly',      'name'=> 'Ежемесячно',      'step' => '1 month'    ]);
+        CalendarGeneratorCalculation::create(['code' => 'quarterly',    'name'=> 'Ежеквартально',   'step' => '1 quarter'  ]);
+        CalendarGeneratorCalculation::create(['code' => 'yearly',       'name'=> 'Ежегодно',        'step' => '1 year'     ]);
     }
 }

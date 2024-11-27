@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('glossary__calendar__generator_calculations', function (Blueprint $table) {
             $table->string('code')->primary();
             $table->string('name');
-            $table->string('calculate');
+            $table->string('step');
         });
     }
 

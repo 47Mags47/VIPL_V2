@@ -2,12 +2,14 @@
 
 namespace App\Models\Main;
 
+use App\Models\Glossary\CalendarGeneratorCalculation;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CalendarGenerator extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     ### Настройки
     ##################################################
@@ -25,5 +27,9 @@ class CalendarGenerator extends Model
 
     ### Связи
     ##################################################
+    public function calculation()
+    {
+        return $this->belongsTo(CalendarGeneratorCalculation::class, 'calculation_code', 'code');
+    }
 
 }

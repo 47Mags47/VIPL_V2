@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Main\CalendarEvent;
+use App\Models\Main\CalendarGenerator;
 use App\Models\Main\Package;
 use App\Models\Main\PackageData;
 use App\Models\Main\PackageFile;
@@ -16,6 +17,8 @@ class DevSeeder extends Seeder
      */
     public function run(): void
     {
+        $generator = CalendarGenerator::factory()->create();
+
         CalendarEvent::factory()
             ->has(Package::factory()->count(3)->has(
                 PackageFile::factory()->count(3)->has(
