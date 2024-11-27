@@ -7,15 +7,19 @@ use Carbon\CarbonImmutable;
 
 class Calendar
 {
-    public $startOfPeriod, $endOfPeriod, $period;
-    protected $month;
+    public
+        $startOfPeriod,
+        $endOfPeriod,
+        $period;
+    private
+        $month;
 
-    public function __construct(int $year = null, int $month = null)
+    public function __construct(int $year, int $month)
     {
-        $monthStart = CarbonImmutable::create($year ?? now()->format('Y'), $month ?? now()->format('m'), 1);
-        $monthEnd = $monthStart->endOfMonth();
+        $this->month = CarbonImmutable::create($year, $month, 1);
+        $monthEnd = $this->month->endOfMonth();
 
-        $this->startOfPeriod = $monthStart->startOfWeek();
+        $this->startOfPeriod = $this->month->startOfWeek();
         $this->endOfPeriod = $monthEnd->endOfWeek();
 
         $this->period = $this->startOfPeriod->toPeriod($this->endOfPeriod);
@@ -26,5 +30,13 @@ class Calendar
             'day'=> $day,
             'events' => CalendarEvent::where('date', $day)->get()
         ])->chunk(7);
+    }
+
+    public function nextMonth(){
+        return $this->month->addMonth(1);
+    }
+
+    public function lastMonth(){
+        return $this->month->addMonth(-1);
     }
 }
