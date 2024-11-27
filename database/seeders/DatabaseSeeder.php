@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CalendarCalculationSeeder::class);
         $this->call(CalendarEventSeeder::class);
+        $this->call(CalendarGeneratorSeeder::class);
+
         $this->call(PackageStatusSeeder::class);
         $this->call(PackageFileStatusSeeder::class);
 

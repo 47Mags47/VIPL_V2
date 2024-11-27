@@ -17,6 +17,7 @@ class CalendarGeneratorFactory extends Factory
     public function definition(): array
     {
         return [
+            'status_code' => 'valid',
             'date_start' => now(),
             'calculation_code' => 'monthly',
             'title' => 'Тестовый генератор',

@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('main__calendar__generators', function (Blueprint $table) {
             $table->id();
+            $table->string('status_code');
             $table->date('date_start');
             $table->string('calculation_code');
             $table->string('title');
             $table->date('date_end');
             $table->softDeletes();
 
+            $table->foreign('status_code')->references('code')->on('glossary__calendar__generator_statuses');
             $table->foreign('calculation_code')->references('code')->on('glossary__calendar__generator_calculations');
         });
     }

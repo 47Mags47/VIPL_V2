@@ -3,6 +3,7 @@
 namespace App\Models\Main;
 
 use App\Models\Glossary\CalendarGeneratorCalculation;
+use App\Models\Glossary\CalendarGeneratorStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,6 +28,11 @@ class CalendarGenerator extends Model
 
     ### Связи
     ##################################################
+    public function status()
+    {
+        return $this->belongsTo(CalendarGeneratorStatus::class, 'status_code', 'code');
+    }
+
     public function calculation()
     {
         return $this->belongsTo(CalendarGeneratorCalculation::class, 'calculation_code', 'code');
