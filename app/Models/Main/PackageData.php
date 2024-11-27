@@ -11,7 +11,7 @@ class PackageData extends Model
 
     ### Настройки
     ##################################################
-    protected $table = 'main__package_data';
+    protected $table = 'main__package__data';
 
     public
         $timestamps = false,

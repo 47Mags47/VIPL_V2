@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('main__package_files', function (Blueprint $table) {
+        Schema::create('main__package__files', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('path');
             $table->string('status_code');
 
             $table->foreignUuid('package_id')->constrained('main__packages');
-            $table->foreign('status_code')->references('code')->on('glossary__package_file_statuses');
+            $table->foreign('status_code')->references('code')->on('glossary__package__file_statuses');
 
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('main__package_files');
+        Schema::dropIfExists('main__package__files');
     }
 };

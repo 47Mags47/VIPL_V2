@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('main__package_data', function (Blueprint $table) {
+        Schema::create('main__package__data', function (Blueprint $table) {
             $table->id();
             $table->json('errors')->nullable();
-            $table->foreignUuid('file_id')->constrained('main__package_files');
+            $table->foreignUuid('file_id')->constrained('main__package__files');
 
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('main__package_data');
+        Schema::dropIfExists('main__package__data');
     }
 };

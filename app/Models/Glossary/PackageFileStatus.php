@@ -9,6 +9,6 @@ class PackageFileStatus extends Model
     public $timestamps = false;
 
     protected
-        $table = 'glossary__package_file_statuses',
+        $table = 'glossary__package__file_statuses',
         $primary = 'code';
 }

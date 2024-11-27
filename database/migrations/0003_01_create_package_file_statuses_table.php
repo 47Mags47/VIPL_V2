@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('glossary__package_file_statuses', function (Blueprint $table) {
+        Schema::create('glossary__package__file_statuses', function (Blueprint $table) {
             $table->string('code')->primary();
             $table->string('name');
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('glossary__package_file_statuses');
+        Schema::dropIfExists('glossary__package__file_statuses');
     }
 };

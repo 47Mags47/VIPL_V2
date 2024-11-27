@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('main__calendar_events', function (Blueprint $table) {
+        Schema::create('main__calendar__events', function (Blueprint $table) {
             $table->id();
             $table->string('status_code');
             $table->string('title');
             $table->date('date');
 
-            $table->foreign('status_code')->references('code')->on('glossary__calendar_event_statuses');
+            $table->foreign('status_code')->references('code')->on('glossary__calendar__event_statuses');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('main__calendar_events');
+        Schema::dropIfExists('main__calendar__events');
     }
 };

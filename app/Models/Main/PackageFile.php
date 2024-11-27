@@ -14,7 +14,7 @@ class PackageFile extends Model
     ### Настройки
     ##################################################
     protected
-        $table = 'main__package_files';
+        $table = 'main__package__files';
 
     public
         $timestamps = false;

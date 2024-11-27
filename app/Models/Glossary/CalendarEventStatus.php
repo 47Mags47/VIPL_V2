@@ -9,6 +9,6 @@ class CalendarEventStatus extends Model
     public $timestamps = false;
 
     protected
-        $table = 'glossary__calendar_event_statuses',
+        $table = 'glossary__calendar__event_statuses',
         $primary = 'code';
 }

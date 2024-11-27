@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('status_code');
             $table->text('comment')->nullable();
 
-            $table->foreign('status_code')->references('code')->on('glossary__package_statuses');
-            $table->foreignId('event_id')->constrained('main__calendar_events');
+            $table->foreign('status_code')->references('code')->on('glossary__package__statuses');
+            $table->foreignId('event_id')->constrained('main__calendar__events');
 
             $table->timestamps();
         });

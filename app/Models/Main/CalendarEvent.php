@@ -12,7 +12,7 @@ class CalendarEvent extends Model
 
     ### Настройки
     ##################################################
-    protected $table = 'main__calendar_events';
+    protected $table = 'main__calendar__events';
 
     public
         $timestamps = false,
