@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('account')->nullable();
-            $table->float('summ')->nullable();
+            $table->string('summ')->nullable();
             $table->string('pasp')->nullable();
-            $table->date('birth')->nullable();
+            $table->string('birth')->nullable();
             $table->string('kbk')->nullable();
             $table->string('snils')->nullable();
         });

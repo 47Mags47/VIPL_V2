@@ -19,7 +19,6 @@
         </x-slot:thead>
         <x-slot:tbody>
             @foreach ($data as $row)
-
                 <x-table.row>
                     <x-table.cell :title="$row->last_name" />
                     <x-table.cell :title="$row->first_name" />
@@ -27,7 +26,7 @@
                     <x-table.cell :title="$row->account" />
                     <x-table.cell :title="$row->summ" />
                     <x-table.cell :title="$row->pasp" />
-                    <x-table.cell :title="$row->birth->format('d.m.Y')" />
+                    <x-table.cell :title="$row->birth" />
                     <x-table.cell :title="$row->kbk" />
                     <x-table.cell :title="$row->snils" />
                     <x-table.cell>

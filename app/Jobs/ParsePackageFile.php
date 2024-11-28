@@ -53,7 +53,7 @@ class ParsePackageFile implements ShouldQueue
                     'account' => $row[4],
                     'summ' => $row[5],
                     'pasp' => $row[6],
-                    'birth' => Carbon::parse($row[7]),
+                    'birth' => $row[7],
                     'kbk' => $row[8],
                     'snils' => $row[9],
                 ]);
