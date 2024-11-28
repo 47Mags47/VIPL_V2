@@ -12,15 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CalendarCalculationSeeder::class);
-        $this->call(CalendarEventSeeder::class);
-        $this->call(CalendarGeneratorSeeder::class);
+        $this->call(CalendarSeeder::class);
+        $this->call(PackageSeeder::class);
+        $this->call(UserSeeder::class);
 
-        $this->call(PackageStatusSeeder::class);
-        $this->call(PackageFileStatusSeeder::class);
-
-        if(env('APP_ENV') === 'local'){
-            $this->call(DevSeeder::class);
-        }
+        if(env('APP_ENV') === 'local') $this->call(DevSeeder::class);
     }
 }
