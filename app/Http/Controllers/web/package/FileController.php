@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\web\package;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ParsePackageFile;
 use App\Models\Glossary\Bank;
 use App\Models\Main\Package;
 use App\Models\Main\PackageFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -26,7 +28,7 @@ class FileController extends Controller
 
     public function store(Request $request, Package $package){
         $request -> validate([
-            'bank_code' => ['required' ,'string'],
+            'bank_code' => ['required' ,'string', 'not_in:0'],
             'file' => ['required', 'file', 'mimes:txt,csv', 'max:2048'],
         ]);
 
@@ -37,15 +39,21 @@ class FileController extends Controller
             'package_id' => $package->id,
         ]);
 
+        $payment_code = 'payment_code';
+
         try {
-            $request->file('file')->store('', 'tmp');
+            $dir = "$payment_code/$package->division_code/$request->bank_code";
+            $path = $request->file('file')->storeAs($dir, $file->created_at->format('Y-m-d_H-i-s') . '.csv', 'package_files');
+
             $file->setStatus('uploaded');
+            $file->update(['path' => $path]);
         } catch (\Throwable $th) {
             $file->setStatus('upload_fail');
             Log::error($th);
         }
 
-        return redirect()->route('payment.file.index', compact('package'));
+        ParsePackageFile::dispatch($file);
 
+        return redirect()->route('payment.file.index', compact('package'));
     }
 }

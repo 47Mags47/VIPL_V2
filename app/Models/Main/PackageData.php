@@ -11,7 +11,9 @@ class PackageData extends Model
 
     ### Настройки
     ##################################################
-    protected $table = 'main__package__data';
+    protected
+        $table = 'main__package__data',
+        $guarded = [];
 
     public
         $timestamps = false,
@@ -22,6 +24,15 @@ class PackageData extends Model
 
     ### Функции
     ##################################################
+    public function scopeSetError($query, string $error)
+    {
+        $this->update(['errors' => [$error]]);
+    }
+
+    public function scopeAddError($query, string $error)
+    {
+        $this->update(['errors' => array_merge($this->errors, [$error])]);
+    }
 
     ### Связи
     ##################################################

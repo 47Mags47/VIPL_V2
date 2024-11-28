@@ -45,10 +45,10 @@ return [
             'throw' => false,
         ],
 
-        'tmp' => [
+        'package_files' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/tmp'),
-            'url' => env('APP_URL').'/storage/tmp',
+            'root' => storage_path('app/public/payment'),
+            'url' => env('APP_URL').'/storage/payment',
             'visibility' => 'public',
             'throw' => true,
         ]
