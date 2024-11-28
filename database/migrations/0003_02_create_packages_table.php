@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('main__packages', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('status_code');
+            $table->string('division_code');
             $table->text('comment')->nullable();
 
+
             $table->foreign('status_code')->references('code')->on('glossary__package__statuses');
+            $table->foreign('division_code')->references('code')->on('glossary__divisions');
             $table->foreignId('event_id')->constrained('main__calendar__events');
 
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace App\Models\Main;
 
+use App\Models\Glossary\Division;
 use App\Models\Glossary\PackageStatus;
 use App\Models\Main\PackageFile;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -33,6 +34,11 @@ class Package extends Model
     public function event()
     {
         return $this->belongsTo(PackageStatus::class, 'event_id');
+    }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_code', 'code');
     }
 
     public function files()
