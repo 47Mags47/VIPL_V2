@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('calculation_code');
             $table->string('title');
             $table->date('date_end');
+            $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('status_code')->references('code')->on('glossary__calendar__generator_statuses');

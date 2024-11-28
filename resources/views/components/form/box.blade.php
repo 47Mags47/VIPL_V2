@@ -1,4 +1,4 @@
-<div class="form-box">
+<div @class(['form-box', 'center' => isset($center)])>
 
     <form
         action="{{ $action ?? '' }}"
@@ -10,7 +10,7 @@
         @endif
 
         @isset($header)
-            <p class="box-header">{!! $header !!}</p>
+            <h3>{!! $header !!}</h3>
         @endisset
 
         {{ $slot }}

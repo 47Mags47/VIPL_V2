@@ -10,6 +10,7 @@ export default defineConfig({
                 // ### Стили
                 // ##################################################
                 'resources/sass/app.sass',
+                'resources/libs/FontAwesome/css/all.css',
 
                 // ### Скрипты
                 // ##################################################

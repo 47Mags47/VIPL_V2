@@ -2,11 +2,15 @@
 @section('page-name', 'Календарь')
 
 @section('content')
-    <x-table.box header="Декабрь 2025" table-class="calendar">
+    <x-table.box :header="mb_ucfirst($calendar->month->translatedFormat('F Y'))" table-class="calendar">
         <x-slot:buttons>
-            <x-link.blue-button :href="route('calendar.index', ['year' => $calendar->lastMonth()->format('Y'), $calendar->lastMonth()->format('m')])" title="Прошлый" />
-            <x-link.blue-button :href="route('calendar.index')" title="текущий" />
-            <x-link.blue-button :href="route('calendar.index', ['year' => $calendar->nextMonth()->format('Y'), $calendar->nextMonth()->format('m')])" title="Следующий" />
+            <x-link.blue-button :href="route('calendar.index', ['year' => $calendar->lastMonth()->format('Y'), $calendar->lastMonth()->format('m')])" >
+                <i class="fa-solid fa-chevron-left"></i><i class="fa-solid fa-chevron-left"></i>
+            </x-link.blue-button>
+            <x-link.blue-button :href="route('calendar.index')" title="МЕСЯЦ" />
+            <x-link.blue-button :href="route('calendar.index', ['year' => $calendar->nextMonth()->format('Y'), $calendar->nextMonth()->format('m')])">
+                <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-right"></i>
+            </x-link.blue-button>
         </x-slot:buttons>
         <x-slot:thead>
             <tr>
@@ -15,8 +19,8 @@
                 <x-table.hcell title="СР" />
                 <x-table.hcell title="ЧТ" />
                 <x-table.hcell title="ПТ" />
-                <x-table.hcell title="СБ" />
-                <x-table.hcell title="ВС" />
+                <x-table.hcell title="СБ" class="red-color" />
+                <x-table.hcell title="ВС" class="red-color" />
             </tr>
         </x-slot:thead>
         <x-slot:tbody>

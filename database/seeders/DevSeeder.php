@@ -7,7 +7,6 @@ use App\Models\Main\CalendarGenerator;
 use App\Models\Main\Package;
 use App\Models\Main\PackageData;
 use App\Models\Main\PackageFile;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DevSeeder extends Seeder
@@ -17,9 +16,10 @@ class DevSeeder extends Seeder
      */
     public function run(): void
     {
-        $generator = CalendarGenerator::factory()->create();
+        $generator = CalendarGenerator::factory(['status_code' => 'valid', 'date_start' => now()])->create();
+        CalendarGenerator::factory(3, ['status_code' => 'valid'])->create();
 
-        CalendarEvent::factory()
+        CalendarEvent::factory(['generator_id' => $generator->id])
             ->has(Package::factory()->count(3)->has(
                 PackageFile::factory()->count(3)->has(
                     PackageData::factory()->count(3),

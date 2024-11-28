@@ -1,3 +1,9 @@
 <a href="{{ $href }}">
-    <x-buttons.blue :$title />
+    @isset($title)
+        <x-buttons.blue class="{{ $attributes['class'] }}" :$title />
+    @else
+        <x-buttons.blue class="{{ $attributes['class'] }}">
+            {{ $slot }}
+        </x-buttons.blue>
+    @endisset
 </a>

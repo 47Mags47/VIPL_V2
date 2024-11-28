@@ -23,10 +23,14 @@
             <x-table.caption :title="$header" />
         @endisset
         @isset($thead)
+        <thead>
             {{ $thead }}
+        </thead>
         @endisset
         @isset($tbody)
+        <tbody>
             {{ $tbody }}
+        </tbody>
         @endisset
     </table>
 

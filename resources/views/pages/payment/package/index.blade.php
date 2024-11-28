@@ -2,30 +2,30 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-table.box>
+    <x-flex-table.box flex="300px 100px 1 100px 100px 150px">
         <x-slot:thead>
-            <x-table.row>
-                <x-table.hcell title="UUID" />
-                <x-table.hcell title="Статус" />
-                <x-table.hcell title="Комментарий" />
-                <x-table.hcell title="Файлов" />
-                <x-table.hcell title="Данных" />
-                <x-table.hcell />
-            </x-table.row>
+            <x-flex-table.rox>
+                <x-flex-table.cell title="UUID" />
+                <x-flex-table.cell title="Статус" />
+                <x-flex-table.cell title="Комментарий" />
+                <x-flex-table.cell title="Файлов" />
+                <x-flex-table.cell title="Данных" />
+                <x-flex-table.cell />
+            </x-flex-table.rox>
         </x-slot:thead>
         <x-slot:tbody>
             @foreach ($packages as $package)
-                <x-table.row>
-                    <x-table.cell :title="$package->id" />
-                    <x-table.cell :title="$package->status->name" />
-                    <x-table.cell :title="$package->comment" />
-                    <x-table.cell :title="$package->files->count()" />
-                    <x-table.cell :title="$package->data->count()" />
-                    <x-table.cell>
+                <x-flex-table.rox>
+                    <x-flex-table.cell :title="$package->id" />
+                    <x-flex-table.cell :title="$package->status->name" />
+                    <x-flex-table.cell :title="$package->comment" />
+                    <x-flex-table.cell :title="$package->files->count()" />
+                    <x-flex-table.cell :title="$package->data->count()" />
+                    <x-flex-table.cell has-button>
                         <x-link.blue-button :href="route('payment.file.index', compact('package'))" title="Перейти" />
-                    </x-table.cell>
-                </x-table.row>
+                    </x-flex-table.cell>
+                </x-flex-table.rox>
             @endforeach
         </x-slot:tbody>
-    </x-table.box>
+    </x-flex-table.box>
 @endsection

@@ -1,24 +1,47 @@
 @use "./../abstracts/mixins" as *
 
-dialog
+.modal-window
     @include flex($justy: center, $align: center)
+    @include animate()
     padding: 0
     border: none
 
     position: absolute
-    top: 0
-    left: 0
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 
-    width: 100%
-    height: 100%
+    overflow: hidden
+
+    width: 0
+    height: 0
 
     z-index: 999999
 
     background: rgba(0, 0, 0, 0.2)
+    &.open
+        width: 100%
+        height: 100%
     .body
         width: auto
         height: auto
         background: #fff
         border-radius: 15px
-        padding: 15px
+        padding: 20px
+        box-shadow: 2px 2px 12px 8px #999
         @include flex($direction:column)
+        .header
+            width: 100%
+            display: grid
+            grid-auto-flow: column
+            align-items: flex-start
+            gap: 10px
+            grid-template-columns: auto 15px
+            i
+                @include animate
+                font-size: 1.4rem
+                cursor: pointer
+                color: #666
+                &:hover
+                    transform: rotate(180deg) scale(1.2)
+                    color: #333

@@ -10,9 +10,9 @@ class Calendar
     public
         $startOfPeriod,
         $endOfPeriod,
-        $period;
+        $period,
+        $month;
     private
-        $month,
         $monthEnd;
 
     public function __construct(int $year, int $month)

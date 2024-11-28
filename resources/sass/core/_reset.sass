@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+
 *
     margin: 0
     padding: 0
@@ -6,12 +8,10 @@
 body, div,
 span, p, a,
 h1, h2, h3, h4, h5
-    font-family: "Roboto", sans-serif
+    font-family: "Roboto"
     font-weight: 400
     color: var(--font-color)
     text-decoration: none
-span,p,a
-    font-size: var(--font-size)
 
 h3
     font-size: 1.2rem
@@ -33,11 +33,37 @@ li,
 ul
     list-style: none
 
-input,
-button,
-textarea,
-select
-    font: inherit
+form
+    input,
+    textarea,
+    select
+        outline: none
+        border: 1px solid #999
+        background: #fff
+        &, button
+            border-radius: 7px
+            padding: 3px 7px
+        &, option
+            font-size: .9rem
+
+    input[type='number']
+        -moz-appearance: textfield
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button
+            display: none
+            -webkit-appearance: none
+            margin: 0
+    textarea
+        resize: none
+        line-height: 1rem
+        min-height: calc( (6 * 1rem) + (6 * 2px)  )
+        &::-webkit-scrollbar
+            display: none
+
+    input[type='submit']
+        width: 100%
+        padding: 7px 7px
+        font-size: 1rem
 
 img,
 picture

@@ -1,4 +1,4 @@
-<th>
+<th {{ $attributes }}>
     <div>
         {{ $title ?? $slot }}
     </div>
