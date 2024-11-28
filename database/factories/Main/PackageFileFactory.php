@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Main;
 
+use App\Models\Glossary\Bank;
 use App\Models\Glossary\PackageFileStatus;
 use App\Models\Main\Package;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,6 +24,7 @@ class PackageFileFactory extends Factory
             'id' => Str::uuid(),
             'path' => 'test/data/file/path.test',
             'status_code' => PackageFileStatus::all()->random(1)->first()->code,
+            'bank_code' => Bank::all()->random(1)->first()->code,
             'package_id' => Package::all()->random(1)->first()->first(),
         ];
     }

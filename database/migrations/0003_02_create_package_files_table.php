@@ -15,9 +15,11 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('path');
             $table->string('status_code');
+            $table->string('bank_code');
 
             $table->foreignUuid('package_id')->constrained('main__packages');
             $table->foreign('status_code')->references('code')->on('glossary__package__file_statuses');
+            $table->foreign('bank_code')->references('code')->on('glossary__banks');
 
             $table->timestamps();
         });

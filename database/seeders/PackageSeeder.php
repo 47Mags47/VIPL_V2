@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Glossary\Bank;
 use App\Models\Glossary\PackageFileStatus;
 use App\Models\Glossary\PackageStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,5 +30,16 @@ class PackageSeeder extends Seeder
         PackageFileStatus::create(['code' => 'checked',     'name' => 'Проверен'        ]);
         PackageFileStatus::create(['code' => 'failed',      'name' => 'Содержит ошибки' ]);
         PackageFileStatus::create(['code' => 'accept',      'name' => 'Принят'          ]);
+
+        ### BANKS
+        Bank::create(['code' => '02',   'ru_code' => 'СБРФ8615',    'name' => 'ПАО "Сбербанк России'                        ]);
+        Bank::create(['code' => '04',   'ru_code' => 'Открыт_Н',    'name' => 'ПАО "ФК Открытие" (нерезиденты)'             ]);
+        Bank::create(['code' => '05',   'ru_code' => 'Уралсиб',     'name' => 'ПАО "Банк Уралсиб"'                          ]);
+        Bank::create(['code' => '06',   'ru_code' => 'Россельхоз',  'name' => '"АО "Россельхозбанк"'                        ]);
+        Bank::create(['code' => '07',   'ru_code' => 'Уралс_карт',  'name' => 'ПАО "Банк Уралсиб" (карточка)'               ]);
+        Bank::create(['code' => '08',   'ru_code' => 'Кемсоцинба',  'name' => 'АО "Кемсоцинбанк"'                           ]);
+        Bank::create(['code' => '09',   'ru_code' => 'Открытие20',  'name' => 'ПАО Банк "ФК Открытие" (20 символов)'        ]);
+        Bank::create(['code' => '10',   'ru_code' => 'Сбер_Нерез',  'name' => 'ПАО "Сбербанк России" (нерезиденты)'         ]);
+        Bank::create(['code' => '11',   'ru_code' => 'Сбер_номин',  'name' => 'ПАО "Сбербанк России" (номинальные счета)'   ]);
     }
 }
