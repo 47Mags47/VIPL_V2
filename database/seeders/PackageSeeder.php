@@ -25,11 +25,13 @@ class PackageSeeder extends Seeder
         ### FILE
         ##################################################
         ### STATUS
-        PackageFileStatus::create(['code' => 'uploaded',    'name' => 'Загружен'        ]);
-        PackageFileStatus::create(['code' => 'check',       'name' => 'Проверка'        ]);
-        PackageFileStatus::create(['code' => 'checked',     'name' => 'Проверен'        ]);
-        PackageFileStatus::create(['code' => 'failed',      'name' => 'Содержит ошибки' ]);
-        PackageFileStatus::create(['code' => 'accept',      'name' => 'Принят'          ]);
+        PackageFileStatus::create(['code' => 'upload',          'name' => 'Загрузка'        ]);
+        PackageFileStatus::create(['code' => 'upload_error',    'name' => 'Ошибка загрузки' ]);
+        PackageFileStatus::create(['code' => 'uploaded',        'name' => 'Загружен'        ]);
+        PackageFileStatus::create(['code' => 'check',           'name' => 'Проверка'        ]);
+        PackageFileStatus::create(['code' => 'checked',         'name' => 'Проверен'        ]);
+        PackageFileStatus::create(['code' => 'failed',          'name' => 'Содержит ошибки' ]);
+        PackageFileStatus::create(['code' => 'accept',          'name' => 'Принят'          ]);
 
         ### BANKS
         Bank::create(['code' => '02',   'ru_code' => 'СБРФ8615',    'name' => 'ПАО "Сбербанк России'                        ]);

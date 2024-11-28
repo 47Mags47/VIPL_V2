@@ -1,4 +1,4 @@
-<div class="modal-window" id="{{ $id }}">
+<div @class(['modal-window', 'open' => isset($open)]) id="{{ $id }}">
     <div class="body">
         <div class="header">
             @isset($header)

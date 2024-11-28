@@ -43,7 +43,7 @@ class Package extends Model
 
     public function files()
     {
-        return $this->hasMany(PackageFile::class, 'package_id', 'id');
+        return $this->hasMany(PackageFile::class, 'package_id', 'id')->orderBy('created_at');
     }
 
     public function data(){

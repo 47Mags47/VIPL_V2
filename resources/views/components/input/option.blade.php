@@ -1,6 +1,7 @@
+{{-- @dd(mb_strlen($title)) --}}
 <option
     value="{{ $value }}"
-    title="{!! (mb_strlen($title) > 70 or isset($title)) ? $title : '' !!}"
+    title="{{ $title }}"
 
     @selected((isset($pName) and old($pName) == $value) or (isset($select) and $select == $value))
 >
