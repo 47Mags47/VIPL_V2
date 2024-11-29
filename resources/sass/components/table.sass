@@ -2,19 +2,24 @@
 
 .table-box
     @include flex(column)
+    padding: 0 50px
     .table-options
         width: 100%
         @include content-box
         @include flex($justy: space-between)
         .button-box
             @include flex($align: stretch)
+            button
+                padding: 5px 10px
 
 table
     width: 100%
     border-collapse: collapse
     caption
-        font-size: 1.2rem
-        font-weight: bold
+        padding: 3px 0
+        background: #d9d9ec
+        color: #5757ac
+        border-radius: 7px
     thead th, tbody td
         border: 1px solid #999
         height: 1px
@@ -28,7 +33,7 @@ table
         font-weight: bold
         min-height: 25px
     tbody td>div
-        font-size: .9rem
+        font-size: 1rem
 
 table.calendar
     border-collapse: separate
@@ -50,7 +55,7 @@ table.calendar
             .date
                 color: #666
         &>div
-            min-height: calc( 100vw / 7 / 2 )
+            min-height: calc( (100vw / 7 / 2) - 20px)
             .date
                 @include flex($justy: end)
                 font-size: .8rem

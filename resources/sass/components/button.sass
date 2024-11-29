@@ -2,14 +2,10 @@
 
 .button
     @include animate
-    width: auto
-    min-width: 75px
 
     display: flex
     justify-content: center
     align-items: center
-
-    padding: 5px 10px
 
     font-weight: 600
     color: $button-color
@@ -23,3 +19,13 @@
     &:hover
         color: $button-color-hover
         background: $blue-button-background-hover
+
+.red-button
+    @extend .button
+    background: $red-button-background
+    &:hover
+        color: $button-color-hover
+        background: $red-button-background-hover
+
+.ico-button
+    @extend .button

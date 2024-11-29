@@ -4,37 +4,49 @@
 @section('content')
     {!! $create_dialog !!}
 
-    <x-table.box>
-        <x-slot:buttons>
-            <x-buttons.dialog-open dialog="create-generator-dialog" title="Добавить"/>
-        </x-slot:buttons>
+    <x-flex-table.box flex="1 150px 125px 125px 100px 40px 40px">
+        <x-slot:optional-button>
+            <x-buttons.ico class="blue-button">
+                <x-buttons.dialog-open class="blue-button" dialog="create-generator-dialog">
+                    <i class="fa-solid fa-plus"></i>
+                </x-buttons.dialog-open>
+            </x-buttons.ico>
+        </x-slot:optional-button>
         <x-slot:thead>
-            <x-table.row>
-                <x-table.hcell title="Текст" />
-                <x-table.hcell title="Период" />
-                <x-table.hcell title="Дата начала" />
-                <x-table.hcell title="Дата окончания" />
-                <x-table.hcell title="Статус" />
-                <x-table.hcell />
-                <x-table.hcell />
-            </x-table.row>
+            <x-flex-table.rox>
+                <x-flex-table.cell title="Текст" />
+                <x-flex-table.cell title="Период" />
+                <x-flex-table.cell title="Дата начала" />
+                <x-flex-table.cell title="Дата окончания" />
+                <x-flex-table.cell title="Статус" />
+                <x-flex-table.cell has-button />
+                <x-flex-table.cell has-button />
+            </x-flex-table.rox>
         </x-slot:thead>
         <x-slot:tbody>
             @foreach ($rules as $rule)
-                <x-table.row>
-                    <x-table.cell :title="$rule->title" />
-                    <x-table.cell :title="$rule->calculation->name" />
-                    <x-table.cell :title="$rule->date_start->format('d.m.Y')" />
-                    <x-table.cell :title="$rule->date_end->format('d.m.Y')" />
-                    <x-table.cell :title="$rule->status->name" />
-                    <x-table.cell>
-                        <x-link.blue-button href="" title="Редактировать" />
-                    </x-table.cell>
-                    <x-table.cell>
-                        <x-link.blue-button href="" title="Удалить" />
-                    </x-table.cell>
-                </x-table.row>
+                <x-flex-table.rox>
+                    <x-flex-table.cell :title="$rule->title" />
+                    <x-flex-table.cell :title="$rule->calculation->name" />
+                    <x-flex-table.cell :title="$rule->date_start->format('d.m.Y')" center />
+                    <x-flex-table.cell :title="$rule->date_end->format('d.m.Y')" center />
+                    <x-flex-table.cell :title="$rule->status->name" />
+                    <x-flex-table.cell has-button>
+                        <x-link.blue-button href="">
+                            <x-buttons.ico>
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </x-buttons.ico>
+                        </x-link.blue-button>
+                    </x-flex-table.cell>
+                    <x-flex-table.cell has-button>
+                        <x-link.red-button href="">
+                            <x-buttons.ico>
+                                <i class="fa-solid fa-trash"></i>
+                            </x-buttons.ico>
+                        </x-link.red-button>
+                    </x-flex-table.cell>
+                </x-flex-table.rox>
             @endforeach
         </x-slot:tbody>
-    </x-table.box>
+    </x-flex-table.box>
 @endsection

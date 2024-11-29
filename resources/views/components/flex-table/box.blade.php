@@ -1,17 +1,19 @@
 <div class="flex-table-box">
-    <div class="table-options">
-        <x-table.search.box :action="$search ?? ''"/>
-        <x-buttons.box>
-            @isset($buttons)
-                {{ $buttons }}
-            @endisset
-        </x-buttons.box>
-        <div class="table-optional-button">
-            @isset($optionalButton)
-                {{ $optionalButton }}
-            @endisset
+    @if (isset($search) or isset($buttons) or isset($optionalButton))
+        <div class="table-options">
+            <x-table.search.box :action="$search ?? ''"/>
+            <x-buttons.box>
+                @isset($buttons)
+                    {{ $buttons }}
+                @endisset
+            </x-buttons.box>
+            <div class="table-optional-buttons">
+                @isset($optionalButton)
+                    {{ $optionalButton }}
+                @endisset
+            </div>
         </div>
-    </div>
+    @endif
     <div
         class="table-box"
         @isset($flex)

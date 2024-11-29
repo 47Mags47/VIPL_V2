@@ -10,15 +10,24 @@ export default defineConfig({
                 // ### Стили
                 // ##################################################
                 'resources/sass/app.sass',
-                'resources/libs/FontAwesome/css/all.css',
 
                 // ### Скрипты
                 // ##################################################
                 'resources/js/app.js',
+                'resources/js/fontAwesome.js',
             ],
             refresh: true,
         }),
     ],
+
+    css: {
+        preprocessorOptions: {
+            sass: {
+                api: 'modern-compiler',
+            }
+        }
+    },
+
     server: {
         host: true,
         port: env.VITE_ASSET_PORT,

@@ -47,8 +47,8 @@ class ParsePackageFile implements ShouldQueue
             ]);
             try {
                 $data_row->update([
-                    'first_name' => $row[1],
-                    'last_name' => $row[2],
+                    'first_name' => $row[2],
+                    'last_name' => $row[1],
                     'middle_name' => $row[3],
                     'account' => $row[4],
                     'summ' => $row[5],

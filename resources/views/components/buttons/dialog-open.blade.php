@@ -1,9 +1,9 @@
 <x-buttons.default
     @class([
         'dialog-open-button',
-        'blue-button'
+        $attributes['class']
     ])
     data-dialog="{{ $dialog }}"
 >
-    {{ $title }}
+    {{ $title ?? $slot }}
 </x-buttons.default>

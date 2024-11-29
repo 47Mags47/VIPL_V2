@@ -1,13 +1,25 @@
 @use "./../abstracts/mixins" as *
 
+// ### Основные
 .flex-table-box
-    @include flex(column, 0)
+    @include flex(column, 10px)
+    margin-top: 10px
+    padding: 0 50px
     .table-options
         @include flex($justy: space-between)
-        padding: 5px 0
+        padding: 5px 15px
         width: 100%
+        background: #f0f0f0
+        border-radius: 7px
+        .table-optional-buttons
+            @include flex($gap: 5px)
+            button
+                width: 25px
+                height: 25px
+                padding: 0
     .table-box
         width: 100%
+        padding: 0
         @include flex(column, 0)
         .thead, .tbody
             @include flex(column, 0)
@@ -19,29 +31,46 @@
                     flex: 1 0 0%
                     &.center div
                         @include flex($justy: center)
-                    &.has-button div
-                        min-width: 148px
-                        button
-                            width: 100%
+                    &.has-button .ico-button
+                        width: 25px
+                        height: 25px
+                        padding: 0
+                        i
                             font-size: .9rem
                     div
                         width: 100%
                         height: 100%
                         padding: 3px 5px
-                        font-size: .9rem
-        .thead .flex-table-row .cell div
-            font-weight: bold
-            text-align: center
 
+
+// ### Текст
+.flex-table-box .table-box .thead .flex-table-row .cell div
+    font-weight: bold
+    text-align: center
+
+// ### Границы
 .flex-table-box .table-box
     .thead .flex-table-row,
     .tbody .flex-table-row
-        border-top: 1px solid black
         .cell
+            border-top: 1px solid black
             border-left: 1px solid black
             &:last-child
                 border-right: 1px solid black
     .flex-table-row
-        &:last-child
+        &:last-child .cell
             border-bottom: 1px solid black
 
+.flex-table-box .table-box
+    .thead
+        .flex-table-row:first-child .cell
+            &:first-child
+                border-radius: 7px 0 0 0
+            &:last-child
+                border-radius: 0 7px 0 0
+    .tbody
+        .flex-table-row:last-child .cell
+            &:first-child
+                border-radius: 0 0 0 7px
+            &:last-child
+                border-radius: 0 0 7px 0
