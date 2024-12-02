@@ -22,7 +22,7 @@ class XMLWriter
         ### Настройка файла
         ##################################################
         $Writer->openMemory();
-        $Writer->startDocument('1.0', 'UTF-8');
+        $Writer->startDocument('1.0', 'windows-1251');
         $Writer->setIndent(true);
         $Writer->setIndentString('    ');
 
@@ -65,17 +65,12 @@ class XMLWriter
 
         ### Запись в файл
         ##################################################
-        $file_name = Str::uuid();
-        $path = $file->package->event->payment_code . '/' . $file->package->division_code . '/' . $file->bank_code . '/' . $file_name . '.xml';
+        $file_name = $file->package->event->payment_code . '_' . $file->package->division_code . '_' . $file->bank_code . '.xml';
+        $file_path = $file->package->event->payment_code . '/' . $file->package->division_code . '/' . $file->bank_code . '/' . $file_name;
 
-        Storage::disk('raports')->put($path, $Writer->outputMemory());
+        Storage::disk('raports')->put($file_path, $Writer->outputMemory());
         $Writer->flush();
 
-        $raport = Raport::create([
-            'name' => 'Отчет_' . now()->format('d_m_Y') . '__от_' . $file->package->division->name . '__банк_' . $file->bank_code,
-            'path' => 'raports/' . $path
-        ]);
-
-        return $raport;
+        return $file_path;
     }
 }

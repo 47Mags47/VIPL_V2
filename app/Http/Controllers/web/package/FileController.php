@@ -18,7 +18,7 @@ class FileController extends Controller
 
         $files = $package->files;
         $create_dialog = $this->create();
-        return view('pages.payment.file.index', compact('files', 'create_dialog'));
+        return view('pages.payment.file.index', compact('files', 'create_dialog', 'package'));
     }
 
     public function create(){

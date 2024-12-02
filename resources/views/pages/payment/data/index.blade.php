@@ -3,6 +3,13 @@
 
 @section('content')
     <x-table.box>
+        <x-slot:optional-buttons>
+            <x-link.blue-button :href="route('raport.file', compact('file'))">
+                <x-buttons.ico>
+                    <i class="fa-solid fa-download"></i>
+                </x-buttons.ico>
+            </x-link.blue-button>
+        </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
                 <x-table.hcell title="Фамилия" />

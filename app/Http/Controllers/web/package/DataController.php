@@ -10,6 +10,6 @@ class DataController extends Controller
 {
     public function index(Request $request, PackageFile $file){
         $data = $file->data;
-        return view('pages.payment.data.index', compact('data'));
+        return view('pages.payment.data.index', compact('data', 'file'));
     }
 }
