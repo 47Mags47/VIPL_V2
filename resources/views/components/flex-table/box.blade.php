@@ -20,15 +20,21 @@
             data-flex="{{ $flex }}"
         @endisset
     >
+
         <div class="thead">
             @isset($thead)
                 {{ $thead }}
             @endisset
         </div>
-        <div class="tbody">
-            @isset($tbody)
+
+        @isset($tbody)
+            <div class="tbody">
                 {{ $tbody }}
-            @endisset
-        </div>
+            </div>
+        @endisset
+
+        @isset($liveBody)
+            {{ $liveBody }}
+        @endisset
     </div>
 </div>

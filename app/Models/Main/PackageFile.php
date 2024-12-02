@@ -37,9 +37,18 @@ class PackageFile extends Model
         return $this->belongsTo(Bank::class, 'bank_code', 'code');
     }
 
+    public function package()
+    {
+        return $this->belongsTo(Package::class, 'package_id');
+    }
+
     public function data()
     {
         return $this->hasMany(PackageData::class, 'file_id', 'id');
+    }
+
+    public function scopeAllSumm(){
+        return $this->hasMany(PackageData::class, 'file_id', 'id')->sum('summ');
     }
 
     public function scopeErrors()

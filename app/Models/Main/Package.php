@@ -33,7 +33,7 @@ class Package extends Model
 
     public function event()
     {
-        return $this->belongsTo(PackageStatus::class, 'event_id');
+        return $this->belongsTo(CalendarEvent::class, 'event_id');
     }
 
     public function division()

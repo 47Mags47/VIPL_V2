@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('glossary__banks', function (Blueprint $table) {
+        Schema::create('glossary__payments', function (Blueprint $table) {
             $table->string('code')->primary();
-            $table->string('ru_code');
             $table->string('name');
+            $table->string('kbk');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('glossary__banks');
+        Schema::dropIfExists('glossary__payments');
     }
 };

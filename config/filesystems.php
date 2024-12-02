@@ -51,6 +51,14 @@ return [
             'url' => env('APP_URL').'/storage/payment',
             'visibility' => 'public',
             'throw' => true,
+        ],
+
+        'raports' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/raports'),
+            'url' => env('APP_URL').'/storage/raports',
+            'visibility' => 'public',
+            'throw' => true,
         ]
 
     ],

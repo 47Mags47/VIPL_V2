@@ -3,6 +3,7 @@
 namespace Database\Factories\Main;
 
 use App\Models\Glossary\CalendarEventStatus;
+use App\Models\Glossary\Payment;
 use App\Models\Main\CalendarGenerator;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriod;
@@ -25,6 +26,7 @@ class CalendarEventFactory extends Factory
         return [
             'generator_id' => $generator->id,
             'status_code' => CalendarEventStatus::all()->random(1)->first()->code,
+            'payment_code' => Payment::all()->random(1)->first()->code,
             'title' => 'Тестовое событие',
             'date' => now(),
         ];

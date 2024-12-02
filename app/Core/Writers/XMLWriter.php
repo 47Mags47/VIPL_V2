@@ -2,8 +2,6 @@
 
 namespace App\Core\Writers;
 
-use App\Models\Main\CalendarEvent;
-use App\Models\Main\Package;
 use App\Models\Main\PackageFile;
 use App\Models\Main\Raport;
 use Illuminate\Support\Facades\Storage;
@@ -74,7 +72,7 @@ class XMLWriter
         $Writer->flush();
 
         $raport = Raport::create([
-            'event_id' => $file->package->event->id,
+            'name' => 'Отчет_' . now()->format('d_m_Y') . '__от_' . $file->package->division->name . '__банк_' . $file->bank_code,
             'path' => 'raports/' . $path
         ]);
 

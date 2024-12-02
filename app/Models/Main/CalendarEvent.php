@@ -26,6 +26,10 @@ class CalendarEvent extends Model
         return $this->status_code === 'opened';
     }
 
+    public function scopeBankFiles($query, string $bank){
+        return $this->through('packages')->has('files')->where('bank_code', $bank)->get();
+    }
+
     ### Связи
     ##################################################
     public function status()
@@ -41,4 +45,5 @@ class CalendarEvent extends Model
     public function packages(){
         return $this->hasMany(Package::class, 'event_id');
     }
+
 }

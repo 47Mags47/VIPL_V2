@@ -11,4 +11,8 @@ class Bank extends Model
     protected
         $table = 'glossary__banks',
         $primary = 'code';
+
+    public function contract(){
+        return $this->belongsTo(Contract::class, 'code', 'bank_code');
+    }
 }

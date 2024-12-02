@@ -20,13 +20,17 @@ class DevSeeder extends Seeder
         CalendarGenerator::factory(3, ['status_code' => 'valid'])->create();
 
         CalendarEvent::factory(['generator_id' => $generator->id])
-            ->has(Package::factory()->count(3)->has(
-                PackageFile::factory()->count(3)->has(
-                    PackageData::factory()->count(3),
-                    'data'
-                ),
-                'files'
-            ))
+            ->has(
+                Package::factory()
+                // ->has(
+                //     PackageFile::factory()->count(3)
+                //         ->has(
+                //             PackageData::factory()->count(3),
+                //             'data'
+                //         ),
+                //     'files'
+                // )
+            )
             ->create();
     }
 }
