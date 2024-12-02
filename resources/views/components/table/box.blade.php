@@ -2,19 +2,21 @@
     @isset($filters)
         <x-table.filters.box :$filters/>
     @endisset
-    <div class="table-options">
-        <x-table.search.box :action="$search ?? ''"/>
-        <x-buttons.box>
-            @isset($buttons)
-                {{ $buttons }}
-            @endisset
-        </x-buttons.box>
-        <div class="table-optional-buttons">
-            @isset($optionalButtons)
-                {{ $optionalButtons }}
-            @endisset
+    @if (isset($search) || isset($buttons) || isset($optionalButtons))
+        <div class="table-options">
+            <x-table.search.box :action="$search ?? ''"/>
+            <x-buttons.box>
+                @isset($buttons)
+                    {{ $buttons }}
+                @endisset
+            </x-buttons.box>
+            <div class="table-optional-buttons">
+                @isset($optionalButtons)
+                    {{ $optionalButtons }}
+                @endisset
+            </div>
         </div>
-    </div>
+    @endif
     <table @class([$attributes['table-class']])>
         @isset($colgroup)
             {{ $colgroup }}

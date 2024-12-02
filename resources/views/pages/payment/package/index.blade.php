@@ -39,7 +39,11 @@
                         </x-link.blue-button>
                     </x-table.cell>
                     <x-table.cell has-button>
-                        <x-link.blue-button :href="route('payment.file.index', compact('package'))" title="Перейти" />
+                        <x-link.blue-button :href="route('payment.file.index', compact('package'))">
+                            <x-buttons.ico>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </x-buttons.ico>
+                        </x-link.blue-button>
                     </x-table.cell>
                 </x-table.row>
             @endforeach
