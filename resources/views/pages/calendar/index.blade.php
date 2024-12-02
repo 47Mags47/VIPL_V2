@@ -12,6 +12,13 @@
                 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-right"></i>
             </x-link.blue-button>
         </x-slot:buttons>
+        <x-slot:optional-buttons>
+            <x-link.blue-button :href="route('calendar.generator.index')">
+                <x-buttons.ico>
+                    <i class="fa-solid fa-gear"></i>
+                </x-buttons.ico>
+            </x-link.blue-button>
+        </x-slot:optional-buttons>
         <x-slot:thead>
             <tr>
                 <x-table.hcell title="ПН" />

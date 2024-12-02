@@ -9,9 +9,9 @@
                 {{ $buttons }}
             @endisset
         </x-buttons.box>
-        <div class="table-optional-button">
-            @isset($optionalButton)
-                {{ $optionalButton }}
+        <div class="table-optional-buttons">
+            @isset($optionalButtons)
+                {{ $optionalButtons }}
             @endisset
         </div>
     </div>

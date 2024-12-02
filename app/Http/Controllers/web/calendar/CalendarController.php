@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\web\calendar;
 
 use App\Core\Classes\Calendar;
+use App\Events\CalendarEventStore;
+use App\Events\StoreCalendarEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Main\CalendarEvent;
 use Carbon\CarbonImmutable;
@@ -15,6 +17,7 @@ class CalendarController extends Controller
         $month = $month ?? now()->format('m');
 
         $calendar = new Calendar($year, $month);
+
         return view('pages.calendar.index', compact('calendar'));
     }
 }

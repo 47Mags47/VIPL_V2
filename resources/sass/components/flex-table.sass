@@ -25,7 +25,9 @@
             @include flex(column, 0)
             width: 100%
             .flex-table-row
-                @include flex($gap: 0, $align: stretch)
+                // @include flex($gap: 0, $align: stretch)
+                display: grid
+                grid-auto-flow: column
                 width: 100%
                 .cell
                     flex: 1 0 0%

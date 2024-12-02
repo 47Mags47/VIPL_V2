@@ -2,7 +2,7 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-flex-table.box flex="300px 100px 450px 1 100px 100px 150px 150px">
+    <x-table.box>
         <x-slot:optional-button>
             <x-link.blue-button :href="route('raport.payment', compact('event'))">
                 <x-buttons.ico>
@@ -11,34 +11,38 @@
             </x-link.blue-button>
         </x-slot:optional-button>
         <x-slot:thead>
-            <x-flex-table.row>
-                <x-flex-table.cell title="UUID" />
-                <x-flex-table.cell title="Статус" />
-                <x-flex-table.cell title="Подразделение" />
-                <x-flex-table.cell title="Комментарий" />
-                <x-flex-table.cell title="Файлов" />
-                <x-flex-table.cell title="Данных" />
-                <x-flex-table.cell />
-                <x-flex-table.cell />
-            </x-flex-table.row>
+            <x-table.row>
+                <x-table.hcell title="UUID" w="300" />
+                <x-table.hcell title="Статус" w="75" />
+                <x-table.hcell title="Подразделение" />
+                <x-table.hcell title="Комментарий" />
+                <x-table.hcell title="Файлов" w="75" />
+                <x-table.hcell title="Данных" w="75" />
+                <x-table.hcell ico />
+                <x-table.hcell ico />
+            </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
             @foreach ($packages as $package)
-                <x-flex-table.row>
-                    <x-flex-table.cell :title="$package->id" />
-                    <x-flex-table.cell :title="$package->status->name" />
-                    <x-flex-table.cell :title="$package->division->code . ' - ' . $package->division->name" />
-                    <x-flex-table.cell :title="$package->comment" />
-                    <x-flex-table.cell :title="$package->files->count()" />
-                    <x-flex-table.cell :title="$package->data->count()" />
-                    <x-flex-table.cell has-button>
-                        <x-link.blue-button :href="route('raport.package', compact('package'))" title="Загрузить отчеты" />
-                    </x-flex-table.cell>
-                    <x-flex-table.cell has-button>
+                <x-table.row>
+                    <x-table.cell :title="$package->id" />
+                    <x-table.cell :title="$package->status->name" center />
+                    <x-table.cell :title="$package->division->code . ' - ' . $package->division->name" />
+                    <x-table.cell :title="$package->comment" />
+                    <x-table.cell :title="$package->files->count()" center />
+                    <x-table.cell :title="$package->data->count()" center />
+                    <x-table.cell has-button>
+                        <x-link.blue-button :href="route('raport.package', compact('package'))">
+                            <x-buttons.ico>
+                                <i class="fa-solid fa-download"></i>
+                            </x-buttons.ico>
+                        </x-link.blue-button>
+                    </x-table.cell>
+                    <x-table.cell has-button>
                         <x-link.blue-button :href="route('payment.file.index', compact('package'))" title="Перейти" />
-                    </x-flex-table.cell>
-                </x-flex-table.row>
+                    </x-table.cell>
+                </x-table.row>
             @endforeach
         </x-slot:tbody>
-    </x-flex-table.box>
+    </x-table.box>
 @endsection
