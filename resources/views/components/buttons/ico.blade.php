@@ -1,3 +1,3 @@
-<div class='ico-button'>
+<div class='ico-button {{ $attributes['class'] }}'>
     {{ $slot }}
 </div>

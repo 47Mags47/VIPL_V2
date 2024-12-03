@@ -2,12 +2,13 @@
 
 namespace App\Models\Main;
 
+use App\Traits\HasSearch;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PackageData extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSearch;
 
     ### Настройки
     ##################################################
@@ -19,6 +20,10 @@ class PackageData extends Model
         $timestamps = false,
         $casts = [
             'errors' => 'array'
+        ],
+        $search_columns = [
+            'last_name',
+            'first_name'
         ];
 
     ### Функции

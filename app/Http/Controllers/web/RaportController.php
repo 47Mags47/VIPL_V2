@@ -17,7 +17,8 @@ use ZipArchive;
 class RaportController extends Controller
 {
     public function index(){
-        return view('pages.raport.index');
+        $raports = Raport::all();
+        return view('pages.raport.index', compact('raports'));
     }
 
     public function download(Request $request, Raport $raport){
@@ -46,6 +47,12 @@ class RaportController extends Controller
         $zip_path = $package->event->payment_code . '/' . $package->division_code;
 
         ZIPWriter::write($files, $zip_name, $zip_path);
+
+        Raport::create([
+            'name' => $zip_name,
+            'path' => $zip_path,
+        ]);
+
         return Storage::disk('raports')->download($zip_path . '/' . $zip_name, $zip_name);
     }
 

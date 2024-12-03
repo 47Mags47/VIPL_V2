@@ -2,7 +2,7 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-table.box>
+    <x-table.box :paginator="$data" :$search live>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('raport.file', compact('file'))">
                 <x-buttons.ico>
@@ -15,12 +15,12 @@
                 <x-table.hcell title="Фамилия" />
                 <x-table.hcell title="Имя" />
                 <x-table.hcell title="Отчество" />
-                <x-table.hcell title="Счёт" />
+                <x-table.hcell title="Счёт" w=200 />
                 <x-table.hcell title="Сумма" />
-                <x-table.hcell title="Пасп" />
-                <x-table.hcell title="ДР" />
+                <x-table.hcell title="Пасп" w=100 />
+                <x-table.hcell title="ДР" w=100 />
                 <x-table.hcell title="КБК" />
-                <x-table.hcell title="СНИЛС" />
+                <x-table.hcell title="СНИЛС" w=125 />
                 <x-table.hcell title="Ошибки" />
             </x-table.row>
         </x-slot:thead>
@@ -32,10 +32,10 @@
                     <x-table.cell :title="$row->middle_name" />
                     <x-table.cell :title="$row->account" />
                     <x-table.cell :title="$row->summ" />
-                    <x-table.cell :title="$row->pasp" />
-                    <x-table.cell :title="$row->birth" />
+                    <x-table.cell :title="$row->pasp" center />
+                    <x-table.cell :title="$row->birth" center />
                     <x-table.cell :title="$row->kbk" />
-                    <x-table.cell :title="$row->snils" />
+                    <x-table.cell :title="$row->snils" center />
                     <x-table.cell>
                         <x-list.box>
                             @foreach ($row->errors ?? [] as $error)
