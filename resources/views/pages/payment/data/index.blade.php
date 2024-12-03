@@ -2,7 +2,7 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-table.box :paginator="$data" :$search live>
+    <x-table.box :paginator="$data" :$search>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('raport.file', compact('file'))">
                 <x-buttons.ico>

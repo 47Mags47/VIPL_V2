@@ -4,7 +4,7 @@
 @section('content')
     {!! $create_dialog !!}
 
-    <x-table.box>
+    <x-table.box :paginator="$files" :$search>
         <x-slot:optional-buttons>
             <x-buttons.dialog-open class="ico-button blue-button" dialog="create-file-dialog">
                 <i class="fa-solid fa-plus"></i>

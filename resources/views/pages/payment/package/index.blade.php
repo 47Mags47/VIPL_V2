@@ -2,7 +2,7 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-table.box>
+    <x-table.box :paginator="$packages" :$search>
         <x-slot:optional-button>
             <x-link.blue-button :href="route('raport.payment', compact('event'))">
                 <x-buttons.ico>

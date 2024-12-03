@@ -45,13 +45,7 @@
         @endisset
 
         @isset($tbody)
-            @isset($live)
-                {{ $tbody }}
-            @else
-                <tbody>
-                    {{ $tbody }}
-                </tbody>
-            @endisset
+            {{ $tbody }}
         @endisset
 
     </table>

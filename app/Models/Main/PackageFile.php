@@ -4,13 +4,14 @@ namespace App\Models\Main;
 
 use App\Models\Glossary\Bank;
 use App\Models\Glossary\PackageFileStatus;
+use App\Traits\HasSearch;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PackageFile extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, HasSearch;
 
     ### Настройки
     ##################################################
@@ -18,6 +19,9 @@ class PackageFile extends Model
         $table = 'main__package__files',
         $guarded = [];
 
+    public $search_columns = [
+
+    ];
 
     ### Функции
     ##################################################
