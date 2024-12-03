@@ -5,9 +5,7 @@
     <x-table.box :paginator="$data" :$search>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('raport.file', compact('file'))">
-                <x-buttons.ico>
-                    <i class="fa-solid fa-download"></i>
-                </x-buttons.ico>
+                <x-buttons.ico download />
             </x-link.blue-button>
         </x-slot:optional-buttons>
         <x-slot:thead>

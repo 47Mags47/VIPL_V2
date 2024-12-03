@@ -14,9 +14,7 @@
         </x-slot:buttons>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('calendar.generator.index')">
-                <x-buttons.ico>
-                    <i class="fa-solid fa-gear"></i>
-                </x-buttons.ico>
+                <x-buttons.ico gear/>
             </x-link.blue-button>
         </x-slot:optional-buttons>
         <x-slot:thead>

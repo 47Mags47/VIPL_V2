@@ -5,9 +5,7 @@
     <x-table.box :paginator="$packages" :$search>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('raport.event', compact('event'))">
-                <x-buttons.ico>
-                    <i class="fa-solid fa-download"></i>
-                </x-buttons.ico>
+                <x-buttons.ico download />
             </x-link.blue-button>
         </x-slot:optional-buttons>
         <x-slot:thead>
@@ -33,16 +31,12 @@
                     <x-table.cell :title="$package->data->count()" center />
                     <x-table.cell has-button>
                         <x-link.blue-button :href="route('raport.package', compact('package'))">
-                            <x-buttons.ico>
-                                <i class="fa-solid fa-download"></i>
-                            </x-buttons.ico>
+                            <x-buttons.ico download />
                         </x-link.blue-button>
                     </x-table.cell>
                     <x-table.cell has-button>
                         <x-link.blue-button :href="route('payment.file.index', compact('package'))">
-                            <x-buttons.ico>
-                                <i class="fa-solid fa-up-right-from-square"></i>
-                            </x-buttons.ico>
+                            <x-buttons.ico go />
                         </x-link.blue-button>
                     </x-table.cell>
                 </x-table.row>

@@ -26,28 +26,20 @@
     @endphp
 
     <x-link.blue-button :href="$paginator->url(1)">
-        <x-buttons.ico>
-            <i class="fa-solid fa-angles-left"></i>
-        </x-buttons.ico>
+        <i class="fa-solid fa-angles-left"></i>
     </x-link.blue-button>
     @for ($i = $page_start; $i <= $page_end; $i++)
         @if ($i == $current_page)
             <x-link.blue-button href="" class="current">
-                <x-buttons.ico>
-                    {{ $i }}
-                </x-buttons.ico>
+                {{ $i }}
             </x-link.blue-button>
         @else
             <x-link.blue-button :href="$paginator->url($i)">
-                <x-buttons.ico>
-                    {{ $i }}
-                </x-buttons.ico>
+                {{ $i }}
             </x-link.blue-button>
         @endif
     @endfor
     <x-link.blue-button :href="$paginator->url($paginator->lastPage())">
-        <x-buttons.ico>
-            <i class="fa-solid fa-angles-right"></i>
-        </x-buttons.ico>
+        <i class="fa-solid fa-angles-right"></i>
     </x-link.blue-button>
 </div>

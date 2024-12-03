@@ -10,16 +10,14 @@
                 <i class="fa-solid fa-plus"></i>
             </x-buttons.dialog-open>
             <x-link.blue-button :href="route('raport.package', compact('package'))">
-                <x-buttons.ico>
-                    <i class="fa-solid fa-download"></i>
-                </x-buttons.ico>
+                <x-buttons.ico download />
             </x-link.blue-button>
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
                 <x-table.hcell title="UUID" w=300 />
                 <x-table.hcell title="Банк" />
-                <x-table.hcell title="Статус" w=100 />
+                <x-table.hcell title="Статус" w=150 />
                 <x-table.hcell title="Записей" w=100 />
                 <x-table.hcell title="Ошибок" w=100 />
                 <x-table.hcell title="Дата загрузки" w=150 />
@@ -38,16 +36,12 @@
                 <x-table.cell :title="$file->created_at->format('d.m.Y H:i')" />
                     <x-table.cell>
                         <x-link.blue-button :href="route('raport.file', compact('file'))">
-                            <x-buttons.ico>
-                                <i class="fa-solid fa-download"></i>
-                            </x-buttons.ico>
+                            <x-buttons.ico download />
                         </x-link.blue-button>
                     </x-table.cell>
                 <x-table.cell>
                     <x-link.blue-button :href="route('payment.data.index', compact('file'))">
-                        <x-buttons.ico>
-                            <i class="fa-solid fa-up-right-from-square"></i>
-                        </x-buttons.ico>
+                        <x-buttons.ico go />
                     </x-link.blue-button>
                 </x-table.cell>
             </x-table.row>
