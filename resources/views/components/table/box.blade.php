@@ -14,6 +14,10 @@
                 @isset($optionalButtons)
                     {{ $optionalButtons }}
                 @endisset
+
+                @isset($paginator)
+                    <x-paginate.default :$paginator/>
+                @endisset
             </div>
         </div>
     @endif
