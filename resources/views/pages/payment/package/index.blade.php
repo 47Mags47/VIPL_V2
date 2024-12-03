@@ -3,13 +3,13 @@
 
 @section('content')
     <x-table.box :paginator="$packages" :$search>
-        <x-slot:optional-button>
-            <x-link.blue-button :href="route('raport.payment', compact('event'))">
+        <x-slot:optional-buttons>
+            <x-link.blue-button :href="route('raport.event', compact('event'))">
                 <x-buttons.ico>
                     <i class="fa-solid fa-download"></i>
                 </x-buttons.ico>
             </x-link.blue-button>
-        </x-slot:optional-button>
+        </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
                 <x-table.hcell title="UUID" w="300" />

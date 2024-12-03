@@ -4,17 +4,19 @@
     @endisset
     @if (isset($search) || isset($buttons) || isset($optionalButtons))
         <div class="table-options">
-            @isset($search)
-                <div class="table-search-box">
+
+            <div class="table-search-box">
+                @isset($search)
                     <x-table.search.box :$search />
-                </div>
-            @endisset
+                @endisset
+            </div>
 
             <x-buttons.box>
                 @isset($buttons)
                     {{ $buttons }}
                 @endisset
             </x-buttons.box>
+
             <div class="table-optional-buttons">
                 @isset($optionalButtons)
                     {{ $optionalButtons }}
@@ -26,6 +28,7 @@
                     @endif
                 @endisset
             </div>
+
         </div>
     @endif
     <table @class([$attributes['table-class']])>
