@@ -21,7 +21,7 @@ class PackageFile extends Model
         $table = 'main__package__files',
         $guarded = [];
 
-    public $sort_class = PackageFileSort::class;
+    public $sort_class = PackageFileSort::class, $search_columns = ['id'];
 
     ### Функции
     ##################################################

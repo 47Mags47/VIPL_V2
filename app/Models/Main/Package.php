@@ -20,7 +20,7 @@ class Package extends Model
     ##################################################
     protected
         $table = 'main__packages';
-    public $sort_class = PackageSort::class;
+    public $sort_class = PackageSort::class, $search_columns = ['id'];
 
     ### Функции
     ##################################################

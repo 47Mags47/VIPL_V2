@@ -21,6 +21,7 @@ class PackageData extends Model
     public
         $timestamps = false,
         $sort_class = PackageDataSort::class,
+        $search_columns = ['last_name', 'first_name', 'middle_name', 'account', 'summ', 'pasp', 'kbk', 'snils'],
         $casts = [
             'errors' => 'array'
         ];
