@@ -15,12 +15,12 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="UUID" w=300 />
-                <x-table.hcell title="Банк" />
-                <x-table.hcell title="Статус" w=150 />
+                <x-table.hcell title="UUID" w=300 sort="id" />
+                <x-table.hcell title="Банк" sort="bank" />
+                <x-table.hcell title="Статус" w=200 sort="status" />
                 <x-table.hcell title="Записей" w=100 />
                 <x-table.hcell title="Ошибок" w=100 />
-                <x-table.hcell title="Дата загрузки" w=150 />
+                <x-table.hcell title="Дата загрузки" w=150 sort="created" />
                 <x-table.hcell ico />
                 <x-table.hcell ico />
             </x-table.row>

@@ -11,7 +11,7 @@ class PackageController extends Controller
 {
 
     public function index(Request $request, CalendarEvent $event){
-        $packages = $event->packages()->search($request->search)->paginate(100);
+        $packages = $event->packages()->search($request->search)->sort($request)->paginate(100);
         return view('pages.payment.package.index', [
             'event' => $event,
             'search' => $request->search ?? '',

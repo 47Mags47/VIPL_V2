@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class DataController extends Controller
 {
     public function index(Request $request, PackageFile $file){
-        $data = $file->data()->search($request->search)->paginate(100);
+        $data = $file->data()->search($request->search)->sort($request)->paginate(100);
         return view('pages.payment.data.index', [
             'data' => $data,
             'file' => $file,

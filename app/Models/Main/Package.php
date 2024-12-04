@@ -5,24 +5,22 @@ namespace App\Models\Main;
 use App\Models\Glossary\Division;
 use App\Models\Glossary\PackageStatus;
 use App\Models\Main\PackageFile;
+use App\Sorts\PackageSort;
 use App\Traits\HasSearch;
+use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
 {
-    use HasFactory, HasUuids, HasSearch;
+    use HasFactory, HasUuids, HasSearch, HasSort;
 
     ### Настройки
     ##################################################
     protected
         $table = 'main__packages';
-
-    public
-        $search_columns = [
-            'id',
-        ];
+    public $sort_class = PackageSort::class;
 
     ### Функции
     ##################################################

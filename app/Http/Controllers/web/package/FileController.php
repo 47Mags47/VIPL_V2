@@ -17,7 +17,7 @@ class FileController extends Controller
     {
         session()->put('package', $package);
 
-        $files = $package->files()->search($request->search)->paginate(100);
+        $files = $package->files()->search($request->search)->sort($request)->paginate(100);
         $create_dialog = $this->create();
 
         return view('pages.payment.file.index', [

@@ -27,4 +27,20 @@
         <i class="fa-solid fa-magnifying-glass"></i>
     @endisset
 
+    @isset($back)
+        <i class="fa-solid fa-left-long"></i>
+    @endisset
+
+    @isset($sortAsc)
+    <i class="fa-solid fa-arrow-up-wide-short"></i>
+    @endisset
+
+    @isset($sortDesc)
+    <i class="fa-solid fa-arrow-down-wide-short"></i>
+    @endisset
+
+    @isset($hasSort)
+    <i class="fa-solid fa-arrows-up-down"></i>
+    @endisset
+
 </div>

@@ -14,12 +14,12 @@
                 <x-table.hcell title="Имя" />
                 <x-table.hcell title="Отчество" />
                 <x-table.hcell title="Счёт" w=200 />
-                <x-table.hcell title="Сумма" />
+                <x-table.hcell title="Сумма" w=75 />
                 <x-table.hcell title="Пасп" w=100 />
-                <x-table.hcell title="ДР" w=100 />
+                <x-table.hcell title="ДР" w=90 />
                 <x-table.hcell title="КБК" />
                 <x-table.hcell title="СНИЛС" w=125 />
-                <x-table.hcell title="Ошибки" />
+                <x-table.hcell title="Ошибки" w=250 sort="errors"/>
             </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
@@ -30,10 +30,10 @@
                     <x-table.cell :title="$row->middle_name" />
                     <x-table.cell :title="$row->account" />
                     <x-table.cell :title="$row->summ" />
-                    <x-table.cell :title="$row->pasp" center />
-                    <x-table.cell :title="$row->birth" center />
+                    <x-table.cell :title="$row->pasp" />
+                    <x-table.cell :title="$row->birth" />
                     <x-table.cell :title="$row->kbk" />
-                    <x-table.cell :title="$row->snils" center />
+                    <x-table.cell :title="$row->snils" />
                     <x-table.cell>
                         <x-list.box>
                             @foreach ($row->errors ?? [] as $error)

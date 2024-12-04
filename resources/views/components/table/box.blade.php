@@ -4,7 +4,6 @@
     @endisset
     @if (isset($search) || isset($buttons) || isset($optionalButtons))
         <div class="table-options">
-
             <div class="table-search-box">
                 @isset($search)
                     <x-table.search.box :$search />

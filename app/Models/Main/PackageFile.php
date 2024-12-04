@@ -4,14 +4,16 @@ namespace App\Models\Main;
 
 use App\Models\Glossary\Bank;
 use App\Models\Glossary\PackageFileStatus;
+use App\Sorts\PackageFileSort;
 use App\Traits\HasSearch;
+use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PackageFile extends Model
 {
-    use HasFactory, HasUuids, HasSearch;
+    use HasFactory, HasUuids, HasSearch, HasSort;
 
     ### Настройки
     ##################################################
@@ -19,9 +21,7 @@ class PackageFile extends Model
         $table = 'main__package__files',
         $guarded = [];
 
-    public $search_columns = [
-
-    ];
+    public $sort_class = PackageFileSort::class;
 
     ### Функции
     ##################################################

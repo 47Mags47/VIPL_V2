@@ -2,13 +2,15 @@
 
 namespace App\Models\Main;
 
+use App\Sorts\PackageDataSort;
 use App\Traits\HasSearch;
+use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PackageData extends Model
 {
-    use HasFactory, HasSearch;
+    use HasFactory, HasSearch, HasSort;
 
     ### Настройки
     ##################################################
@@ -18,12 +20,9 @@ class PackageData extends Model
 
     public
         $timestamps = false,
+        $sort_class = PackageDataSort::class,
         $casts = [
             'errors' => 'array'
-        ],
-        $search_columns = [
-            'last_name',
-            'first_name'
         ];
 
     ### Функции

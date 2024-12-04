@@ -69,6 +69,15 @@ table
             font-weight: bold
             min-height: 25px
             @include flex($justy: center, $align: center)
+            .sort-link
+                display: flex
+                gap: 5px
+                // align-items: center
+                cursor: pointer
+                color: inherit
+                .ico-button
+                    font-size: .9rem
+                    color: inherit
     tbody td
         &.center div
             text-align: center

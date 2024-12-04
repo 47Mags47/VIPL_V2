@@ -10,9 +10,9 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="UUID" w="300" />
-                <x-table.hcell title="Статус" w="75" />
-                <x-table.hcell title="Подразделение" />
+                <x-table.hcell title="UUID" w="300" sort="id"/>
+                <x-table.hcell title="Статус" w="75" sort="status_code" />
+                <x-table.hcell title="Подразделение" sort="division"/>
                 <x-table.hcell title="Комментарий" />
                 <x-table.hcell title="Файлов" w="75" />
                 <x-table.hcell title="Данных" w="75" />
