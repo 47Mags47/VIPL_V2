@@ -2,8 +2,7 @@
 
 .table-box
     @include flex(column)
-    margin-top: 10px
-    padding: 0 50px
+    padding: 10px 50px
     .table-options
         @include flex($justy: space-between)
         padding: 5px 15px
@@ -60,6 +59,8 @@ table
             padding: 3px
             width: 100%
             height: 100%
+            overflow: hidden
+            text-overflow: ellipsis
     thead th
         &.has-ico
             width: 35px

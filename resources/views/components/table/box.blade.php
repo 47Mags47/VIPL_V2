@@ -2,7 +2,7 @@
     @isset($filters)
         <x-table.filters.box :$filters />
     @endisset
-    @if (isset($search) || isset($buttons) || isset($optionalButtons))
+    @if (isset($search) || isset($buttons) || isset($optionalButtons) || isset($paginator))
         <div class="table-options">
             <div class="table-search-box">
                 @isset($search)

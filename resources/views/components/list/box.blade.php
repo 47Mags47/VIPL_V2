@@ -1,3 +1,5 @@
-<ul class="list-box">
-    {{ $slot }}
-</ul>
+<div class="list-box">
+    <ul class="{{ $attributes['class'] }}">
+        {{ $slot }}
+    </ul>
+</div>

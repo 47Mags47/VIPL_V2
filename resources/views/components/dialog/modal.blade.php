@@ -4,7 +4,7 @@
             @isset($header)
                 <h3>{{ $header }}</h3>
             @endisset
-            <x-buttons.ico><i id="close-button" class="fa-solid fa-x"></i></x-buttons.ico>
+            <x-buttons.ico close />
         </div>
 
 

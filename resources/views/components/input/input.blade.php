@@ -11,8 +11,8 @@
         id              ="{{ $name }}"
     @endisset
 
-    @if(isset($name) and old($name) !== null or isset($value))
-        value           ="{{ old($name) ?? ($value ?? '') }}"
+    @if(isset($name) and old(str_replace('.', '_', $name)) !== null or isset($value))
+        value           ="{{ old(str_replace('.', '_', $name)) ?? ($value ?? '') }}"
     @endisset
 
     @isset($ph)

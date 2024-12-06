@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('raport_type_code');
             $table->foreign('raport_type_code')->references('code')->on('glossary__bank_raport_types');
             $table->string('name');
+            $table->softDeletes();
         });
     }
 

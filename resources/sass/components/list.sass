@@ -1,11 +1,4 @@
 @use "./../abstracts/mixins" as *
 
-ul.list-box
-    @include flex($direction: column, $gap: 2px)
-    font-size: inherit
-    li
-        font-size: inherit
-        svg
-            width: 5px
-            color: #000d83
-            vertical-align: middle
+.list-box
+    @include list(3px, 5px 0)

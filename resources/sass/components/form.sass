@@ -3,6 +3,15 @@
 .form-box
     form
         @include flex($direction: column, $gap: 15px)
+        .errors-box
+            background: #ff4747
+            border-radius: 7px
+            @include list
+            li
+                max-width: 450px
+                padding: 0 10px
+                color: #6d0000
+                font-weight: bold
         label
             @include flex($direction: column, $gap: 5px)
             min-width: 400px
@@ -15,8 +24,10 @@
             input, select, textarea
                 width: 100%
     &.center
-        width: 100%
-        height: 100%
+        width: 100vw
+        height: calc(100vh - 50px)
+        @include flex($justy: center, $align: center)
+
         form
             padding: 20px
             border-radius: 7px

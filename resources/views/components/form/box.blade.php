@@ -2,26 +2,22 @@
 
     <form
         action="{{ $action ?? '' }}"
-        method="{{ isset($method) ? (upper($method) === 'GET' ? 'GET' : 'POST') : 'POST' }}"
+        method="{{ isset($method) ? (strtoupper($method) === 'GET' ? 'GET' : 'POST') : 'POST' }}"
         enctype = "{{ isset($file) ? 'multipart/form-data' : 'application/x-www-form-urlencoded' }}"
     >
 
-    <div class="errors-box">
         @if ($errors->any())
-            <ul>
+            <x-list.box class="errors-box">
                 @foreach ($errors->all() as $message)
-                    <li>
-                        {{ $message }}
-                    </li>
+                    <x-list.item>{{ $message }}</x-list.item>
                 @endforeach
-            </ul>
+            </x-list.box>
         @endif
-    </div>
 
 
         @csrf
 
-        @if (isset($method) and upper($method) !== 'GET')
+        @if (isset($method) and strtoupper($method) !== 'GET')
             @method($method)
         @endif
 

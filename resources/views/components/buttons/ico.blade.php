@@ -23,6 +23,10 @@
         <i class="fa-solid fa-gear"></i>
     @endisset
 
+    @isset($close)
+        <i id="close-button" class="fa-solid fa-x"></i>
+    @endisset
+
     @isset($glass)
         <i class="fa-solid fa-magnifying-glass"></i>
     @endisset

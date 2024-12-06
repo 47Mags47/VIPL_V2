@@ -73,7 +73,5 @@ class PackageSeeder extends Seeder
         Bank::create(['code' => '37',   'ru_code' => 'Восточный',   'raport_type_code' => 'XML', 'name' => 'ПАО банк "Восточный"'                       ]);
         Bank::create(['code' => '38',   'ru_code' => 'Зенит',       'raport_type_code' => 'XML', 'name' => 'ПАО "Банк Зенит"'                           ]);
         Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_type_code' => 'XML', 'name' => 'ПАО "Мособлбанк"'                           ]);
-
-
     }
 }

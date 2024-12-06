@@ -21,11 +21,11 @@ class DevSeeder extends Seeder
 
         CalendarEvent::factory(['generator_id' => $generator->id])
             ->has(
-                Package::factory()->count(10)
+                Package::factory()->count(3)
                 ->has(
-                    PackageFile::factory()->count(10)
+                    PackageFile::factory()->count(3)
                         ->has(
-                            PackageData::factory()->count(10),
+                            PackageData::factory()->count(3),
                             'data'
                         ),
                     'files'

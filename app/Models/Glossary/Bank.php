@@ -3,14 +3,20 @@
 namespace App\Models\Glossary;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bank extends Model
 {
-    public $timestamps = false;
+    use SoftDeletes;
+
+    public
+        $timestamps = false,
+        $incrementing = false;
 
     protected
         $table = 'glossary__banks',
-        $primary = 'code';
+        $primaryKey = 'code',
+        $guarded = [];
 
     public function contract(){
         return $this->belongsTo(Contract::class, 'code', 'bank_code');

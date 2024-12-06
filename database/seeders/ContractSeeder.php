@@ -13,13 +13,6 @@ class ContractSeeder extends Seeder
      */
     public function run(): void
     {
-        Contract::create([
-            'bank_code'	        => '02',
-            'number'	        => '26032177',
-            'division_name'	    => 'ГКУ ЦСВИ',
-            'INN'	            => '4205382083',
-            'division_account'	=> '',
-            'BIK'	            => '043207001',
-        ]);
+        Contract::create(['bank_code' => '02', 'number' => '26032177', 'division_name' => 'ГКУ ЦСВИ', 'INN' => '4205382083', 'division_account' => '', 'BIK' => '043207001']);
     }
 }
