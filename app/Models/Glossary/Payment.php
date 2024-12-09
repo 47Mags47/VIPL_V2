@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    public $timestamps = false;
+    public
+        $timestamps = false,
+        $incrementing = false;
 
     protected
         $table = 'glossary__payments',
-        $primary = 'code';
+        $primaryKey = 'code',
+        $guarded = [];
 }
