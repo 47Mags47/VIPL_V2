@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Division extends Model
 {
-    public $timestamps = false;
+    public
+        $timestamps = false,
+        $incrementing = false;
 
     protected
         $table = 'glossary__divisions',
-        $primary = 'code';
+        $primaryKey = 'code',
+        $guarded = [];
 }
