@@ -14,9 +14,9 @@ abstract class QuerySort
     protected const SORT_DEFAULT = 'created_at';
     protected const DIRECTION_DEFAULT = 'desc';
 
-    public function __construct(?Request $request = null)
+    public function __construct()
     {
-        $request = $request ?? request();
+        $request = request();
         $this->sortBy = $request->get('sort', static::SORT_DEFAULT);
         $this->sortDirection = $request->get('direction', static::DIRECTION_DEFAULT);
     }
@@ -27,6 +27,8 @@ abstract class QuerySort
 
         if (method_exists($this, $this->sortBy)) {
             call_user_func_array([$this, $this->sortBy], ['direction' => $this->sortDirection]);
+        }else{
+            $this->builder->orderBy($this->sortBy, $this->sortDirection);
         }
 
         return $this->builder;

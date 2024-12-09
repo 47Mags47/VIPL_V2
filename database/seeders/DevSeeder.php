@@ -17,20 +17,20 @@ class DevSeeder extends Seeder
     public function run(): void
     {
         CalendarGeneratorRule::factory(['status_code' => 'valid', 'date_start' => now()])->create();
-        // CalendarGeneratorRule::factory(3, ['status_code' => 'valid'])->create();
+        CalendarGeneratorRule::factory(3, ['status_code' => 'valid'])->create();
 
-        // CalendarEvent::factory()
-        //     ->has(
-        //         Package::factory()->count(3)
-        //             ->has(
-        //                 PackageFile::factory()->count(3)
-        //                     ->has(
-        //                         PackageData::factory()->count(3),
-        //                         'data'
-        //                     ),
-        //                 'files'
-        //             )
-        //     )
-        //     ->create();
+        CalendarEvent::factory()
+            ->has(
+                Package::factory()->count(3)
+                    ->has(
+                        PackageFile::factory()->count(3)
+                            ->has(
+                                PackageData::factory()->count(3),
+                                'data'
+                            ),
+                        'files'
+                    )
+            )
+            ->create();
     }
 }

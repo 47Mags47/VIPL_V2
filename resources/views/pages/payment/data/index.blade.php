@@ -10,11 +10,11 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="Фамилия" />
-                <x-table.hcell title="Имя" />
-                <x-table.hcell title="Отчество" />
-                <x-table.hcell title="Счёт" w=200 />
-                <x-table.hcell title="Сумма" w=75 />
+                <x-table.hcell title="Фамилия" sort="last_name"/>
+                <x-table.hcell title="Имя" sort="first_name" />
+                <x-table.hcell title="Отчество" sort="middle_name" />
+                <x-table.hcell title="Счёт" w=200 sort="account" />
+                <x-table.hcell title="Сумма" w=75/>
                 <x-table.hcell title="Пасп" w=100 />
                 <x-table.hcell title="ДР" w=90 />
                 <x-table.hcell title="КБК" />

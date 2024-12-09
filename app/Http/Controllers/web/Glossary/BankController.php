@@ -13,10 +13,9 @@ class BankController extends Controller
 {
     public function index()
     {
-        $banks = Bank::paginate(100);
+        $banks = Bank::search()->sort()->paginate(100);
         return view('pages.glossary.bank.index', [
             'banks' => $banks,
-            'search' => $request->search ?? '',
         ]);
     }
 

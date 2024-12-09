@@ -10,11 +10,11 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="Дата начала" w=125 />
-                <x-table.hcell title="Период" w=200 />
-                <x-table.hcell title="Дата окончания" w=125 />
+                <x-table.hcell title="Дата начала" w=150 sort="date_start" />
+                <x-table.hcell title="Период" w=200 sort="period_code" />
+                <x-table.hcell title="Дата окончания" w=150 sort="date_end" />
                 <x-table.hcell title="Описание" />
-                <x-table.hcell title="Статус" w=150 />
+                <x-table.hcell title="Статус" w=150 sort="status_code" />
                 <x-table.hcell ico rowspan=2 />
                 <x-table.hcell ico rowspan=2 />
             </x-table.row>

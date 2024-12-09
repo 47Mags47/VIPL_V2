@@ -6,6 +6,8 @@ use App\Models\Glossary\CalendarGeneratorCalculation;
 use App\Models\Glossary\CalendarGeneratorRulePeriod;
 use App\Models\Glossary\CalendarGeneratorRuleStatus;
 use App\Models\Glossary\CalendarGeneratorStatus;
+use App\Traits\HasSearch;
+use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CalendarGeneratorRule extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, HasFactory, HasSearch, HasSort;
 
     ### Настройки
     ##################################################
@@ -26,7 +28,8 @@ class CalendarGeneratorRule extends Model
         $casts = [
             'date_start' => 'date',
             'date_end' => 'date'
-        ];
+        ],
+        $search_columns = ['description'];
 
     ### Функции
     ##################################################

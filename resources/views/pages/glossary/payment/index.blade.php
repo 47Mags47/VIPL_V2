@@ -10,9 +10,9 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="Код" w="50" />
-                <x-table.hcell title="Наименование" />
-                <x-table.hcell title="КБК" w="200" />
+                <x-table.hcell title="Код" w="50" sort="code" />
+                <x-table.hcell title="Наименование" sort="name" />
+                <x-table.hcell title="КБК" w="200" sort="kbk" />
                 <x-table.hcell ico rowspan=2 />
                 <x-table.hcell ico rowspan=2 />
             </x-table.row>

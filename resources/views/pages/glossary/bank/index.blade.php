@@ -2,7 +2,7 @@
 @section('page-name', 'Список выплат')
 
 @section('content')
-    <x-table.box :paginator="$banks" :$search>
+    <x-table.box :paginator="$banks" search>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('glossary.bank.create')">
                 <x-buttons.ico create />
@@ -10,9 +10,9 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="Код" rowspan="2" w="50" />
-                <x-table.hcell title="Ру Код" rowspan="2" w="150" />
-                <x-table.hcell title="Наименование" rowspan="2" w="350" />
+                <x-table.hcell title="Код" rowspan="2" w="50" sort="code"/>
+                <x-table.hcell title="Ру Код" rowspan="2" w="150" sort="ru_code" />
+                <x-table.hcell title="Наименование" rowspan="2" w="350" sort="name" />
                 <x-table.hcell title="Данные договора" colspan="5" />
                 <x-table.hcell ico rowspan=2 />
                 <x-table.hcell ico rowspan=2 />

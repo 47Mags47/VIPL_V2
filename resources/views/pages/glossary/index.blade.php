@@ -43,7 +43,7 @@
             </x-table.row>
 
             <x-table.row>
-                <x-table.cell title="Генератор событий" />
+                <x-table.cell title="Генераторы событий" />
                 <x-table.cell title="" />
                 <x-table.cell>
                     <x-link.blue-button :href="route('glossary.generator.rule.index')">

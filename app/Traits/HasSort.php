@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait HasSort
 {
-    public function scopeSort(Builder $builder, $request): Builder
+    public function scopeSort(Builder $builder): Builder
     {
-        $sort = new $this->sort_class($request);
-        return $sort->apply($builder);
+        if(property_exists($this, 'sort_class')){
+            $sort = new $this->sort_class();
+            return $sort->apply($builder);
+        }else{
+            return request()->has('sort')
+                ? $builder->orderBy(request()->get('sort'), request()->get('direction') ?? 'asc')
+                : $builder;
+        }
     }
 }

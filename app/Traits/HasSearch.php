@@ -4,10 +4,11 @@ namespace App\Traits;
 
 trait HasSearch
 {
-    public function scopeSearch($query, string|null $search_phrase = ''){
-        return $this->where(function($query) use ($search_phrase){
+    public function scopeSearch(){
+        return $this->where(function($query){
+            $phrase = request()->search ?? '';
             foreach ($this->search_columns ?? [] as $column) {
-                $query->orWhereLike($column, '%' . $search_phrase . '%');
+                $query->orWhereLike($column, '%' . $phrase . '%');
             }
         });
     }

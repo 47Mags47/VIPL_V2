@@ -14,7 +14,7 @@ class CalendarGeneratorRuleController extends Controller
 {
     public function index()
     {
-        $rules = CalendarGeneratorRule::orderBy('created_at')->paginate(100);
+        $rules = CalendarGeneratorRule::search()->sort()->paginate(100);
         return view('pages.glossary.calendar.generator.rule.index', [
             'rules' => $rules,
             'search' => $request->search ?? '',

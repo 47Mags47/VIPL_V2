@@ -10,7 +10,7 @@ class DivisionController extends Controller
 {
     public function index()
     {
-        $divisions = Division::orderBy('code')->paginate(100);
+        $divisions = Division::search()->sort()->paginate(100);
         return view('pages.glossary.division.index', [
             'divisions' => $divisions,
             'search' => $request->search ?? '',
