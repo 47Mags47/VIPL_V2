@@ -12,7 +12,7 @@
         </x-slot:thead>
         <x-slot:tbody>
             <x-table.row>
-                <x-table.cell title="Список выплат" />
+                <x-table.cell title="Список банков" />
                 <x-table.cell title="" />
                 <x-table.cell>
                     <x-link.blue-button :href="route('glossary.bank.index')">
