@@ -24,7 +24,7 @@ class CalendarEventFactory extends Factory
         return [
             'status_code' => CalendarEventStatus::all()->random(1)->first()->code,
             'payment_code' => Payment::all()->random(1)->first()->code,
-            'title' => 'Тестовое событие',
+            'description' => 'Тестовое событие',
             'date' => now(),
         ];
     }

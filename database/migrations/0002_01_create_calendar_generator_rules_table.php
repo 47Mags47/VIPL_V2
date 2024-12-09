@@ -13,16 +13,19 @@ return new class extends Migration
     {
         Schema::create('main__calendar__generator__rules', function (Blueprint $table) {
             $table->id();
-            $table->string('status_code');
             $table->date('date_start');
+            $table->date('date_end')->nullable();
             $table->string('period_code');
+            $table->string('status_code');
+            $table->string('payment_code')->nullable();
             $table->string('description');
-            $table->date('date_end');
+
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('status_code')->references('code')->on('glossary__calendar__generator__rule_statuses');
             $table->foreign('period_code')->references('code')->on('glossary__calendar__generator__rule_periods');
+            $table->foreign('status_code')->references('code')->on('glossary__calendar__generator__rule_statuses');
+            $table->foreign('payment_code')->references('code')->on('glossary__payments');
         });
     }
 

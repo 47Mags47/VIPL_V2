@@ -40,7 +40,7 @@
                             <x-list.box>
                                 @foreach ($day['events'] as $event)
                                     <x-list.item>
-                                        <x-link.default :href="route('payment.package.index', compact('event'))" :title="$event->title . ' (' . $event->status->name . ')'" />
+                                        <x-link.default :href="route('payment.package.index', compact('event'))" :title="$event->description . ' (' . $event->status->name . ')'" />
                                     </x-list.item>
                                 @endforeach
                             </x-list.box>

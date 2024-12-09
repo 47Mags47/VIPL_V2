@@ -12,7 +12,9 @@ class CalendarEvent extends Model
 
     ### Настройки
     ##################################################
-    protected $table = 'main__calendar__events';
+    protected
+        $table = 'main__calendar__events',
+        $guarded = [];
 
     public
         $timestamps = false,
@@ -22,11 +24,13 @@ class CalendarEvent extends Model
 
     ### Функции
     ##################################################
-    public function ScopeOpened(){
+    public function ScopeOpened()
+    {
         return $this->status_code === 'opened';
     }
 
-    public function scopeBankFiles($query, string $bank){
+    public function scopeBankFiles($query, string $bank)
+    {
         return $this->through('packages')->has('files')->where('bank_code', $bank)->get();
     }
 
@@ -37,8 +41,8 @@ class CalendarEvent extends Model
         return $this->belongsTo(CalendarEventStatus::class, 'status_code', 'code');
     }
 
-    public function packages(){
+    public function packages()
+    {
         return $this->hasMany(Package::class, 'event_id');
     }
-
 }

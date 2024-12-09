@@ -6,6 +6,7 @@ use App\Models\Glossary\CalendarGeneratorCalculation;
 use App\Models\Glossary\CalendarGeneratorRulePeriod;
 use App\Models\Glossary\CalendarGeneratorRuleStatus;
 use App\Models\Glossary\CalendarGeneratorStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,6 +30,15 @@ class CalendarGeneratorRule extends Model
 
     ### Функции
     ##################################################
+    public function scopeAfterEvents()
+    {
+        return $this->hasMany(CalendarEvent::class, 'rule_id')->where('date', '>', now())->get();
+    }
+
+    public function ScopeSetStatus(Builder $builder, string $status)
+    {
+        $this->update(['status_code' => $status]);
+    }
 
     ### Связи
     ##################################################
@@ -40,5 +50,10 @@ class CalendarGeneratorRule extends Model
     public function period()
     {
         return $this->belongsTo(CalendarGeneratorRulePeriod::class, 'period_code', 'code');
+    }
+
+    public function events()
+    {
+        return $this->hasMany(CalendarEvent::class, 'rule_id');
     }
 }
