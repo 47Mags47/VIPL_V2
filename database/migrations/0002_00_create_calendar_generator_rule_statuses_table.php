@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('glossary__calendar__generator_calculations', function (Blueprint $table) {
+        Schema::create('glossary__calendar__generator__rule_statuses', function (Blueprint $table) {
             $table->string('code')->primary();
             $table->string('name');
-            $table->string('step');
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('glossary__calendar__generator_calculations');
+        Schema::dropIfExists('glossary__calendar__generator__rule_statuses');
     }
 };

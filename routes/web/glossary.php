@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\web\Glossary\BankController;
+use App\Http\Controllers\web\Glossary\CalendarGeneratorRuleController;
 use App\Http\Controllers\web\Glossary\DivisionController;
 use App\Http\Controllers\web\Glossary\PaymentController;
 use App\Http\Controllers\web\GlossaryController;
@@ -39,6 +40,17 @@ Route::prefix('/glossary')->group(function () {
             Route::get('/edit', 'edit')->name('glossary.payment.edit');
             Route::put('/update', 'update')->name('glossary.payment.update');
             Route::get('/delete', 'delete')->name('glossary.payment.delete');
+        });
+    });
+
+    Route::prefix('/generator/rule')->controller(CalendarGeneratorRuleController::class)->group(function () {
+        Route::get('/index', 'index')->name('glossary.generator.rule.index');
+        Route::get('/create', 'create')->name('glossary.generator.rule.create');
+        Route::post('/store', 'store')->name('glossary.generator.rule.store');
+        Route::prefix('/{rule}')->group(function () {
+            Route::get('/edit', 'edit')->name('glossary.generator.rule.edit');
+            Route::put('/update', 'update')->name('glossary.generator.rule.update');
+            Route::get('/delete', 'delete')->name('glossary.generator.rule.delete');
         });
     });
 });

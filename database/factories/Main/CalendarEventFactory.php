@@ -21,10 +21,7 @@ class CalendarEventFactory extends Factory
      */
     public function definition(): array
     {
-        $generator = CalendarGenerator::all()->random(1)->first();
-
         return [
-            'generator_id' => $generator->id,
             'status_code' => CalendarEventStatus::all()->random(1)->first()->code,
             'payment_code' => Payment::all()->random(1)->first()->code,
             'title' => 'Тестовое событие',

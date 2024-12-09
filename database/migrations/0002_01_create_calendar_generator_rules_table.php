@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('main__calendar__generators', function (Blueprint $table) {
+        Schema::create('main__calendar__generator__rules', function (Blueprint $table) {
             $table->id();
             $table->string('status_code');
             $table->date('date_start');
-            $table->string('calculation_code');
-            $table->string('title');
+            $table->string('period_code');
+            $table->string('description');
             $table->date('date_end');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('status_code')->references('code')->on('glossary__calendar__generator_statuses');
-            $table->foreign('calculation_code')->references('code')->on('glossary__calendar__generator_calculations');
+            $table->foreign('status_code')->references('code')->on('glossary__calendar__generator__rule_statuses');
+            $table->foreign('period_code')->references('code')->on('glossary__calendar__generator__rule_periods');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('main__calendar__generators');
+        Schema::dropIfExists('main__calendar__generator__rules');
     }
 };
