@@ -38,13 +38,23 @@ class DevSeeder extends Seeder
         User::create([
             'email' => 'user@mail.ru',
             'division_code' => '001',
+            'role_code' => 'user',
             'email_verified_at' => now(),
             'password' => Hash::make('user@mail.ru'),
         ]);
 
         User::create([
+            'email' => 'moder@mail.ru',
+            'division_code' => '000',
+            'role_code' => 'moder',
+            'email_verified_at' => now(),
+            'password' => Hash::make('moder@mail.ru'),
+        ]);
+
+        User::create([
             'email' => 'admin@mail.ru',
             'division_code' => '000',
+            'role_code' => 'admin',
             'email_verified_at' => now(),
             'password' => Hash::make('admin@mail.ru'),
         ]);

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Glossary\Division;
+use App\Models\Glossary\UserRole;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,14 +23,12 @@ class UserSeeder extends Seeder
         Division::create(['name' => 'КСЗН г. Белово',                     'code' => '007']);
         Division::create(['name' => 'УСЗН Гурьевского р-на',              'code' => '008']);
         Division::create(['name' => 'ОСЗН г. Киселевска',                 'code' => '009']);
-
         Division::create(['name' => 'УСЗН г. Ленинск-Кузнецкий',          'code' => '010']);
         Division::create(['name' => 'УСЗН Мариинского р-на',              'code' => '011']);
         Division::create(['name' => 'УСЗН г. Мыски',                      'code' => '012']);
         Division::create(['name' => 'УСЗН г. Междуреченска',              'code' => '013']);
         Division::create(['name' => 'КСЗН г. Новокузнецк',                'code' => '014']);
         Division::create(['name' => 'УСЗН г. Осинники',                   'code' => '019']);
-
         Division::create(['name' => 'КСЗН г. Прокопьевск',                'code' => '020']);
         Division::create(['name' => 'УСЗН г. Тайга',                      'code' => '023']);
         Division::create(['name' => 'УСЗН Таштагольского р-на',           'code' => '024']);
@@ -38,7 +37,6 @@ class UserSeeder extends Seeder
         Division::create(['name' => 'УСЗН Беловского р-на',               'code' => '027']);
         Division::create(['name' => 'ОСЗН Ижморского р-на',               'code' => '028']);
         Division::create(['name' => 'УСЗН Кемеровского р-на',             'code' => '029']);
-
         Division::create(['name' => 'УСЗН Крапивинского р-на',            'code' => '030']);
         Division::create(['name' => 'УСЗН Ленинск-Кузнецкого р-на',       'code' => '031']);
         Division::create(['name' => 'УСЗН Новокузнецкого р-на',           'code' => '032']);
@@ -49,11 +47,16 @@ class UserSeeder extends Seeder
         Division::create(['name' => 'УСЗН Юргинского р-на',               'code' => '037']);
         Division::create(['name' => 'УСЗН Яйского р-на',                  'code' => '038']);
         Division::create(['name' => 'УСЗН Яшкинского р-на',               'code' => '039']);
-
         Division::create(['name' => 'ОСЗН Чебулинского р-на',             'code' => '041']);
         Division::create(['name' => 'ОСВиЛ Ленинского р-на г.Кемерово',   'code' => '043']);
         Division::create(['name' => 'УСЗН г. Полысаево',                  'code' => '044']);
         Division::create(['name' => 'УСЗН г. Калтан',                     'code' => '046']);
         Division::create(['name' => 'УСЗН г. Красный брод',               'code' => '049']);
+
+        ### ROLE
+        ##################################################
+        UserRole::create(['code' => 'user', 'name' => 'Пользователь']);
+        UserRole::create(['code' => 'admin', 'name' => 'Администратор']);
+        UserRole::create(['code' => 'moder', 'name' => 'Модератор']);
     }
 }

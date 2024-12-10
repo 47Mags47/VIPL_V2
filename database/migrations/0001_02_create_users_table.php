@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('email');
             $table->string('division_code');
+            $table->string('role_code');
 
             $table->timestamp('email_verified_at')->nullable();
             $table->foreign('division_code')->references('code')->on('glossary__divisions');
+            $table->foreign('role_code')->references('code')->on('glossary__user__roles');
             $table->string('password');
             $table->timestamps();
         });

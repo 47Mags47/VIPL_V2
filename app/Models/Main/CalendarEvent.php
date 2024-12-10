@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CalendarEvent extends Model
 {
+    ### Трейты
+    ##################################################
+
     use HasFactory, HasSearch, HasSort;
 
     ### Настройки

@@ -1,11 +1,13 @@
 <header>
     <div class="nav-list">
         <nav><x-link.header :href="route('calendar.index')" title="Календарь" /></nav>
-        <nav><x-link.header :href="route('raport.index')" title="Отчеты" /></nav>
-        <nav><x-link.header :href="route('glossary.index')" title="Справочники" /></nav>
+        @if (auth()->user()->isAdministration())
+            <nav><x-link.header :href="route('raport.index')" title="Отчеты" /></nav>
+            <nav><x-link.header :href="route('glossary.index')" title="Справочники" /></nav>
+        @endif
     </div>
     <div class="user">
-        <x-link.header href="" title="Test T.T." />
+        <x-link.header :href="route('logout')" title="Test T.T." />
     </div>
 
     @if (session('sys_message'))

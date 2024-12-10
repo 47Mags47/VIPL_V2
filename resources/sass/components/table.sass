@@ -107,7 +107,12 @@ table.calendar
             .date
                 color: #666
         &>div
-            min-height: calc( (100vw / 7 / 2) - 20px)
+            min-height: calc( (100vh - 200px) / 6 )
             .date
                 @include flex($justy: end)
                 font-size: .8rem
+            .list-box li
+                list-style: none
+                a
+                    font-size: .8rem
+

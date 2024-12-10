@@ -9,7 +9,7 @@ use App\Http\Controllers\web\Glossary\PaymentController;
 use App\Http\Controllers\web\GlossaryController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/glossary')->group(function () {
+Route::prefix('/glossary')->middleware(['auth', 'administration'])->group(function () {
     Route::get('/index', [GlossaryController::class, 'index'])->name('glossary.index');
 
     Route::prefix('/bank')->controller(BankController::class)->group(function () {
@@ -22,6 +22,7 @@ Route::prefix('/glossary')->group(function () {
             Route::get('/delete', 'delete')->name('glossary.bank.delete');
         });
     });
+
     Route::prefix('bank/{bank}/contract')->controller(ContractController::class)->group(function () {
         Route::get('/index', 'index')->name('glossary.contract.index');
         Route::get('/create', 'create')->name('glossary.contract.create');

@@ -15,7 +15,7 @@ class AuthenticateController extends Controller
     public function store(Request $request){
         $validated = $request->validate([
             'email' => ['required', 'string'],
-            'password' => ['required', 'string']
+            'password' => ['required']
         ]);
 
         if(Auth::attempt($validated)){
