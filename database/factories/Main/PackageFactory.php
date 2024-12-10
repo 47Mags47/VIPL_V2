@@ -4,6 +4,7 @@ namespace Database\Factories\Main;
 
 use App\Models\Glossary\Division;
 use App\Models\Main\CalendarEvent;
+use App\Models\Main\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -24,7 +25,7 @@ class PackageFactory extends Factory
             'status_code' => 'created',
             'comment' => null,
             'event_id' => CalendarEvent::all()->random(1)->first()->code,
-            'division_code' => Division::all()->random(1)->first()->code
+            'division_code' => User::where('email', 'user@mail.ru')->get()->first()->division_code,
         ];
     }
 }

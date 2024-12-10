@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('path');
             $table->string('status_code');
             $table->string('bank_code');
+            $table->foreignId('upload_user_id')->constrained('main__users');
 
             $table->foreignUuid('package_id')->constrained('main__packages');
             $table->foreign('status_code')->references('code')->on('glossary__package__file_statuses');

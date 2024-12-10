@@ -16,7 +16,7 @@
         <x-slot:thead>
             <x-table.row>
                 <x-table.hcell title="UUID" w=300 sort="id" />
-                <x-table.hcell title="Банк" w=300 sort="bank_code" />
+                <x-table.hcell title="Банк" w=400 sort="bank_code" />
                 <x-table.hcell title="Статус" w=200 sort="status_code" />
                 <x-table.hcell title="Записей" w=100 />
                 <x-table.hcell title="Ошибок" w=100 />
@@ -33,7 +33,7 @@
                     <x-table.cell :title="$file->bank->code . ' - ' . $file->bank->name" />
                     <x-table.cell :title="$file->status->name" />
                     <x-table.cell :title="$file->data->count()" center />
-                    <x-table.cell :title="$file->errors()" center />
+                    <x-table.cell :title="$file->errors()->dot()->count()" center />
                     <x-table.cell></x-table.cell>
                     <x-table.cell :title="$file->created_at->format('d.m.Y H:i')" center />
                     <x-table.cell>

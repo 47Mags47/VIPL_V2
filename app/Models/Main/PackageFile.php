@@ -30,6 +30,19 @@ class PackageFile extends Model
         $this->update(['status_code' => $status]);
     }
 
+    public function scopeAllSumm(){
+        return $this->hasMany(PackageData::class, 'file_id', 'id')->sum('summ');
+    }
+
+    public function scopeErrors()
+    {
+        $errors = collect([]);
+        foreach ($this->data as $row) {
+            if($row->errors !== null) $errors->push($row->errors);
+        }
+        return $errors;
+    }
+
     ### Связи
     ##################################################
     public function status()
@@ -52,16 +65,4 @@ class PackageFile extends Model
         return $this->hasMany(PackageData::class, 'file_id', 'id');
     }
 
-    public function scopeAllSumm(){
-        return $this->hasMany(PackageData::class, 'file_id', 'id')->sum('summ');
-    }
-
-    public function scopeErrors()
-    {
-        $counter = 0;
-        foreach ($this->data as $row) {
-            $counter = $counter + ($row->errors ? collect($row->errors)->count() : 0);
-        }
-        return $counter;
-    }
 }

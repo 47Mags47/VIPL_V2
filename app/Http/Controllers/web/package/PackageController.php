@@ -12,7 +12,7 @@ class PackageController extends Controller
     public function check(CalendarEvent $event)
     {
         return Auth::user()->isAdministration()
-            ? redirect()->route('payment.package.index')
+            ? redirect()->route('payment.package.index', compact('event'))
             : redirect()->route('payment.file.index', [
                 'package' => Package::firstOrCreate([
                     'event_id' => $event->id,

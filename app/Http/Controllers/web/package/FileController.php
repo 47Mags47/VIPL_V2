@@ -8,6 +8,7 @@ use App\Models\Glossary\Bank;
 use App\Models\Main\Package;
 use App\Models\Main\PackageFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class FileController extends Controller
@@ -35,6 +36,7 @@ class FileController extends Controller
             'path' => 'tmp',
             'status_code' => 'upload',
             'bank_code' => $request->bank_code,
+            'upload_user_id' => Auth::user()->id,
             'package_id' => $package->id,
         ]);
 
