@@ -27,6 +27,13 @@
         form            ="{{ $form }}"
     @endisset
 
+    @isset($min)
+        min             ="{{ $min }}"
+    @endisset
+    @isset($max)
+        max             ="{{ $max }}"
+    @endisset
+
     @required(isset($req))
     @disabled(isset($disabled))
 >

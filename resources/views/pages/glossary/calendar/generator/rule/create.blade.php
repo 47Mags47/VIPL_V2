@@ -12,7 +12,7 @@
         </x-input.select>
         <x-input.select name="payment_code" label="Выплата">
             @foreach ($payments as $payment)
-                <x-input.option :title="$payment->name" :value="$payment->code" p-name='payment_code' />
+                <x-input.option :title="$payment->code . ' - ' . $payment->name" :value="$payment->code" p-name='payment_code' />
             @endforeach
         </x-input.select>
         <x-input.area name="description" label="Описаание" />

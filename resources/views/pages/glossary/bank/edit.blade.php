@@ -11,12 +11,5 @@
                 <x-input.option :title="$type->name" :value="$type->code" p-name="bank.raport_type_code" :select="$bank->raport_type_code" />
             @endforeach
         </x-input.select>
-
-        <h3>Договор</h3>
-        <x-input.input label="Номер" name="contract.number" :value="$bank->contract->number" req />
-        <x-input.input label="Наименование организации" name="contract.division_name" :value="$bank->contract->division_name" req />
-        <x-input.input label="ИНН" name="contract.INN"  :value="$bank->contract->INN" req />
-        <x-input.input label="Счёт организации" name="contract.division_account"  :value="$bank->contract->division_account" req />
-        <x-input.input label="БИК" name="contract.BIK" :value="$bank->contract->BIK" req />
     </x-form.box>
 @endsection

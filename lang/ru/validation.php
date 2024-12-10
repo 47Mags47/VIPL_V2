@@ -243,6 +243,7 @@ return [
         'contract_INN' => 'ИНН',
         'contract_division_account' => 'Счёт организации',
         'contract_BIK' => 'БИК',
+        'payment_code' => 'Выплата'
     ],
 
 ];

@@ -16,6 +16,8 @@ return new class extends Migration
 
             $table->string('bank_code');
             $table->foreign('bank_code')->references('code')->on('glossary__banks');
+            $table->string('payment_code');
+            $table->foreign('payment_code')->references('code')->on('glossary__payments');
 
             $table->string('number');
             $table->string('division_name');

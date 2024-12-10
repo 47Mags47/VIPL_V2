@@ -22,7 +22,7 @@ class Bank extends Model
         $primaryKey = 'code',
         $guarded = [];
 
-    public function contract(){
-        return $this->belongsTo(Contract::class, 'code', 'bank_code');
+    public function contracts(){
+        return $this->hasMany(Contract::class, 'bank_code', 'code');
     }
 }
