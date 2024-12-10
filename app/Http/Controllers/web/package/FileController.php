@@ -9,23 +9,13 @@ use App\Models\Main\Package;
 use App\Models\Main\PackageFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    public function index(Request $request, Package $package)
+    public function index(Package $package)
     {
-        session()->put('package', $package);
-
-        $files = $package->files()->search($request->search)->sort($request)->paginate(100);
-        $create_dialog = $this->create();
-
-        return view('pages.payment.file.index', [
-            'files' => $files,
-            'create_dialog' => $create_dialog,
-            'package' => $package,
-            'search' => $request->search ?? ''
-        ]);
+        $files = $package->files()->search()->sort()->paginate(100);
+        return view('pages.payment.file.index', compact('files'));
     }
 
     public function create()

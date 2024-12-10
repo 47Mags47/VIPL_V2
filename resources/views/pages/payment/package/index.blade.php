@@ -2,9 +2,9 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-table.box :paginator="$packages" :$search>
+    <x-table.box :paginator="$packages" search>
         <x-slot:optional-buttons>
-            <x-link.blue-button :href="route('raport.event', compact('event'))">
+            <x-link.blue-button :href="route('raport.event', ['event' => request()->event])">
                 <x-buttons.ico download />
             </x-link.blue-button>
         </x-slot:optional-buttons>

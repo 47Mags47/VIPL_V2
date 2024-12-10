@@ -18,7 +18,9 @@ class Package extends Model
     ### Настройки
     ##################################################
     protected
-        $table = 'main__packages';
+        $table = 'main__packages',
+        $guarded = [];
+
     public
         $search_columns = ['id'];
 

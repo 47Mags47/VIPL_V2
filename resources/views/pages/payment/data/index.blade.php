@@ -2,24 +2,26 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-table.box :paginator="$data" :$search>
+    <x-table.box :paginator="$data" search>
         <x-slot:optional-buttons>
-            <x-link.blue-button :href="route('raport.file', compact('file'))">
-                <x-buttons.ico download />
-            </x-link.blue-button>
+            @if (auth()->user()->isAdministration())
+                <x-link.blue-button :href="route('raport.file', ['file' => request()->file])">
+                    <x-buttons.ico download />
+                </x-link.blue-button>
+            @endif
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="Фамилия" sort="last_name"/>
+                <x-table.hcell title="Фамилия" sort="last_name" />
                 <x-table.hcell title="Имя" sort="first_name" />
                 <x-table.hcell title="Отчество" sort="middle_name" />
                 <x-table.hcell title="Счёт" w=200 sort="account" />
-                <x-table.hcell title="Сумма" w=75/>
+                <x-table.hcell title="Сумма" w=75 />
                 <x-table.hcell title="Пасп" w=100 />
                 <x-table.hcell title="ДР" w=90 />
                 <x-table.hcell title="КБК" />
                 <x-table.hcell title="СНИЛС" w=125 />
-                <x-table.hcell title="Ошибки" w=250 sort="errors"/>
+                <x-table.hcell title="Ошибки" w=250 sort="errors" />
             </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
