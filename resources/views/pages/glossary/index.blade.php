@@ -52,6 +52,16 @@
                 </x-table.cell>
             </x-table.row>
 
+            <x-table.row>
+                <x-table.cell title="События" />
+                <x-table.cell title="" />
+                <x-table.cell>
+                    <x-link.blue-button :href="route('glossary.event.index')">
+                        <x-buttons.ico go />
+                    </x-link.blue-button>
+                </x-table.cell>
+            </x-table.row>
+
         </x-slot:tbody>
     </x-table.box>
 @endsection

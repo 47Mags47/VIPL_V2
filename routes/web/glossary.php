@@ -3,6 +3,7 @@
 use App\Http\Controllers\web\Glossary\BankController;
 use App\Http\Controllers\web\Glossary\CalendarGeneratorRuleController;
 use App\Http\Controllers\web\Glossary\DivisionController;
+use App\Http\Controllers\web\Glossary\EventController;
 use App\Http\Controllers\web\Glossary\PaymentController;
 use App\Http\Controllers\web\GlossaryController;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,7 @@ Route::prefix('/glossary')->group(function () {
         });
     });
 
-    Route::prefix('/generator/rule')->controller(CalendarGeneratorRuleController::class)->group(function () {
+    Route::prefix('generator/rule')->controller(CalendarGeneratorRuleController::class)->group(function () {
         Route::get('/index', 'index')->name('glossary.generator.rule.index');
         Route::get('/create', 'create')->name('glossary.generator.rule.create');
         Route::post('/store', 'store')->name('glossary.generator.rule.store');
@@ -51,6 +52,19 @@ Route::prefix('/glossary')->group(function () {
             Route::get('/edit', 'edit')->name('glossary.generator.rule.edit');
             Route::put('/update', 'update')->name('glossary.generator.rule.update');
             Route::get('/delete', 'delete')->name('glossary.generator.rule.delete');
+        });
+    });
+
+    Route::prefix('/event')->controller(EventController::class)->group(function () {
+        Route::get('/index', 'index')->name('glossary.event.index');
+        Route::get('/create', 'create')->name('glossary.event.create');
+        Route::post('/store', 'store')->name('glossary.event.store');
+        Route::prefix('/{event}')->group(function () {
+            Route::get('/open', 'open')->name('glossary.event.open');
+            Route::get('/close', 'close')->name('glossary.event.close');
+            Route::get('/edit', 'edit')->name('glossary.event.edit');
+            Route::put('/update', 'update')->name('glossary.event.update');
+            Route::get('/delete', 'delete')->name('glossary.event.delete');
         });
     });
 });

@@ -179,6 +179,11 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+    'values' => [
+        'date' => [
+            'today' => 'сегодня'
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -229,20 +234,10 @@ return [
         'username' => 'Никнейм',
         'year' => 'Год',
 
-        'login' => 'Логин',
-        'type_id' => 'Тип',
-        'text' => 'Текст',
-        'payment_id' => 'Выплата',
-        'column_code' => 'Колонка',
-        'value' => 'Значение',
-        'rule_code' => 'Правило',
-        'type_code' => 'Тип',
-
         'bank_code' => 'Код банка',
         'bank_ru_code' => 'Ру Код банка',
         'bank_name' => 'Наименование банка',
         'bank_raport_type_code' => 'Тип выгрузки',
-
         'contract_number' => 'Номер договора',
         'contract_division_name' => 'Наименование организации',
         'contract_INN' => 'ИНН',

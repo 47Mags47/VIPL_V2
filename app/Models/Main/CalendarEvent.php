@@ -3,12 +3,14 @@
 namespace App\Models\Main;
 
 use App\Models\Glossary\CalendarEventStatus;
+use App\Traits\HasSearch;
+use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CalendarEvent extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSearch, HasSort;
 
     ### Настройки
     ##################################################
@@ -17,10 +19,10 @@ class CalendarEvent extends Model
         $guarded = [];
 
     public
-        $timestamps = false,
         $casts = [
             'date' => 'date'
-        ];
+        ],
+        $search_columns = ['id', 'status_code', 'date'];
 
     ### Функции
     ##################################################

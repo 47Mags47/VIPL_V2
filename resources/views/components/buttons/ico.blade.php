@@ -36,15 +36,19 @@
     @endisset
 
     @isset($sortAsc)
-    <i class="fa-solid fa-arrow-up-wide-short"></i>
+        <i class="fa-solid fa-arrow-up-wide-short"></i>
     @endisset
 
     @isset($sortDesc)
-    <i class="fa-solid fa-arrow-down-wide-short"></i>
+        <i class="fa-solid fa-arrow-down-wide-short"></i>
     @endisset
 
     @isset($hasSort)
-    <i class="fa-solid fa-arrows-up-down"></i>
+        <i class="fa-solid fa-arrows-up-down"></i>
+    @endisset
+
+    @isset($eye)
+        <i class="fa-solid fa-eye"></i>
     @endisset
 
 </div>

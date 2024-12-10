@@ -5,7 +5,6 @@ namespace App\Models\Main;
 use App\Models\Glossary\Division;
 use App\Models\Glossary\PackageStatus;
 use App\Models\Main\PackageFile;
-use App\Sorts\PackageSort;
 use App\Traits\HasSearch;
 use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
