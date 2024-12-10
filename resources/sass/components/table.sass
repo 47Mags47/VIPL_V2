@@ -88,14 +88,13 @@ table
                 height: 25px
             .list-box li
                 list-style: none
-                a
-                    font-size: .8rem
+
 
 table.calendar
     border-collapse: separate
     border-spacing: 3px
     thead th, tbody td
-        width: calc(100% / 7)
+        // width: calc(100% / 7)
         border: 0
         &>div
             border: 1px solid #999
@@ -114,5 +113,9 @@ table.calendar
             min-height: calc( (100vh - 200px) / 6 )
             .date
                 @include flex($justy: end)
-                font-size: .8rem
+                font-size: .6rem
+            .list-box li
+                list-style: none
+                a
+                    font-size: .8rem
 

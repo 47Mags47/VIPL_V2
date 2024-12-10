@@ -13,15 +13,15 @@
             </x-link.blue-button>
         </x-slot:buttons>
         <x-slot:thead>
-            <tr>
+            <x-table.row>
                 <x-table.hcell title="ПН" />
                 <x-table.hcell title="ВТ" />
                 <x-table.hcell title="СР" />
                 <x-table.hcell title="ЧТ" />
                 <x-table.hcell title="ПТ" />
-                <x-table.hcell title="СБ" class="red-color" />
-                <x-table.hcell title="ВС" class="red-color" />
-            </tr>
+                <x-table.hcell title="СБ" class="red-color" w="100" />
+                <x-table.hcell title="ВС" class="red-color" w="100" />
+            </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
             @foreach ($calendar->getPeriodEvents() as $week)
@@ -35,7 +35,7 @@
                             <x-list.box>
                                 @foreach ($day['events'] as $event)
                                     <x-list.item>
-                                        <x-link.default :href="route('payment.package.check', compact('event'))" :title="$event->description . ' (' . $event->status->name . ')'" />
+                                        <x-link.default :href="route('payment.package.check', compact('event'))" :title="$event->description" />
                                     </x-list.item>
                                 @endforeach
                             </x-list.box>
