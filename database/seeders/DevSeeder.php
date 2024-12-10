@@ -7,7 +7,9 @@ use App\Models\Main\CalendarGeneratorRule;
 use App\Models\Main\Package;
 use App\Models\Main\PackageData;
 use App\Models\Main\PackageFile;
+use App\Models\Main\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DevSeeder extends Seeder
 {
@@ -32,5 +34,19 @@ class DevSeeder extends Seeder
                     )
             )
             ->create();
+
+        User::create([
+            'email' => 'user@mail.ru',
+            'division_code' => '001',
+            'email_verified_at' => now(),
+            'password' => Hash::make('user@mail.ru'),
+        ]);
+
+        User::create([
+            'email' => 'admin@mail.ru',
+            'division_code' => '000',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin@mail.ru'),
+        ]);
     }
 }

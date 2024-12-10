@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('main__users', function (Blueprint $table) {
             $table->id();
             $table->string('email');
+            $table->string('division_code');
+
             $table->timestamp('email_verified_at')->nullable();
+            $table->foreign('division_code')->references('code')->on('glossary__divisions');
             $table->string('password');
             $table->timestamps();
         });
