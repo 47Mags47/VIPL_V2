@@ -2,7 +2,7 @@
 @section('page-name', 'генератор событий')
 
 @section('content')
-    <x-table.box :paginator="$rules" :$search>
+    <x-table.box :paginator="$rules" search>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('glossary.generator.rule.create')">
                 <x-buttons.ico create />

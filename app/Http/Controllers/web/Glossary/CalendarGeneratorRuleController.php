@@ -15,10 +15,7 @@ class CalendarGeneratorRuleController extends Controller
     public function index()
     {
         $rules = CalendarGeneratorRule::search()->sort()->paginate(100);
-        return view('pages.glossary.calendar.generator.rule.index', [
-            'rules' => $rules,
-            'search' => $request->search ?? '',
-        ]);
+        return view('pages.glossary.calendar.generator.rule.index', compact('rules'));
     }
 
     public function create()
@@ -60,7 +57,7 @@ class CalendarGeneratorRuleController extends Controller
         return redirect()->route('glossary.generator.rule.index')->with('sys_message', 'Запись успешно создана');
     }
 
-    public function edit(Request $request, CalendarGeneratorRule $rule)
+    public function edit(CalendarGeneratorRule $rule)
     {
         $periods = CalendarGeneratorRulePeriod::orderBy('name')->get();
         $payments = Payment::orderBy('code')->get();
@@ -94,7 +91,7 @@ class CalendarGeneratorRuleController extends Controller
         return redirect()->route('glossary.generator.rule.index')->with('sys_message', 'Запись успешно изменена');
     }
 
-    public function delete(Request $request, CalendarGeneratorRule $rule)
+    public function delete(CalendarGeneratorRule $rule)
     {
         foreach ($rule->afterEvents() as $event) {
             $event->delete();

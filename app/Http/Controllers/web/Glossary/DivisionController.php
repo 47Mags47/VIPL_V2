@@ -11,10 +11,7 @@ class DivisionController extends Controller
     public function index()
     {
         $divisions = Division::search()->sort()->paginate(100);
-        return view('pages.glossary.division.index', [
-            'divisions' => $divisions,
-            'search' => $request->search ?? '',
-        ]);
+        return view('pages.glossary.division.index', compact('divisions'));
     }
 
     public function create()
@@ -34,7 +31,7 @@ class DivisionController extends Controller
         return redirect()->route('glossary.division.index')->with('sys_message', 'Запись успешно создана');
     }
 
-    public function edit(Request $request, Division $division)
+    public function edit(Division $division)
     {
         return view('pages.glossary.division.edit', compact('division'));
     }
@@ -51,7 +48,7 @@ class DivisionController extends Controller
         return redirect()->route('glossary.division.index')->with('sys_message', 'Запись успешно изменена');
     }
 
-    public function delete(Request $request, Division $division)
+    public function delete(Division $division)
     {
         $division->delete();
         return redirect()->route('glossary.division.index')->with('sys_message', 'Запись удалена');

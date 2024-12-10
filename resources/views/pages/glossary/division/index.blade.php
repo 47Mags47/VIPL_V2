@@ -2,7 +2,7 @@
 @section('page-name', 'Список подразделений')
 
 @section('content')
-    <x-table.box :paginator="$divisions" :$search>
+    <x-table.box :paginator="$divisions" search>
         <x-slot:optional-buttons>
             <x-link.blue-button :href="route('glossary.division.create')">
                 <x-buttons.ico create />

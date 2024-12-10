@@ -11,10 +11,7 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = Payment::search()->sort()->paginate(100);
-        return view('pages.glossary.payment.index', [
-            'payments' => $payments,
-            'search' => $request->search ?? ''
-        ]);
+        return view('pages.glossary.payment.index', compact('payments'));
     }
 
     public function create()
@@ -35,7 +32,7 @@ class PaymentController extends Controller
     }
 
 
-    public function edit(Request $request, Payment $payment)
+    public function edit(Payment $payment)
     {
         return view('pages.glossary.payment.edit', compact('payment'));
     }
@@ -52,7 +49,7 @@ class PaymentController extends Controller
         return redirect()->route('glossary.payment.index')->with('sys_message', 'Запись успешно обновлена');
     }
 
-    public function delete(Request $request, Payment $payment)
+    public function delete(Payment $payment)
     {
         $payment->delete();
         return redirect()->route('glossary.payment.index')->with('sys_message', 'Запись удалена');
