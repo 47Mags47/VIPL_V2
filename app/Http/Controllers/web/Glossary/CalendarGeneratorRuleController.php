@@ -39,10 +39,11 @@ class CalendarGeneratorRuleController extends Controller
         ]);
         if ($validated['payment_code'] == null and $validated['description'] == null) return back()->withInput()->withErrors('Поле "Описание" должно быть заполнено, если не указана выплата');
 
+        if($validated['description'] == null) $payment = Payment::whereKey($validated['payment_code'])->get()->first();
         $rule = CalendarGeneratorRule::create(array_merge($validated, [
             'status_code' => 'valid',
             'date_end' => $validated['date_end'] ?? now()->addYear(),
-            'description' => $validated['description'] ?? Payment::whereKey($validated['payment_code'])->get()->first()->name,
+            'description' => $validated['description'] ?? $payment->code . ' - ' . $payment->name,
         ]));
 
         $period = CarbonImmutable::parse($rule->date_start)->toPeriod(CarbonImmutable::parse($rule->date_end), $rule->period->step);
