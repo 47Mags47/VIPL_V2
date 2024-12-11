@@ -17,43 +17,82 @@ header
             text-transform: uppercase
             &:hover
                 color: $header-color-hover
-    .sys-message-box
-        position: absolute
-        top: calc( 100% + 10px )
+    .sys-alert-box
+        position: fixed
+        top: 10px
         right: 0
-        width: 100%
-
-        display: flex
-        justify-content: flex-end
-
         overflow: hidden
         .list-box
-            position: relative
-            width: initial
-            right: 0
+            padding-right: 15px
+            ul
+                gap: 7px
+                align-items: flex-end
+                li
+                    transition: .6s
+                    position: relative
+                    left: calc(100% + 15px)
+                    padding: 5px 7px
+                    list-style: none
+                    border-radius: 7px
+                    overflow: hidden
+                    &:after
+                        position: absolute
+                        top: 0
+                        left: 0
+                        content: ''
+                        width: 100%
+                        height: 100%
+                        background: rgba(0, 0, 0, 0.15)
+                        transition: 4s
+                    &.open
+                        left: 0
+                        &:after
+                            left: 100%
+                    &.close
+                        left: calc(100% + 15px)
+                    &.message
+                        color: rgb(0, 80, 0)
+                        background: #a2faa2
+                    &.error
+                        color: rgb(80, 0, 0)
+                        background: #faa2a2
+    // .sys-message-box
+    //     position: absolute
+    //     top: calc( 100% + 10px )
+    //     right: 0
+    //     width: 100%
 
-            padding: 0 25px
-            border-radius: 7px 0 0 7px
-            background: rgba(0, 255, 0, 0.25)
-            backdrop-filter: blur(5px)
+    //     display: flex
+    //     justify-content: flex-end
 
-            transition: 3s
-            &:after
-                content: ''
-                width: 100%
-                height: 100%
-                position: absolute
-                top: 0
-                right: 0
-                background: rgba(0, 255, 0, 0.15)
-                border-radius: 7px 0 0 7px
+    //     overflow: hidden
+    //     .list-box
+    //         position: relative
+    //         width: initial
+    //         right: 0
 
-                transition: 3s
-            li
-                color: rgb(0, 80, 0)
-                font-weight: bold
-            &.animate:after
-                width: 0
-            &.hidden
-                right: -100%
+    //         padding: 0 25px
+    //         border-radius: 7px 0 0 7px
+    //         background: rgba(0, 255, 0, 0.25)
+    //         backdrop-filter: blur(5px)
+
+    //         transition: 3s
+    //         &:after
+    //             content: ''
+    //             width: 100%
+    //             height: 100%
+    //             position: absolute
+    //             top: 0
+    //             right: 0
+    //             background: rgba(0, 255, 0, 0.15)
+    //             border-radius: 7px 0 0 7px
+
+    //             transition: 3s
+    //         li
+    //             color: rgb(0, 80, 0)
+    //             font-weight: bold
+    //         &.animate:after
+    //             width: 0
+    //         &.hidden
+    //             right: -100%
 

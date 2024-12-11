@@ -10,19 +10,23 @@
         <x-link.header :href="route('logout')" title="Test T.T." />
     </div>
 
-    @if (session('sys_message'))
-        <div class="sys-message-box">
-            @if (is_array(session('sys_message')))
-                <x-list.box>
-                    @foreach (session('sys_message') as $item)
-                        <x-list.item>{{ $item }}</x-list.item>
-                    @endforeach
-                </x-list.box>
-            @else
-                <x-list.box>
-                    <x-list.item>{{ session('sys_message') }}</x-list.item>
-                </x-list.box>
-            @endif
-        </div>
-    @endif
+    <div class="sys-alert-box">
+        @if (session('message') !== null or $errors->any())
+            <x-list.box>
+                @if (session('message') !== null)
+                    @if (is_array(session('message')))
+                        @foreach (session('message') as $message)
+                            <x-list.item class="message">{{ $message }}</x-list.item>
+                        @endforeach
+                    @else
+                        <x-list.item class="message">{{ session('message') }}</x-list.item>
+                    @endif
+
+                @endif
+                @foreach ($errors->all() as $error)
+                    <x-list.item class="error">{{ $error }}</x-list.item>
+                @endforeach
+            </x-list.box>
+        @endif
+    </div>
 </header>
