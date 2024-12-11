@@ -6,16 +6,32 @@ use App\Http\Controllers\web\package\PackageController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/payment')->middleware('auth')->group(function () {
-    Route::prefix('{event}/package')->controller(PackageController::class)->group(function () {
-        Route::get('/check', 'check')->name('payment.package.check');
-        Route::get('/index', 'index')->middleware('administration')->name('payment.package.index');
+    ### PACKAGE
+    Route::controller(PackageController::class)->group(function () {
+        Route::prefix('/{event}/package')->middleware('administration')->group(function () {
+            Route::get('/index', 'index')->name('payment.package.index');
+        });
+        Route::prefix('/package/{package}')->group(function () {
+            Route::get('/show', 'show')->name('payment.package.show');
+        });
     });
-    Route::prefix('/package/{package}/file')->controller(FileController::class)->group(function () {
-        Route::get('/index', 'index')->name('payment.file.index');
-        Route::get('/create', 'create')->name('payment.file.create');
-        Route::post('/store', 'store')->name('payment.file.store');
+
+    ### FILE
+    Route::controller(FileController::class)->group(function () {
+        Route::prefix('/{package}/file')->group(function () {
+            Route::get('/index', 'index')->name('payment.file.index');
+            Route::get('/create', 'create')->name('payment.file.create');
+            Route::post('/store', 'store')->name('payment.file.store');
+        });
+        Route::prefix('/file/{file}')->group(function () {
+            Route::get('/show', 'show')->name('payment.file.show');
+        });
     });
-    Route::prefix('/file/{file}/data')->controller(DataController::class)->group(function () {
-        Route::get('/index', 'index')->name('payment.data.index');
+
+    ### DATA
+    Route::controller(DataController::class)->group(function () {
+        Route::prefix('file/{file}/data')->group(function () {
+            Route::get('/index', 'index')->name('payment.data.index');
+        });
     });
 });

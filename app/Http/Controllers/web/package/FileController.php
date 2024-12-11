@@ -57,4 +57,11 @@ class FileController extends Controller
 
         return redirect()->route('payment.file.index', compact('package'));
     }
+
+    public function show(Request $request, PackageFile $file)
+    {
+        return $request->user()->can('package-file-view', $file)
+            ? redirect()->route('payment.data.index', compact('file'))
+            : back()->withErrors('Доступ заблокирован');
+    }
 }

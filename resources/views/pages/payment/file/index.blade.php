@@ -44,7 +44,7 @@
                         @endif
                     </x-table.cell>
                     <x-table.cell>
-                        <x-link.blue-button :href="route('payment.data.index', compact('file'))">
+                        <x-link.blue-button :href="route('payment.file.show', ['file' => $file])">
                             <x-buttons.ico go />
                         </x-link.blue-button>
                     </x-table.cell>

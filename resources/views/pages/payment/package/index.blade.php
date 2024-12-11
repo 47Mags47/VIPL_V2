@@ -4,15 +4,20 @@
 @section('content')
     <x-table.box :paginator="$packages" search>
         <x-slot:optional-buttons>
+            @if (request()->event->status_code === 'opened')
+                <x-link.red-button :href="route('calendar.event.close', ['event' => request()->event])">
+                    <x-buttons.ico close />
+                </x-link.red-button>
+            @endif
             <x-link.blue-button :href="route('raport.event', ['event' => request()->event])">
                 <x-buttons.ico download />
             </x-link.blue-button>
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="UUID" w="300" sort="id"/>
+                <x-table.hcell title="UUID" w="300" sort="id" />
                 <x-table.hcell title="Статус" w="75" sort="status_code" />
-                <x-table.hcell title="Подразделение" sort="division"/>
+                <x-table.hcell title="Подразделение" sort="division" />
                 <x-table.hcell title="Комментарий" />
                 <x-table.hcell title="Файлов" w="75" />
                 <x-table.hcell title="Данных" w="75" />

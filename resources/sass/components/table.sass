@@ -94,7 +94,6 @@ table.calendar
     border-collapse: separate
     border-spacing: 3px
     thead th, tbody td
-        // width: calc(100% / 7)
         border: 0
         &>div
             border: 1px solid #999
@@ -116,6 +115,15 @@ table.calendar
                 font-size: .6rem
             .list-box li
                 list-style: none
-                a
+                span
+                    color: #444
+                span, a
                     font-size: .8rem
-
+                a.closed
+                    color: #5e0000
+                    &::before
+                        background: #5e0000
+                a.future
+                    color: #444
+                    &::before
+                        background: #444
