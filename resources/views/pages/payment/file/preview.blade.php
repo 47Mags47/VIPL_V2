@@ -8,63 +8,63 @@
                 <x-table.row>
                     <x-table.hcell title="№ п/п" w="50"/>
                     <x-table.hcell>
-                        <x-input.select name="column[0]">
+                        <x-input.select name="column[1]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="first_name" p-name="column.0" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[1]">
+                        <x-input.select name="column[2]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="last_name" p-name="column.1" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[2]">
+                        <x-input.select name="column[3]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="middle_name" p-name="column.2" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[3]">
+                        <x-input.select name="column[4]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="account" p-name="column.3" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[4]">
+                        <x-input.select name="column[5]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="summ" p-name="column.4" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[5]">
+                        <x-input.select name="column[6]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="pasp" p-name="column.5" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[6]">
+                        <x-input.select name="column[7]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="birth" p-name="column.6" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[7]">
+                        <x-input.select name="column[8]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="kbk" p-name="column.7" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
-                        <x-input.select name="column[8]">
+                        <x-input.select name="column[9]">
                             @foreach ($columns as $column)
                                 <x-input.option :title="$column->name" :value="$column->code" select="snils" p-name="column.8" />
                             @endforeach

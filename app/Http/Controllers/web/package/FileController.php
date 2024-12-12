@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web\package;
 
 use App\Core\Reader\CSVReader;
 use App\Http\Controllers\Controller;
+use App\Jobs\ParsePackageFile;
 use App\Models\Glossary\Bank;
 use App\Models\Glossary\PackageDataColumn;
 use App\Models\Main\Package;
@@ -57,8 +58,8 @@ class FileController extends Controller
 
     public function store(Request $request, Package $package, PackageFile $file)
     {
-        $request->validate([
-            'column.*' => ['distinct'],
+        $validated = $request->validate([
+            'column.*' => ['distinct', 'not_in:0'],
         ]);
 
         try {
@@ -72,12 +73,13 @@ class FileController extends Controller
 
             Storage::disk('package_files')->writeStream($path, Storage::disk('tmp')->readStream($file->path));
             Storage::disk('tmp')->delete($file->path);
+
             $file->update([
                 'path' => $path,
                 'status_code' => 'uploaded'
             ]);
 
-            // ParsePackageFile::dispatch($file);
+            ParsePackageFile::dispatch($file, $validated['column']);
 
             return redirect()->route('payment.file.index', compact('package'))->with('message', 'Файл передан на сервер. Начато считывание');
         } catch (\Throwable $th) {
