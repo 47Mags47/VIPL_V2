@@ -2,10 +2,9 @@
 
 namespace App\Models\Main;
 
-use App\Models\Glossary\CalendarGeneratorCalculation;
 use App\Models\Glossary\CalendarGeneratorRulePeriod;
 use App\Models\Glossary\CalendarGeneratorRuleStatus;
-use App\Models\Glossary\CalendarGeneratorStatus;
+use App\Models\Glossary\Payment;
 use App\Traits\HasSearch;
 use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Builder;
@@ -58,5 +57,9 @@ class CalendarGeneratorRule extends Model
     public function events()
     {
         return $this->hasMany(CalendarEvent::class, 'rule_id');
+    }
+
+    public function payment(){
+        return $this->belongsTo(Payment::class, 'payment_code');
     }
 }

@@ -40,15 +40,21 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
 
+        'tmp' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/tmp'),
+            'visibility' => 'public',
+            'throw' => true,
+        ],
+
         'package_files' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/payment'),
-            'url' => env('APP_URL').'/storage/payment',
+            'root' => storage_path('app/public/package'),
             'visibility' => 'public',
             'throw' => true,
         ],
@@ -56,7 +62,7 @@ return [
         'raports' => [
             'driver' => 'local',
             'root' => storage_path('app/public/raports'),
-            'url' => env('APP_URL').'/storage/raports',
+            'url' => env('APP_URL') . '/storage/raports',
             'visibility' => 'public',
             'throw' => true,
         ]

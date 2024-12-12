@@ -21,11 +21,16 @@
                     @else
                         <x-list.item class="message">{{ session('message') }}</x-list.item>
                     @endif
-
                 @endif
-                @foreach ($errors->all() as $error)
-                    <x-list.item class="error">{{ $error }}</x-list.item>
-                @endforeach
+                @if (session('error') !== null)
+                    @if (is_array(session('error')))
+                        @foreach (session('error') as $error)
+                            <x-list.item class="error">{{ $error }}</x-list.item>
+                        @endforeach
+                    @else
+                        <x-list.item class="error">{{ session('error') }}</x-list.item>
+                    @endif
+                @endif
             </x-list.box>
         @endif
     </div>

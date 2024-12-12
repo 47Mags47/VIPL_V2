@@ -45,7 +45,7 @@ class DevSeeder extends Seeder
         CalendarGeneratorRule::factory(['status_code' => 'valid', 'date_start' => now()])->create();
         CalendarGeneratorRule::factory(3, ['status_code' => 'valid'])->create();
 
-        CalendarEvent::factory()
+        CalendarEvent::factory(['status_code' => 'opened'])
             ->has(
                 Package::factory()
                     ->has(

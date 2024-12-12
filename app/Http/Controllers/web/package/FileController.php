@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\web\package;
 
+use App\Core\Reader\CSVReader;
 use App\Http\Controllers\Controller;
-use App\Jobs\ParsePackageFile;
 use App\Models\Glossary\Bank;
+use App\Models\Glossary\PackageDataColumn;
 use App\Models\Main\Package;
 use App\Models\Main\PackageFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -25,37 +27,63 @@ class FileController extends Controller
         return view('pages.payment.file.create', compact('banks'));
     }
 
-    public function store(Request $request, Package $package)
+    public function tmp(Request $request, Package $package)
     {
         $request->validate([
             'bank_code' => ['required', 'string', 'not_in:0'],
             'file' => ['required', 'file', 'mimes:txt,csv', 'max:2048'],
         ]);
 
+        $path = Storage::disk('tmp')->putFile("", $request->file('file'));
         $file = PackageFile::create([
-            'path' => 'tmp',
             'status_code' => 'upload',
             'bank_code' => $request->bank_code,
             'upload_user_id' => Auth::user()->id,
             'package_id' => $package->id,
+            'path' => $path,
         ]);
 
-        $payment_code = 'payment_code';
+        return redirect()->route('payment.file.preview', compact('package', 'file'));
+    }
+
+    public function preview(Request $request, Package $package, PackageFile $file)
+    {
+        $columns = PackageDataColumn::all();
+        $preview_data = CSVReader::getPreviewData(Storage::disk('tmp')->path($file->path));
+        $last_row_data = CSVReader::getLastRow(Storage::disk('tmp')->path($file->path));
+
+        return view('pages.payment.file.preview', compact('package', 'columns', 'preview_data', 'last_row_data'));
+    }
+
+    public function store(Request $request, Package $package, PackageFile $file)
+    {
+        $request->validate([
+            'column.*' => ['distinct'],
+        ]);
 
         try {
-            $dir = "$payment_code/$package->division_code/$request->bank_code";
-            $path = $request->file('file')->storeAs($dir, $file->created_at->format('Y-m-d_H-i-s') . '.csv', 'package_files');
+            $date = $package->event->date->format('Y-m-d');
+            $payment_code = $package->event->rule !== null ? $package->event->rule->payment->code : 'custom_' . $package->event->id;
+            $division_code = $package->division_code;
+            $bank_code = $request->bank_code;
 
-            $file->setStatus('uploaded');
-            $file->update(['path' => $path]);
+            $dir = "$date/$payment_code/$division_code/$bank_code";
+            $path = $dir . '/' . $file->id . '.csv';
+
+            Storage::disk('package_files')->writeStream($path, Storage::disk('tmp')->readStream($file->path));
+            Storage::disk('tmp')->delete($file->path);
+            $file->update([
+                'path' => $path,
+                'status_code' => 'uploaded'
+            ]);
+
+            // ParsePackageFile::dispatch($file);
+
+            return redirect()->route('payment.file.index', compact('package'))->with('message', 'Файл передан на сервер. Начато считывание');
         } catch (\Throwable $th) {
-            $file->setStatus('upload_fail');
             Log::error($th);
+            return redirect()->route('payment.file.index', compact('package'))->with('error', 'ошибка при передаче файла');
         }
-
-        ParsePackageFile::dispatch($file);
-
-        return redirect()->route('payment.file.index', compact('package'));
     }
 
     public function show(Request $request, PackageFile $file)

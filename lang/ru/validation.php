@@ -175,8 +175,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'column.*' => [
+            'distinct' => 'Значения полей ":attribute" не должны повторяться',
         ],
     ],
     'values' => [
@@ -243,7 +243,8 @@ return [
         'contract_INN' => 'ИНН',
         'contract_division_account' => 'Счёт организации',
         'contract_BIK' => 'БИК',
-        'payment_code' => 'Выплата'
+        'payment_code' => 'Выплата',
+        'column.*' => 'Имя столбца'
     ],
 
 ];

@@ -50,4 +50,8 @@ class CalendarEvent extends Model
     {
         return $this->hasMany(Package::class, 'event_id');
     }
+
+    public function rule(){
+        return $this->belongsTo(CalendarGeneratorRule::class, 'rule_id');
+    }
 }

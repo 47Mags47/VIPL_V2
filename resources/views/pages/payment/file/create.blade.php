@@ -2,7 +2,7 @@
 @section('page-name', 'Выплаты')
 
 @section('content')
-    <x-form.box sbm="Загрузить" :action="route('payment.file.store', ['package' => request()->package])" center file>
+    <x-form.box sbm="Загрузить" :action="route('payment.file.tmp', ['package' => request()->package])" center file>
         <x-input.select name="bank_code" label="Банк">
             @foreach ($banks as $bank)
                 <x-input.option :value="$bank->code" :title="$bank->code . ' - ' . $bank->name" p-name="bank_code" />

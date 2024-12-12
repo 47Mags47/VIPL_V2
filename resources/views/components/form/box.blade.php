@@ -1,4 +1,4 @@
-<div @class(['form-box', 'center' => isset($center)])>
+<div @class(['form-box', 'center' => isset($center), $attributes['class']])>
 
     <form
         action="{{ $action ?? '' }}"

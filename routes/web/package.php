@@ -21,7 +21,9 @@ Route::prefix('/payment')->middleware('auth')->group(function () {
         Route::prefix('/{package}/file')->group(function () {
             Route::get('/index', 'index')->name('payment.file.index');
             Route::get('/create', 'create')->name('payment.file.create');
-            Route::post('/store', 'store')->name('payment.file.store');
+            Route::post('/create', 'tmp')->name('payment.file.tmp');
+            Route::get('/{file}/preview', 'preview')->name('payment.file.preview');
+            Route::post('/{file}/store', 'store')->name('payment.file.store');
         });
         Route::prefix('/file/{file}')->group(function () {
             Route::get('/show', 'show')->name('payment.file.show');
