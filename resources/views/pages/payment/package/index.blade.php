@@ -21,19 +21,41 @@
                 <x-table.hcell title="Комментарий" />
                 <x-table.hcell title="Файлов" w="75" />
                 <x-table.hcell title="Данных" w="75" />
+                <x-table.hcell title="На сумму" w="150" />
                 <x-table.hcell ico />
                 <x-table.hcell ico />
             </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
+            @php
+                $file_count = 0;
+                $data_count = 0;
+                $summ_count = 0;
+            @endphp
             @foreach ($packages as $package)
+                @php
+                    $file_count += $package->files->count();
+                    $data_count += $package->data->count();
+                    $this_summ_count = 0;
+
+                    foreach (
+                        $package->files->map(function ($file) {
+                            return $file->AllSumm();
+                        })
+                        as $key => $value
+                    ) {
+                        $this_summ_count += $value;
+                        $summ_count += $value;
+                    }
+                @endphp
                 <x-table.row>
                     <x-table.cell :title="$package->id" />
                     <x-table.cell :title="$package->status->name" center />
                     <x-table.cell :title="$package->division->code . ' - ' . $package->division->name" />
                     <x-table.cell :title="$package->comment" />
-                    <x-table.cell :title="$package->files->count()" center />
-                    <x-table.cell :title="$package->data->count()" center />
+                    <x-table.cell :title="number_format($package->files->count(), 0, '.', ' ')" center />
+                    <x-table.cell :title="number_format($package->data->count(), 0, '.', ' ')" center />
+                    <x-table.cell :title="number_format($this_summ_count, 0, '.', ' ')" center />
                     <x-table.cell has-button>
                         <x-link.blue-button :href="route('raport.package', compact('package'))">
                             <x-buttons.ico download />
@@ -46,6 +68,16 @@
                     </x-table.cell>
                 </x-table.row>
             @endforeach
+            @if (count($packages) > 1)
+                <x-table.row>
+                    <x-table.cell :title="'Строк: ' . count($packages)" />
+                    <x-table.cell title="Всего:" colspan=3 right bold/>
+                    <x-table.cell :title="number_format($file_count, 0, '.', ' ')" center />
+                    <x-table.cell :title="number_format($data_count, 0, '.', ' ')" center />
+                    <x-table.cell :title="number_format($summ_count, 2, '.', ' ')" center />
+                    <x-table.cell colspan="2" />
+                </x-table.row>
+            @endif
         </x-slot:tbody>
     </x-table.box>
 @endsection

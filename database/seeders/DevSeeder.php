@@ -58,5 +58,16 @@ class DevSeeder extends Seeder
                     )
             )
             ->create();
+
+        Package::factory(['division_code' => '005'])
+            ->has(
+                PackageFile::factory()->count(3)
+                    ->has(
+                        PackageData::factory()->count(3),
+                        'data'
+                    ),
+                'files'
+            )
+            ->create();
     }
 }

@@ -54,4 +54,5 @@ class CalendarEvent extends Model
     public function rule(){
         return $this->belongsTo(CalendarGeneratorRule::class, 'rule_id');
     }
+
 }

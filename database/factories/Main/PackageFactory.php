@@ -24,7 +24,7 @@ class PackageFactory extends Factory
             'id' => Str::uuid(),
             'status_code' => 'created',
             'comment' => null,
-            'event_id' => CalendarEvent::all()->random(1)->first()->code,
+            'event_id' => CalendarEvent::all()->random(1)->first()->id,
             'division_code' => User::where('email', 'user@mail.ru')->get()->first()->division_code,
         ];
     }
