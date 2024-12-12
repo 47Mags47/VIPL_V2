@@ -1,5 +1,10 @@
 @php
-    $old_val = old($pName) ?? old(str_replace('.', '_', $pName));
+    $pName = str_replace('.', '_', $pName);
+
+    $pName = str_replace('[', '.', $pName);
+    $pName = str_replace(']', '', $pName);
+
+    $old_val = old($pName);
 @endphp
 
 <option

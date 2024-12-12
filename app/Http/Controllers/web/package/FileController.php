@@ -50,16 +50,15 @@ class FileController extends Controller
     public function preview(Request $request, Package $package, PackageFile $file)
     {
         $columns = PackageDataColumn::all();
-        $preview_data = CSVReader::getPreviewData(Storage::disk('tmp')->path($file->path));
-        $last_row_data = CSVReader::getLastRow(Storage::disk('tmp')->path($file->path));
+        $reader = new CSVReader(Storage::disk('tmp')->path($file->path));
 
-        return view('pages.payment.file.preview', compact('package', 'columns', 'preview_data', 'last_row_data'));
+        return view('pages.payment.file.preview', compact('package', 'columns', 'reader'));
     }
 
     public function store(Request $request, Package $package, PackageFile $file)
     {
         $validated = $request->validate([
-            'column.*' => ['distinct', 'not_in:0'],
+            'column.*' => ['distinct', 'not_regex:/0/'],
         ]);
 
         try {

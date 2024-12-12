@@ -6,7 +6,13 @@ use PhpOffice\PhpSpreadsheet\Reader\Csv;
 
 class CSVReader
 {
-    private $reader, $spreadsheet, $sheet;
+    public
+        $rowCount;
+
+    private
+        $reader,
+        $spreadsheet,
+        $sheet;
 
     public function __construct(public string $path)
     {
@@ -18,6 +24,7 @@ class CSVReader
             ->setSheetIndex(0);
         $this->spreadsheet = $this->reader->load($path);
         $this->sheet = $this->spreadsheet->getActiveSheet();
+        $this->rowCount = $this->sheet->getHighestRow();
     }
 
     public function read(int|null $row_count = null)
@@ -30,15 +37,16 @@ class CSVReader
         return array_slice($this->sheet->toArray(), $row, $row_count);
     }
 
-    public static function getPreviewData($path)
+
+    public function getPreviewData()
     {
-        $reader = new CSVReader($path);
-        return $reader->read(9);
+        // $reader = new CSVReader($path);
+        return $this->read(5);
     }
 
-    public static function getLastRow($path)
+    public function getLastRow()
     {
-        $reader = new CSVReader($path);
-        return $reader->readRow($reader->sheet->getHighestRow() - 1);
+        // $reader = new CSVReader($path);
+        return $this->readRow($this->rowCount - 1)[0];
     }
 }
