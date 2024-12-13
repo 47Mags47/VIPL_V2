@@ -11,7 +11,7 @@
     </div>
 
     <div class="sys-alert-box">
-        @if (session('message') !== null or $errors->any())
+        @if (session('message') !== null or session('errors') !== null)
             <x-list.box>
                 @if (session('message') !== null)
                     @if (is_array(session('message')))
@@ -22,13 +22,13 @@
                         <x-list.item class="message">{{ session('message') }}</x-list.item>
                     @endif
                 @endif
-                @if (session('error') !== null)
-                    @if (is_array(session('error')))
-                        @foreach (session('error') as $error)
+                @if (session('errors') !== null)
+                    @if (is_array(session('errors')))
+                        @foreach (session('errors') as $error)
                             <x-list.item class="error">{{ $error }}</x-list.item>
                         @endforeach
                     @else
-                        <x-list.item class="error">{{ session('error') }}</x-list.item>
+                        <x-list.item class="error">{{ session('errors') }}</x-list.item>
                     @endif
                 @endif
             </x-list.box>

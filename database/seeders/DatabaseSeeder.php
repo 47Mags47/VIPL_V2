@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(CalendarSeeder::class);
+        $this->call(RaportSeeder::class);
         $this->call(PackageSeeder::class);
 
         if(env('APP_ENV') === 'local') $this->call(DevSeeder::class);

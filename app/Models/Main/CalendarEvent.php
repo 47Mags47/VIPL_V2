@@ -39,6 +39,13 @@ class CalendarEvent extends Model
         return $this->through('packages')->has('files')->where('bank_code', $bank)->get();
     }
 
+    public function scopePayment()
+    {
+        return $this->rule !== null
+            ? $this->rule->payment_code
+            : 'custom';
+    }
+
     ### Связи
     ##################################################
     public function status()
@@ -51,8 +58,8 @@ class CalendarEvent extends Model
         return $this->hasMany(Package::class, 'event_id');
     }
 
-    public function rule(){
+    public function rule()
+    {
         return $this->belongsTo(CalendarGeneratorRule::class, 'rule_id');
     }
-
 }

@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('glossary__banks', function (Blueprint $table) {
             $table->string('code')->primary();
             $table->string('ru_code');
-            $table->string('raport_type_code');
-            $table->foreign('raport_type_code')->references('code')->on('glossary__bank_raport_types');
+            $table->string('raport_sheme_code')->nullable();
             $table->string('name');
             $table->softDeletes();
+
+            $table->foreign('raport_sheme_code')->references('code')->on('glossary__raport_shemes');
         });
     }
 

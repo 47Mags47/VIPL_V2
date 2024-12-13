@@ -2,7 +2,6 @@
 
 namespace App\Models\Glossary;
 
-use App\Sorts\BankSort;
 use App\Traits\HasSearch;
 use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Model;
@@ -24,5 +23,9 @@ class Bank extends Model
 
     public function contracts(){
         return $this->hasMany(Contract::class, 'bank_code', 'code');
+    }
+
+    public function sheme(){
+        return $this->belongsTo(RaportSheme::class, 'raport_sheme_code', 'code');
     }
 }

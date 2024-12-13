@@ -4,16 +4,16 @@ namespace App\Models\Main;
 
 use App\Models\Glossary\Bank;
 use App\Models\Glossary\PackageFileStatus;
-use App\Sorts\PackageFileSort;
 use App\Traits\HasSearch;
 use App\Traits\HasSort;
+use App\Traits\HasWriter;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PackageFile extends Model
 {
-    use HasFactory, HasUuids, HasSearch, HasSort;
+    use HasFactory, HasUuids, HasSearch, HasSort, HasWriter;
 
     ### Настройки
     ##################################################
@@ -26,11 +26,13 @@ class PackageFile extends Model
 
     ### Функции
     ##################################################
-    public function scopeSetStatus($builder, string $status){
+    public function scopeSetStatus($builder, string $status)
+    {
         $this->update(['status_code' => $status]);
     }
 
-    public function scopeAllSumm(){
+    public function scopeAllSumm()
+    {
         return $this->hasMany(PackageData::class, 'file_id', 'id')->sum('summ');
     }
 
@@ -38,7 +40,7 @@ class PackageFile extends Model
     {
         $errors = collect([]);
         foreach ($this->data as $row) {
-            if($row->errors !== null) $errors->push($row->errors);
+            if ($row->errors !== null) $errors->push($row->errors);
         }
         return $errors;
     }
@@ -64,5 +66,4 @@ class PackageFile extends Model
     {
         return $this->hasMany(PackageData::class, 'file_id', 'id');
     }
-
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\web;
 
-use App\Core\Writers\XMLWriter;
-use App\Core\Writers\ZIPWriter;
 use App\Http\Controllers\Controller;
 use App\Models\Main\CalendarEvent;
 use App\Models\Main\Package;
@@ -14,65 +12,64 @@ use Illuminate\Support\Facades\Storage;
 
 class RaportController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $raports = Raport::all();
         return view('pages.raport.index', compact('raports'));
     }
 
-    public function download(Request $request, Raport $raport){
-        return Storage::disk('raports')->download($raport->path);
+    public function download(Raport $raport)
+    {
+        return Storage::disk('raports')->download($raport->path . '/' . $raport->name);
     }
 
-    public function file(Request $request, PackageFile $file){
-        $xml_path = XMLWriter::write($file);
-        $xml_name = $file->package->event->payment_code . '_' . $file->package->division_code . '_' . $file->bank_code . '.xml';
-
-        Raport::create([
-            'name' => $xml_path,
-            'path' => $xml_name,
-        ]);
-
-        return Storage::disk('raports')->download($xml_path, $xml_name);
+    public function file(PackageFile $file)
+    {
+        $raport = $file->write();
+        return $raport !== false
+            ? Storage::disk('raports')->download($raport->path . '/' . $raport->name)
+            : back()->with('errors', 'Произошла ошибка при формировании отчета');
     }
 
-    public function package(Request $request, Package $package){
-        $files = [];
-        foreach ($package->files as $file) {
-            $files[] = XMLWriter::write($file);
-        }
+    public function package(Request $request, Package $package)
+    {
+        // $files = [];
+        // foreach ($package->files as $file) {
+        //     $files[] = XMLWriter::write($file);
+        // }
 
-        $zip_name = $package->event->payment_code . '_' . $package->division_code . '.zip';
-        $zip_path = $package->event->payment_code . '/' . $package->division_code;
+        // $zip_name = $package->event->payment_code . '_' . $package->division_code . '.zip';
+        // $zip_path = $package->event->payment_code . '/' . $package->division_code;
 
-        ZIPWriter::write($files, $zip_name, $zip_path);
+        // ZIPWriter::write($files, $zip_name, $zip_path);
 
-        Raport::create([
-            'name' => $zip_name,
-            'path' => $zip_path,
-        ]);
+        // Raport::create([
+        //     'name' => $zip_name,
+        //     'path' => $zip_path,
+        // ]);
 
-        return Storage::disk('raports')->download($zip_path . '/' . $zip_name, $zip_name);
+        // return Storage::disk('raports')->download($zip_path . '/' . $zip_name, $zip_name);
     }
 
-    public function event(Request $request, CalendarEvent $event){
-        $files = [];
-        foreach ($event->packages as $package) {
-            foreach ($package->files as $file) {
-                if($file->bank->contract == null) continue;
-                $files[] = XMLWriter::write($file);
-            }
-        }
+    public function event(Request $request, CalendarEvent $event)
+    {
+        // $files = [];
+        // foreach ($event->packages as $package) {
+        //     foreach ($package->files as $file) {
+        //         if($file->bank->contract == null) continue;
+        //         $files[] = XMLWriter::write($file);
+        //     }
+        // }
 
-        $zip_name = $event->payment_code . '.zip';
-        $zip_path = $event->payment_code;
+        // $zip_name = $event->payment_code . '.zip';
+        // $zip_path = $event->payment_code;
 
-        ZIPWriter::write($files, $zip_name, $zip_path);
-        Raport::create([
-            'name' => $zip_name,
-            'path' => $zip_path,
-        ]);
+        // ZIPWriter::write($files, $zip_name, $zip_path);
+        // Raport::create([
+        //     'name' => $zip_name,
+        //     'path' => $zip_path,
+        // ]);
 
-        return Storage::disk('raports')->download($zip_path . '/' . $zip_name, $zip_name);
+        // return Storage::disk('raports')->download($zip_path . '/' . $zip_name, $zip_name);
     }
-
 }

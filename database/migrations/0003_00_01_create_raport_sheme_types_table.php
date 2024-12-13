@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('glossary__bank_raport_types', function (Blueprint $table) {
+        Schema::create('glossary__raport_sheme_types', function (Blueprint $table) {
             $table->string('code')->primary();
             $table->string('name');
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('glossary__bank_raport_types');
+        Schema::dropIfExists('glossary__raport_sheme_types');
     }
 };

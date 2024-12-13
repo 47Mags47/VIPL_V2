@@ -7,6 +7,7 @@ use PhpOffice\PhpSpreadsheet\Reader\Csv;
 class CSVReader
 {
     public
+        $path,
         $rowCount;
 
     private
@@ -14,8 +15,9 @@ class CSVReader
         $spreadsheet,
         $sheet;
 
-    public function __construct(public string $path)
+    public function __construct(string $path)
     {
+        $this->path = $path;
         $this->reader = new Csv();
         $this->reader
             ->setInputEncoding('CP866')
@@ -33,20 +35,21 @@ class CSVReader
         return array_slice($this->sheet->toArray(), 0, $row_count);
     }
 
-    public function readRow(int $row = 0, int $row_count = 1){
-        return array_slice($this->sheet->toArray(), $row, $row_count);
+    public function readRow(int $row = 0, int $row_count = 1)
+    {
+        $slice = array_slice($this->sheet->toArray(), $row, $row_count);
+        return $row_count === 1
+            ? $slice[0]
+            : $slice;
     }
-
 
     public function getPreviewData()
     {
-        // $reader = new CSVReader($path);
         return $this->read(5);
     }
 
     public function getLastRow()
     {
-        // $reader = new CSVReader($path);
-        return $this->readRow($this->rowCount - 1)[0];
+        return $this->readRow($this->rowCount - 1);
     }
 }
