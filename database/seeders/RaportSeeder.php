@@ -17,5 +17,6 @@ class RaportSeeder extends Seeder
         ### SHEMES
         ##################################################
         RaportSheme::create(['code' => 'XML_Default', 'description' => 'Стандартная XML схема']);
+        RaportSheme::create(['code' => 'UralSib', 'description' => 'Схема для УралСиб банка']);
     }
 }
