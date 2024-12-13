@@ -16,11 +16,6 @@ class RaportSeeder extends Seeder
     {
         ### SHEMES
         ##################################################
-        ### TYPE
-        RaportShemeType::create(['code' => 'file', 'name' => 'Файл']);
-        RaportShemeType::create(['code' => 'class', 'name' => 'Класс']);
-
-        ### SHEME
-        RaportSheme::create(['code' => 'XML_SBER', 'type_code' => 'class', 'description' => 'Шаблон для Сбера']);
+        RaportSheme::create(['code' => 'XML_Default', 'description' => 'Стандартная XML схема']);
     }
 }

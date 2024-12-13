@@ -27,7 +27,7 @@ class RaportController extends Controller
     {
         $raport = $file->write();
         return $raport !== false
-            ? Storage::disk('raports')->download($raport->path . '/' . $raport->name)
+            ? Storage::disk('raports')->download($raport->path . '/' . $raport->name, $raport->description)
             : back()->with('errors', 'Произошла ошибка при формировании отчета');
     }
 

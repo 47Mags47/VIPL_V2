@@ -6,7 +6,7 @@ use App\Abstracts\XMLWriter;
 use App\Models\Main\PackageFile;
 use App\Models\Main\Raport;
 
-class XML_SBER_Writer extends XMLWriter
+class XML_Default_Writer extends XMLWriter
 {
     public const ENCODING = 'windows-1251';
     public $file;

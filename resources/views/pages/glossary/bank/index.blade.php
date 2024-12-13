@@ -10,12 +10,13 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="Код" rowspan="2" w="50" sort="code" />
-                <x-table.hcell title="Ру Код" rowspan="2" w="150" sort="ru_code" />
-                <x-table.hcell title="Наименование" rowspan="2" sort="name" />
-                <x-table.hcell ico rowspan=2 />
-                <x-table.hcell ico rowspan=2 />
-                <x-table.hcell ico rowspan=2 />
+                <x-table.hcell title="Код" w="50" sort="code" />
+                <x-table.hcell title="Ру Код" w="150" sort="ru_code" />
+                <x-table.hcell title="Наименование" sort="name" />
+                <x-table.hcell title="Схема" sort="name" />
+                <x-table.hcell ico />
+                <x-table.hcell ico />
+                <x-table.hcell ico />
             </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
@@ -24,6 +25,7 @@
                     <x-table.cell :title="$bank->code" center />
                     <x-table.cell :title="$bank->ru_code" />
                     <x-table.cell :title="$bank->name" />
+                    <x-table.cell :title="$bank->sheme ? $bank->sheme->description : ''" />
                     <x-table.cell>
                         <x-link.blue-button :href="route('glossary.contract.index', compact('bank'))">
                             <x-buttons.ico go />

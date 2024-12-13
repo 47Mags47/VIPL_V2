@@ -49,21 +49,21 @@ class PackageSeeder extends Seeder
         PackageFileStatus::create(['code' => 'accept',          'name' => 'Принят']);
 
         ### BANKS
-        Bank::create(['code' => '02',   'ru_code' => 'СБРФ8615',    'raport_sheme_code' => 'XML_SBER', 'name' => 'ПАО "Сбербанк России"']);
+        Bank::create(['code' => '02',   'ru_code' => 'СБРФ8615',    'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России"']);
         Bank::create(['code' => '04',   'ru_code' => 'Открыт_Н',    'raport_sheme_code' => null, 'name' => 'ПАО "ФК Открытие" (нерезиденты)']);
         Bank::create(['code' => '05',   'ru_code' => 'Уралсиб',     'raport_sheme_code' => null, 'name' => 'ПАО "Банк Уралсиб"']);
-        Bank::create(['code' => '06',   'ru_code' => 'Россельхоз',  'raport_sheme_code' => null, 'name' => 'АО "Россельхозбанк"']);
+        Bank::create(['code' => '06',   'ru_code' => 'Россельхоз',  'raport_sheme_code' => 'XML_Default', 'name' => 'АО "Россельхозбанк"']);
         Bank::create(['code' => '07',   'ru_code' => 'Уралс_карт',  'raport_sheme_code' => null, 'name' => 'ПАО "Банк Уралсиб" (карточка)']);
         Bank::create(['code' => '08',   'ru_code' => 'Кемсоцинба',  'raport_sheme_code' => null, 'name' => 'АО "Кемсоцинбанк"']);
         Bank::create(['code' => '09',   'ru_code' => 'Открытие20',  'raport_sheme_code' => null, 'name' => 'ПАО Банк "ФК Открытие" (20 символов)']);
-        Bank::create(['code' => '10',   'ru_code' => 'Сбер_Нерез',  'raport_sheme_code' => null, 'name' => 'ПАО "Сбербанк России" (нерезиденты)']);
-        Bank::create(['code' => '11',   'ru_code' => 'Сбер_номин',  'raport_sheme_code' => null, 'name' => 'ПАО "Сбербанк России" (номинальные счета)']);
-        Bank::create(['code' => '12',   'ru_code' => 'Россельнер',  'raport_sheme_code' => null, 'name' => 'АО "Россельхозбанк" (нерезиденты)']);
-        Bank::create(['code' => '13',   'ru_code' => 'СБРФне8615',  'raport_sheme_code' => null, 'name' => 'ПАО "Сбербанк России" (не 8615)']);
+        Bank::create(['code' => '10',   'ru_code' => 'Сбер_Нерез',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (нерезиденты)']);
+        Bank::create(['code' => '11',   'ru_code' => 'Сбер_номин',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (номинальные счета)']);
+        Bank::create(['code' => '12',   'ru_code' => 'Россельнер',  'raport_sheme_code' => 'XML_Default', 'name' => 'АО "Россельхозбанк" (нерезиденты)']);
+        Bank::create(['code' => '13',   'ru_code' => 'СБРФне8615',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (не 8615)']);
         Bank::create(['code' => '14',   'ru_code' => 'Газпромбан',  'raport_sheme_code' => null, 'name' => 'АО "Газпромбанк"']);
-        Bank::create(['code' => '15',   'ru_code' => 'Почта банк',  'raport_sheme_code' => null, 'name' => 'ПАО "Почта банк"']);
+        Bank::create(['code' => '15',   'ru_code' => 'Почта банк',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Почта банк"']);
         Bank::create(['code' => '16',   'ru_code' => 'Промсвязьб',  'raport_sheme_code' => null, 'name' => 'ПАО "Промсвязьбанк']);
-        Bank::create(['code' => '17',   'ru_code' => 'Банк ВТБ',    'raport_sheme_code' => null, 'name' => 'ПАО "Банк ВТБ']);
+        Bank::create(['code' => '17',   'ru_code' => 'Банк ВТБ',    'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Банк ВТБ']);
         Bank::create(['code' => '19',   'ru_code' => 'АКБ',         'raport_sheme_code' => null, 'name' => 'АКБ НМБ ОАО']);
         Bank::create(['code' => '20',   'ru_code' => 'КББ',         'raport_sheme_code' => null, 'name' => 'КузнецкБизнессБанк']);
         Bank::create(['code' => '21',   'ru_code' => 'ЛЕВОБЕРЕЖ',   'raport_sheme_code' => null, 'name' => 'ПАО БАНК "ЛЕВОБЕРЕЖНЫЙ"']);
@@ -82,6 +82,32 @@ class PackageSeeder extends Seeder
         Bank::create(['code' => '35',   'ru_code' => 'РНКБ',        'raport_sheme_code' => null, 'name' => 'Российский национальный коммерческий банк']);
         Bank::create(['code' => '37',   'ru_code' => 'Восточный',   'raport_sheme_code' => null, 'name' => 'ПАО банк "Восточный"']);
         Bank::create(['code' => '38',   'ru_code' => 'Зенит',       'raport_sheme_code' => null, 'name' => 'ПАО "Банк Зенит"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
+        Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
         Bank::create(['code' => '39',   'ru_code' => 'Мособлбанк',  'raport_sheme_code' => null, 'name' => 'ПАО "Мособлбанк"']);
 
         ### CONTRACTS

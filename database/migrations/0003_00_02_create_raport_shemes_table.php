@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('glossary__raport_shemes', function (Blueprint $table) {
             $table->string('code')->primary();
-            $table->string('type_code');
             $table->string('description');
 
             $table->string('writer')->nullable();
             $table->string('pattern')->nullable();
-
-            $table->foreign('type_code')->references('code')->on('glossary__raport_sheme_types');
         });
     }
 

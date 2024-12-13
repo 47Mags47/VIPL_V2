@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Glossary\Bank;
 use App\Models\Glossary\BankRaportType;
 use App\Models\Glossary\Contract;
+use App\Models\Glossary\RaportSheme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -21,55 +22,46 @@ class BankController extends Controller
 
     public function create()
     {
-        $raport_types = BankRaportType::orderBy('code')->get();
-        return view('pages.glossary.bank.create', compact('raport_types'));
+        $shemes = RaportSheme::orderBy('code')->get();
+        return view('pages.glossary.bank.create', compact('shemes'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'bank_code' => ['required', 'string', 'regex:/[0-9]{3}/', 'unique:glossary__banks,code'],
-            'bank_ru_code' => ['required', 'string', 'min:3', 'max:10', 'unique:glossary__banks,ru_code'],
-            'bank_name' => ['required', 'string', 'min:3', 'max:255'],
-            'bank_raport_type_code' => ['required', 'string', 'not_regex:/0/'],
+            'code'              => ['required', 'string', 'regex:/[0-9]{3}/', 'unique:glossary__banks,code'],
+            'ru_code'           => ['required', 'string', 'min:3', 'max:10', 'unique:glossary__banks,ru_code'],
+            'name'              => ['required', 'string', 'min:3', 'max:255'],
+            'raport_sheme_code' => ['required', 'string', 'not_regex:/0/'],
         ]);
 
-        Bank::create([
-            'code' => $validated['bank_code'],
-            'ru_code' => $validated['bank_ru_code'],
-            'raport_type_code' => $validated['bank_raport_type_code'],
-            'name' => $validated['bank_name'],
-        ]);
+        Bank::create($validated);
 
-        return redirect()->route('glossary.bank.index')->with('sys_message', 'Запись успешно создана');
+        return redirect()->route('glossary.bank.index')->with('message', 'Запись успешно создана');
     }
 
     public function edit(Bank $bank)
     {
-        $raport_types = BankRaportType::orderBy('code')->get();
-        return view('pages.glossary.bank.edit', compact('bank', 'raport_types'));
+        $shemes = RaportSheme::orderBy('code')->get();
+        return view('pages.glossary.bank.edit', compact('bank', 'shemes'));
     }
 
     public function update(Request $request, Bank $bank)
     {
         $validated = $request->validate([
-            'bank_ru_code' => ['required', 'string', 'min:3', 'max:10'],
-            'bank_name' => ['required', 'string', 'min:3', 'max:255'],
-            'bank_raport_type_code' => ['required', 'string', 'not_regex:/0/'],
+            'ru_code'           => ['required', 'string', 'min:3', 'max:10'],
+            'name'              => ['required', 'string', 'min:3', 'max:255'],
+            'raport_sheme_code' => ['required', 'string', 'not_regex:/0/'],
         ]);
 
-        $bank->update([
-            'ru_code' => $validated['bank_ru_code'],
-            'raport_type_code' => $validated['bank_raport_type_code'],
-            'name' => $validated['bank_name'],
-        ]);
+        $bank->update($validated);
 
-        return redirect()->route('glossary.bank.index')->with('sys_message', 'Запись успешно изменена');
+        return redirect()->route('glossary.bank.index')->with('message', 'Запись успешно изменена');
     }
 
     public function delete(Bank $bank)
     {
         $bank->delete();
-        return redirect()->route('glossary.bank.index')->with('sys_message', 'Запись удалена');
+        return redirect()->route('glossary.bank.index')->with('message', 'Запись удалена');
     }
 }
