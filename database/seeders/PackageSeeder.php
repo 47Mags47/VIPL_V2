@@ -60,7 +60,7 @@ class PackageSeeder extends Seeder
         Bank::create(['code' => '11',   'ru_code' => 'Сбер_номин',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (номинальные счета)']);
         Bank::create(['code' => '12',   'ru_code' => 'Россельнер',  'raport_sheme_code' => 'XML_Default', 'name' => 'АО "Россельхозбанк" (нерезиденты)']);
         Bank::create(['code' => '13',   'ru_code' => 'СБРФне8615',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (не 8615)']);
-        Bank::create(['code' => '14',   'ru_code' => 'Газпромбан',  'raport_sheme_code' => null, 'name' => 'АО "Газпромбанк"']);
+        Bank::create(['code' => '14',   'ru_code' => 'Газпромбан',  'raport_sheme_code' => 'Other', 'name' => 'АО "Газпромбанк"']);
         Bank::create(['code' => '15',   'ru_code' => 'Почта банк',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Почта банк"']);
         Bank::create(['code' => '16',   'ru_code' => 'Промсвязьб',  'raport_sheme_code' => null, 'name' => 'ПАО "Промсвязьбанк']);
         Bank::create(['code' => '17',   'ru_code' => 'Банк ВТБ',    'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Банк ВТБ']);

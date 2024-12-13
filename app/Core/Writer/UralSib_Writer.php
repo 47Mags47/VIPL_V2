@@ -60,7 +60,7 @@ class UralSib_Writer
         return Raport::create([
             'name' => $this->filename,
             'path' => $this->path,
-            'description' => 'Отчет для ' . $this->file->bank_code . ' банка на ' . now()->format('Y_m_d__H:i:s'),
+            'description' => '55557461015.I00',
         ]);
     }
 }

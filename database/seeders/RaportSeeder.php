@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Glossary\RaportSheme;
-use App\Models\Glossary\RaportShemeType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,5 +17,7 @@ class RaportSeeder extends Seeder
         ##################################################
         RaportSheme::create(['code' => 'XML_Default', 'description' => 'Стандартная XML схема']);
         RaportSheme::create(['code' => 'UralSib', 'description' => 'Схема для УралСиб банка']);
+
+        RaportSheme::create(['code' => 'Other', 'description' => 'Схема для остальных банков']);
     }
 }

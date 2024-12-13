@@ -57,7 +57,7 @@ class XML_Default_Writer extends XMLWriter
             ? Raport::create([
                 'name' => $filename,
                 'path' => $path,
-                'description' => 'Отчет для ' . $this->file->bank_code . ' банка на ' . now()->format('Y_m_d__H:i:s'),
+                'description' => 'Отчет для ' . $this->file->bank_code . ' банка на ' . now()->format('Y_m_d__H:i:s') . '.xml',
             ])
             : false;
     }
