@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\web\calendar;
+namespace App\Http\Controllers\web;
 
 use App\Core\Classes\Calendar;
 use App\Http\Controllers\Controller;
@@ -9,7 +9,7 @@ use App\Models\Main\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CalendarEventController extends Controller
+class CalendarController extends Controller
 {
     public function index(Request $request, string $year = null, string $month = null)
     {

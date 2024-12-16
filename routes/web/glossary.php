@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\web\Glossary\BankController;
-use App\Http\Controllers\web\Glossary\CalendarGeneratorRuleController;
 use App\Http\Controllers\web\Glossary\ContractController;
 use App\Http\Controllers\web\Glossary\DivisionController;
 use App\Http\Controllers\web\Glossary\EventController;
+use App\Http\Controllers\web\Glossary\GeneratorController;
 use App\Http\Controllers\web\Glossary\PaymentController;
 use App\Http\Controllers\web\GlossaryController;
 use Illuminate\Support\Facades\Route;
@@ -56,7 +56,7 @@ Route::prefix('/glossary')->middleware(['auth', 'administration'])->group(functi
         });
     });
 
-    Route::prefix('generator/rule')->controller(CalendarGeneratorRuleController::class)->group(function () {
+    Route::prefix('generator/rule')->controller(GeneratorController::class)->group(function () {
         Route::get('/index', 'index')->name('glossary.generator.rule.index');
         Route::get('/create', 'create')->name('glossary.generator.rule.create');
         Route::post('/store', 'store')->name('glossary.generator.rule.store');

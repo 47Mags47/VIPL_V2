@@ -10,7 +10,7 @@ use App\Models\Main\CalendarGeneratorRule;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 
-class CalendarGeneratorRuleController extends Controller
+class GeneratorController extends Controller
 {
     public function index()
     {
@@ -48,6 +48,7 @@ class CalendarGeneratorRuleController extends Controller
             CalendarEvent::updateOrCreate([
                 'rule_id' => $rule->id,
                 'date' => $day,
+                'payment_code' => $validated['payment_code'] !== 0 ? $validated['payment_code'] : null
             ], [
                 'status_code' => 'future',
                 'description' => $rule->description,
