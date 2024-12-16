@@ -25,6 +25,8 @@ abstract class XMLWriter
         ### Настройка файла
         ##################################################
         $this->writer->startDocument($this::VERSION, $this::ENCODING);
+        $this->writer->setIndent($this::USE_INDENT);
+        $this->writer->setIndentString($this::INDENT);
     }
 
     public function close(){

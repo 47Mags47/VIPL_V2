@@ -12,7 +12,6 @@ class XML_Default_Writer extends XMLWriter
     public $file;
 
     public function writeHeader(){
-
         $this->writer->writeAttribute('ДатаФормирования', $this->file->package->event->date->format('Y-m-d'));
         $this->writer->writeAttribute('НаименованиеОрганизации', '');
         $this->writer->writeAttribute('ИНН', '');
