@@ -10,9 +10,9 @@
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
-                <x-table.hcell title="Дата начала" w=150 sort="date_start" />
-                <x-table.hcell title="Период" w=200 sort="period_code" />
-                <x-table.hcell title="Дата окончания" w=150 sort="date_end" />
+                <x-table.hcell title="Дата начала" w=130 sort="date_start" />
+                <x-table.hcell title="Период" w=150 sort="period_code" />
+                <x-table.hcell title="Дата окончания" w=130 sort="date_end" />
                 <x-table.hcell title="Описание" />
                 <x-table.hcell title="Статус" w=150 sort="status_code" />
                 <x-table.hcell ico rowspan=2 />
@@ -22,9 +22,9 @@
         <x-slot:tbody>
             @foreach ($rules as $rule)
                 <x-table.row>
-                    <x-table.cell :title="$rule->date_start->format('d.m.Y')" center />
+                    <x-table.cell :title="$rule->date_start->format('d.m.Y')" />
                     <x-table.cell :title="$rule->period->name" />
-                    <x-table.cell :title="$rule->date_end->format('d.m.Y')" center />
+                    <x-table.cell :title="$rule->date_end->format('d.m.Y')" />
                     <x-table.cell :title="$rule->description" />
                     <x-table.cell :title="$rule->status->name" />
                     <x-table.cell>

@@ -3,6 +3,7 @@
 namespace App\Models\Main;
 
 use App\Models\Glossary\CalendarEventStatus;
+use App\Models\Glossary\Payment;
 use App\Traits\HasSearch;
 use App\Traits\HasSort;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -39,18 +40,16 @@ class CalendarEvent extends Model
         return $this->through('packages')->has('files')->where('bank_code', $bank)->get();
     }
 
-    public function scopePayment()
-    {
-        return $this->rule !== null
-            ? $this->rule->payment_code
-            : 'custom';
-    }
-
     ### Связи
     ##################################################
     public function status()
     {
         return $this->belongsTo(CalendarEventStatus::class, 'status_code', 'code');
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class, 'payment_code', 'code');
     }
 
     public function packages()

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('date_start');
             $table->date('date_end')->nullable();
             $table->string('period_code');
+            $table->boolean('only_weekday')->default(false);
             $table->string('status_code');
             $table->string('payment_code')->nullable();
             $table->string('description');

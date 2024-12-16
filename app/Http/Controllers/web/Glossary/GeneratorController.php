@@ -31,6 +31,7 @@ class GeneratorController extends Controller
             'date_start' => ['required', 'after:today'],
             'date_end' => ['nullable', 'after:date_start'],
             'period_code' => ['required', 'exists:glossary__calendar__generator__rule_periods,code'],
+            'only_weekday' => ['boolean'],
             'payment_code' => ['nullable', 'exists:glossary__payments,code'],
             'description' => ['nullable', 'string', 'min:6', 'max:255']
         ]);
@@ -45,6 +46,11 @@ class GeneratorController extends Controller
 
         $period = CarbonImmutable::parse($rule->date_start)->toPeriod(CarbonImmutable::parse($rule->date_end), $rule->period->step);
         foreach ($period->toArray() as $day) {
+            if($request->only_weekday and $day->isWeekend()){
+                if(in_array($request->period_code, ['daily', 'weekly'])) continue;
+                if(in_array($request->period_code, ['monthly', 'quarterly', 'yearly'])) $day = $day->nextWeekday();
+            }
+
             CalendarEvent::updateOrCreate([
                 'rule_id' => $rule->id,
                 'date' => $day,
@@ -75,7 +81,7 @@ class GeneratorController extends Controller
         $rule->update($validated);
 
         foreach ($rule->events as $event) {
-            if ($event->date < $rule->date_start or $event->date > $rule->date_end) $event->delete();
+            if ($event->date > $rule->date_end) $event->delete();
         }
 
         $period = CarbonImmutable::parse($rule->date_start)->toPeriod(CarbonImmutable::parse($rule->date_end), $rule->period->step);

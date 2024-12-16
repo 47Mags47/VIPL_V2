@@ -26,7 +26,8 @@ class CalendarGeneratorRule extends Model
         $timestamps = false,
         $casts = [
             'date_start' => 'date',
-            'date_end' => 'date'
+            'date_end' => 'date',
+            'only_weekday' => 'bool'
         ],
         $search_columns = ['description'];
 

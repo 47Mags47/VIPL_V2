@@ -10,6 +10,7 @@
                 <x-input.option :title="$period->name" :value="$period->code" p-name='period_code' />
             @endforeach
         </x-input.select>
+        <x-input.check name="only_weekday" label="Только рабочие дни"/>
         <x-input.select name="payment_code" label="Выплата">
             @foreach ($payments as $payment)
                 <x-input.option :title="$payment->code . ' - ' . $payment->name" :value="$payment->code" p-name='payment_code' />
