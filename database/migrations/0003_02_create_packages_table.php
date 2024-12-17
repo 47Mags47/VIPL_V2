@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('division_code');
             $table->text('comment')->nullable();
 
-
             $table->foreign('status_code')->references('code')->on('glossary__package__statuses');
             $table->foreign('division_code')->references('code')->on('glossary__divisions');
             $table->foreignId('event_id')->constrained('main__calendar__events');

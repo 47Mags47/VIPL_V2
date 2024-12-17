@@ -8,6 +8,4 @@ Route::controller(RaportController::class)->middleware(['auth', 'administration'
     Route::get('/raport/{raport}/download', 'download')->name('raport.download');
 
     Route::get('/raport/{event}/event-download', 'event')->name('raport.event');
-    Route::get('/raport/{package}/package-download', 'package')->name('raport.package');
-    Route::get('/raport/{file}/file-download', 'file')->name('raport.file');
 });

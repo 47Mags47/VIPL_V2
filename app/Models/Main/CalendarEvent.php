@@ -30,14 +30,9 @@ class CalendarEvent extends Model
 
     ### Функции
     ##################################################
-    public function ScopeOpened()
+    public function scopeOpened()
     {
         return $this->status_code === 'opened';
-    }
-
-    public function scopeBankFiles($query, string $bank)
-    {
-        return $this->through('packages')->has('files')->where('bank_code', $bank)->get();
     }
 
     ### Связи
@@ -60,5 +55,9 @@ class CalendarEvent extends Model
     public function rule()
     {
         return $this->belongsTo(CalendarGeneratorRule::class, 'rule_id');
+    }
+
+    public function files(){
+        return $this->through('packages')->has('files');
     }
 }

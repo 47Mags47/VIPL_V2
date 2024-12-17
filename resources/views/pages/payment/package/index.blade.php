@@ -23,7 +23,6 @@
                 <x-table.hcell title="Данных" w="75" />
                 <x-table.hcell title="На сумму" w="150" />
                 <x-table.hcell ico />
-                <x-table.hcell ico />
             </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
@@ -56,11 +55,6 @@
                     <x-table.cell :title="number_format($package->files->count(), 0, '.', ' ')" center />
                     <x-table.cell :title="number_format($package->data->count(), 0, '.', ' ')" center />
                     <x-table.cell :title="number_format($this_summ_count, 0, '.', ' ')" center />
-                    <x-table.cell has-button>
-                        <x-link.blue-button :href="route('raport.package', compact('package'))">
-                            <x-buttons.ico download />
-                        </x-link.blue-button>
-                    </x-table.cell>
                     <x-table.cell has-button>
                         <x-link.blue-button :href="route('payment.file.index', compact('package'))">
                             <x-buttons.ico go />

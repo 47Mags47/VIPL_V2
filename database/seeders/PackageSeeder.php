@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Glossary\Bank;
-use App\Models\Glossary\BankRaportType;
 use App\Models\Glossary\Contract;
 use App\Models\Glossary\PackageDataColumn;
 use App\Models\Glossary\PackageFileStatus;
@@ -49,21 +48,21 @@ class PackageSeeder extends Seeder
         PackageFileStatus::create(['code' => 'accept',          'name' => 'Принят']);
 
         ### BANKS
-        Bank::create(['code' => '02',   'ru_code' => 'СБРФ8615',    'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России"']);
+        Bank::create(['code' => '02',   'ru_code' => 'СБРФ8615',    'raport_sheme_code' => 'Sber', 'name' => 'ПАО "Сбербанк России"']);
         Bank::create(['code' => '04',   'ru_code' => 'Открыт_Н',    'raport_sheme_code' => null, 'name' => 'ПАО "ФК Открытие" (нерезиденты)']);
         Bank::create(['code' => '05',   'ru_code' => 'Уралсиб',     'raport_sheme_code' => 'UralSib', 'name' => 'ПАО "Банк Уралсиб"']);
-        Bank::create(['code' => '06',   'ru_code' => 'Россельхоз',  'raport_sheme_code' => 'XML_Default', 'name' => 'АО "Россельхозбанк"']);
+        Bank::create(['code' => '06',   'ru_code' => 'Россельхоз',  'raport_sheme_code' => null, 'name' => 'АО "Россельхозбанк"']);
         Bank::create(['code' => '07',   'ru_code' => 'Уралс_карт',  'raport_sheme_code' => 'UralSib', 'name' => 'ПАО "Банк Уралсиб" (карточка)']);
         Bank::create(['code' => '08',   'ru_code' => 'Кемсоцинба',  'raport_sheme_code' => null, 'name' => 'АО "Кемсоцинбанк"']);
         Bank::create(['code' => '09',   'ru_code' => 'Открытие20',  'raport_sheme_code' => null, 'name' => 'ПАО Банк "ФК Открытие" (20 символов)']);
-        Bank::create(['code' => '10',   'ru_code' => 'Сбер_Нерез',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (нерезиденты)']);
-        Bank::create(['code' => '11',   'ru_code' => 'Сбер_номин',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (номинальные счета)']);
-        Bank::create(['code' => '12',   'ru_code' => 'Россельнер',  'raport_sheme_code' => 'XML_Default', 'name' => 'АО "Россельхозбанк" (нерезиденты)']);
-        Bank::create(['code' => '13',   'ru_code' => 'СБРФне8615',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Сбербанк России" (не 8615)']);
-        Bank::create(['code' => '14',   'ru_code' => 'Газпромбан',  'raport_sheme_code' => 'Other', 'name' => 'АО "Газпромбанк"']);
-        Bank::create(['code' => '15',   'ru_code' => 'Почта банк',  'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Почта банк"']);
+        Bank::create(['code' => '10',   'ru_code' => 'Сбер_Нерез',  'raport_sheme_code' => 'Sber', 'name' => 'ПАО "Сбербанк России" (нерезиденты)']);
+        Bank::create(['code' => '11',   'ru_code' => 'Сбер_номин',  'raport_sheme_code' => 'Sber', 'name' => 'ПАО "Сбербанк России" (номинальные счета)']);
+        Bank::create(['code' => '12',   'ru_code' => 'Россельнер',  'raport_sheme_code' => null, 'name' => 'АО "Россельхозбанк" (нерезиденты)']);
+        Bank::create(['code' => '13',   'ru_code' => 'СБРФне8615',  'raport_sheme_code' => 'Sber', 'name' => 'ПАО "Сбербанк России" (не 8615)']);
+        Bank::create(['code' => '14',   'ru_code' => 'Газпромбан',  'raport_sheme_code' => null, 'name' => 'АО "Газпромбанк"']);
+        Bank::create(['code' => '15',   'ru_code' => 'Почта банк',  'raport_sheme_code' => null, 'name' => 'ПАО "Почта банк"']);
         Bank::create(['code' => '16',   'ru_code' => 'Промсвязьб',  'raport_sheme_code' => null, 'name' => 'ПАО "Промсвязьбанк']);
-        Bank::create(['code' => '17',   'ru_code' => 'Банк ВТБ',    'raport_sheme_code' => 'XML_Default', 'name' => 'ПАО "Банк ВТБ']);
+        Bank::create(['code' => '17',   'ru_code' => 'Банк ВТБ',    'raport_sheme_code' => null, 'name' => 'ПАО "Банк ВТБ']);
         Bank::create(['code' => '19',   'ru_code' => 'АКБ',         'raport_sheme_code' => null, 'name' => 'АКБ НМБ ОАО']);
         Bank::create(['code' => '20',   'ru_code' => 'КББ',         'raport_sheme_code' => null, 'name' => 'КузнецкБизнессБанк']);
         Bank::create(['code' => '21',   'ru_code' => 'ЛЕВОБЕРЕЖ',   'raport_sheme_code' => null, 'name' => 'ПАО БАНК "ЛЕВОБЕРЕЖНЫЙ"']);
@@ -86,5 +85,6 @@ class PackageSeeder extends Seeder
 
         ### CONTRACTS
         Contract::create(['bank_code' => '02', 'payment_code' => '020', 'number' => '26032177', 'division_name' => 'ГКУ ЦСВИ', 'INN' => '4205382083', 'division_account' => '', 'BIK' => '043207001']);
+        Contract::create(['bank_code' => '06', 'payment_code' => '020', 'number' => '26032177', 'division_name' => 'ГКУ ЦСВИ', 'INN' => '4205382083', 'division_account' => '', 'BIK' => '043207001']);
     }
 }

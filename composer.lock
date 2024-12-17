@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11aba77a1ed374a2789538c9efb3645f",
+    "content-hash": "3b68f184ebc7790815393143cc94e668",
     "packages": [
         {
             "name": "brick/math",
@@ -4542,6 +4542,72 @@
                 }
             ],
             "time": "2024-06-11T12:45:25+00:00"
+        },
+        {
+            "name": "reedware/laravel-relation-joins",
+            "version": "v7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tylernathanreed/laravel-relation-joins.git",
+                "reference": "286425b7268d04b6b0937b84aacb76f381596ab9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tylernathanreed/laravel-relation-joins/zipball/286425b7268d04b6b0937b84aacb76f381596ab9",
+                "reference": "286425b7268d04b6b0937b84aacb76f381596ab9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0|^11.0",
+                "illuminate/database": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "illuminate/container": "^10.0|^11.0",
+                "larastan/larastan": "^2.9",
+                "laravel/pint": "^1.5",
+                "mockery/mockery": "^1.6.6",
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/phpunit": "^10.5",
+                "symfony/var-dumper": "^6.4.4|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Reedware\\LaravelRelationJoins\\LaravelRelationJoinServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Reedware\\LaravelRelationJoins\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tyler Reed",
+                    "email": "tylernathanreed@gmail.com"
+                }
+            ],
+            "description": "Adds the ability to join on a relationship by name.",
+            "keywords": [
+                "eloquent",
+                "join",
+                "laravel",
+                "query",
+                "relation"
+            ],
+            "support": {
+                "issues": "https://github.com/tylernathanreed/laravel-relation-joins/issues",
+                "source": "https://github.com/tylernathanreed/laravel-relation-joins/tree/v7.0.0"
+            },
+            "time": "2024-12-13T21:03:28+00:00"
         },
         {
             "name": "symfony/clock",

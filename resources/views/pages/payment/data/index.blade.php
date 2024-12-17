@@ -3,13 +3,6 @@
 
 @section('content')
     <x-table.box :paginator="$data" search>
-        <x-slot:optional-buttons>
-            @if (auth()->user()->isAdministration())
-                <x-link.blue-button :href="route('raport.file', ['file' => request()->file])">
-                    <x-buttons.ico download />
-                </x-link.blue-button>
-            @endif
-        </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
                 <x-table.hcell title="Фамилия" sort="last_name" />

@@ -12,7 +12,8 @@
         "laravel/reverb": "^1.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
-        "phpoffice/phpspreadsheet": "^3.3"
+        "phpoffice/phpspreadsheet": "^3.3",
+        "reedware/laravel-relation-joins": "^7.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

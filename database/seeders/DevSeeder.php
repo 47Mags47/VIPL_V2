@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use App\Models\Main\CalendarEvent;
 use App\Models\Main\CalendarGeneratorRule;
 use App\Models\Main\Package;
-use App\Models\Main\PackageData;
-use App\Models\Main\PackageFile;
 use App\Models\Main\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -18,12 +16,20 @@ class DevSeeder extends Seeder
      */
     public function run(): void
     {
-        $test_user = User::create([
+        User::create([
             'email' => 'user@mail.ru',
             'division_code' => '001',
             'role_code' => 'user',
             'email_verified_at' => now(),
             'password' => Hash::make('user@mail.ru'),
+        ]);
+
+        User::create([
+            'email' => 'user2@mail.ru',
+            'division_code' => '005',
+            'role_code' => 'user',
+            'email_verified_at' => now(),
+            'password' => Hash::make('user2@mail.ru'),
         ]);
 
         User::create([
@@ -43,31 +49,10 @@ class DevSeeder extends Seeder
         ]);
 
         CalendarGeneratorRule::factory(['status_code' => 'valid', 'date_start' => now()])->create();
-        CalendarGeneratorRule::factory(3, ['status_code' => 'valid'])->create();
 
-        CalendarEvent::factory(['status_code' => 'opened'])
-            ->has(
-                Package::factory()
-                    ->has(
-                        PackageFile::factory()->count(3)
-                            ->has(
-                                PackageData::factory()->count(3),
-                                'data'
-                            ),
-                        'files'
-                    )
-            )
-            ->create();
+        $event = CalendarEvent::factory(['status_code' => 'opened'])->create();
 
-        Package::factory(['division_code' => '005'])
-            ->has(
-                PackageFile::factory()->count(3)
-                    ->has(
-                        PackageData::factory()->count(3),
-                        'data'
-                    ),
-                'files'
-            )
-            ->create();
+        Package::factory(['division_code' => '001', 'event_id' => $event->id]);
+        Package::factory(['division_code' => '005', 'event_id' => $event->id]);
     }
 }

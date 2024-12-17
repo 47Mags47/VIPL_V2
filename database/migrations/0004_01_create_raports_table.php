@@ -15,8 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('path');
-            $table->string('description');
+
+            $table->date('date');
+            $table->string('payment_code');
+            $table->string('bank_code');
+
             $table->timestamps();
+
+            $table->foreign('payment_code')->references('code')->on('glossary__payments');
+            $table->foreign('bank_code')->references('code')->on('glossary__banks');
         });
     }
 

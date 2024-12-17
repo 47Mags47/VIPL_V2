@@ -6,14 +6,13 @@ use App\Models\Glossary\Bank;
 use App\Models\Glossary\PackageFileStatus;
 use App\Traits\HasSearch;
 use App\Traits\HasSort;
-use App\Traits\HasWriter;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PackageFile extends Model
 {
-    use HasFactory, HasUuids, HasSearch, HasSort, HasWriter;
+    use HasFactory, HasUuids, HasSearch, HasSort;
 
     ### Настройки
     ##################################################
