@@ -37,8 +37,8 @@ class Other_Writer extends XLS
     {
         $row_count = $this->data->count();
 
-        $this->activeSheet->setCellValue("A" . $row_count + 1, 'ИТОГО:');
-        $this->activeSheet->mergeCells('A' . $row_count + 1 . ':C' . $row_count + 1);
-        $this->activeSheet->setCellValue("D" . $row_count + 1, number_format($this->data->sum('summ'), 2, '.', ''));
+        $this->activeSheet->setCellValue("A" . $row_count + 2, 'ИТОГО:');
+        $this->activeSheet->mergeCells('A' . $row_count + 2 . ':C' . $row_count + 1);
+        $this->activeSheet->setCellValue("D" . $row_count + 2, number_format($this->data->sum('summ'), 2, '.', ''));
     }
 }
