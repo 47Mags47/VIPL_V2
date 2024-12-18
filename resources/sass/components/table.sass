@@ -124,20 +124,22 @@ table.calendar
             .date
                 @include flex($justy: end)
                 font-size: .6rem
-            .list-box li
-                list-style: none
-                span
-                    color: #444
-                span, a
-                    font-size: .9rem
-                a.closed
-                    color: #5e0000
-                    &::before
-                        background: #5e0000
-                a.future
-                    color: #444
-                    &::before
-                        background: #444
+            .list-box ul
+                gap: 5px
+                li
+                    list-style: none
+                    span
+                        color: #444
+                    span, a
+                        font-size: .9rem
+                    a.closed
+                        color: #5e0000
+                        &::before
+                            background: #5e0000
+                    a.future
+                        color: #444
+                        &::before
+                            background: #444
 
 .form-table
     padding-top: 25px
