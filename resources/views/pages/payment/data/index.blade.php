@@ -1,6 +1,10 @@
 @extends('layouts.web')
 @section('page-name', 'Выплаты')
 
+@section('back')
+    <x-buttons.back :href="route('payment.package.show', ['package' => $file->package])"/>
+@endsection
+
 @section('content')
     <x-table.box :paginator="$data" search>
         <x-slot:thead>

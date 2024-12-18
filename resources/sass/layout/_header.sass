@@ -9,7 +9,7 @@ header
     background: $header-background
     align-items: center
     .nav-list
-        @include flex()
+        @include flex($align: center)
     .nav-list, .user
         a
             color: $header-color
@@ -17,6 +17,8 @@ header
             text-transform: uppercase
             &:hover
                 color: $header-color-hover
+            &.back-link
+                font-size: 1.3rem
     .sys-alert-box
         position: fixed
         top: 10px

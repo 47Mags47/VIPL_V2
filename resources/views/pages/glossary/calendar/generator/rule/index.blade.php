@@ -1,6 +1,10 @@
 @extends('layouts.web')
 @section('page-name', 'генератор событий')
 
+@section('back')
+    <x-buttons.back :href="route('glossary.index')"/>
+@endsection
+
 @section('content')
     <x-table.box :paginator="$rules" search>
         <x-slot:optional-buttons>

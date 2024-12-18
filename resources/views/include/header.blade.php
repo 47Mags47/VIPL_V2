@@ -1,5 +1,6 @@
 <header>
     <div class="nav-list">
+        @yield('back')
         <nav><x-link.header :href="route('calendar.index')" title="Календарь" /></nav>
         @if (auth()->user()->isAdministration())
             <nav><x-link.header :href="route('raport.index')" title="Отчеты" /></nav>

@@ -1,6 +1,10 @@
 @extends('layouts.web')
 @section('page-name', 'Список банков')
 
+@section('back')
+    <x-buttons.back :href="route('glossary.bank.index')"/>
+@endsection
+
 @section('content')
     <x-table.box :paginator="$contracts" search>
         <x-slot:optional-buttons>

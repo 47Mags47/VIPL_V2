@@ -10,6 +10,6 @@ class DataController extends Controller
 {
     public function index(PackageFile $file){
         $data = $file->data()->search()->sort()->paginate(100);
-        return view('pages.payment.data.index', compact('data'));
+        return view('pages.payment.data.index', compact('data', 'file'));
     }
 }

@@ -1,6 +1,10 @@
 @extends('layouts.web')
 @section('page-name', 'Выплаты')
 
+@section('back')
+    <x-buttons.back :href="route('calendar.index')"/>
+@endsection
+
 @section('content')
     <x-table.box :paginator="$files" search>
         <x-slot:optional-buttons>
