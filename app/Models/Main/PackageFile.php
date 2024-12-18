@@ -65,4 +65,8 @@ class PackageFile extends Model
     {
         return $this->hasMany(PackageData::class, 'file_id', 'id');
     }
+
+    public function uploadUser(){
+        return $this->belongsTo(User::class, 'upload_user_id');
+    }
 }

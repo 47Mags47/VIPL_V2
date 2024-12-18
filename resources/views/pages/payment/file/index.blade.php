@@ -41,7 +41,7 @@
                     <x-table.cell :title="$file->id" />
                     <x-table.cell :title="$file->bank->code . ' - ' . $file->bank->name" />
                     <x-table.cell :title="$file->status->name" />
-                    <x-table.cell></x-table.cell>
+                    <x-table.cell :title="$file->uploadUser->FIO" />
                     <x-table.cell :title="$file->created_at->format('d.m.Y H:i')" center />
                     <x-table.cell :title="$file->data->count()" center />
                     <x-table.cell :title="number_format($file->allSumm(), 2, '.', ' ')" center />

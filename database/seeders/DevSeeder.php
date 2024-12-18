@@ -17,6 +17,7 @@ class DevSeeder extends Seeder
     public function run(): void
     {
         User::create([
+            'FIO' => 'Тестовый user',
             'email' => 'user@mail.ru',
             'division_code' => '001',
             'role_code' => 'user',
@@ -25,6 +26,7 @@ class DevSeeder extends Seeder
         ]);
 
         User::create([
+            'FIO' => 'Тестовый user2',
             'email' => 'user2@mail.ru',
             'division_code' => '005',
             'role_code' => 'user',
@@ -33,6 +35,7 @@ class DevSeeder extends Seeder
         ]);
 
         User::create([
+            'FIO' => 'Тестовый moder',
             'email' => 'moder@mail.ru',
             'division_code' => '000',
             'role_code' => 'moder',
@@ -41,6 +44,7 @@ class DevSeeder extends Seeder
         ]);
 
         User::create([
+            'FIO' => 'Тестовый admin',
             'email' => 'admin@mail.ru',
             'division_code' => '000',
             'role_code' => 'admin',
