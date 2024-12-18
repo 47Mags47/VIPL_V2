@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('glossary__package__data_columns', function (Blueprint $table) {
             $table->string('code')->primary();
             $table->string('name');
+            $table->integer('id');
         });
     }
 

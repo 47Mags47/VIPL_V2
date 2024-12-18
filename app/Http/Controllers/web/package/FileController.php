@@ -49,7 +49,7 @@ class FileController extends Controller
 
     public function preview(Request $request, Package $package, PackageFile $file)
     {
-        $columns = PackageDataColumn::all();
+        $columns = PackageDataColumn::orderBy('id')->get();
         $reader = new CSVReader(Storage::disk('tmp')->path($file->path));
 
         return view('pages.payment.file.preview', compact('package', 'columns', 'reader'));

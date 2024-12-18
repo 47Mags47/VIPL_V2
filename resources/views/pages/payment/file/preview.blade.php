@@ -18,17 +18,26 @@
                     <x-table.hcell title="Столбец 9" />
                 </x-table.row>
                 <x-table.row>
-                    <x-table.hcell>
+                    @foreach ($columns as $key => $column)
+                        <x-table.hcell>
+                            <x-input.select name="column[{{ $key + 1 }}]">
+                                @foreach ($columns as $column)
+                                    <x-input.option :title="$column->name" :value="$column->code" :select="$columns->toArray()[$key]['code']" p-name="column[1]" />
+                                @endforeach
+                            </x-input.select>
+                        </x-table.hcell>
+                    @endforeach
+                    {{-- <x-table.hcell>
                         <x-input.select name="column[1]">
                             @foreach ($columns as $column)
-                                <x-input.option :title="$column->name" :value="$column->code" select="first_name" p-name="column[1]" />
+                                <x-input.option :title="$column->name" :value="$column->code" select="last_name" p-name="column[1]" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
                     <x-table.hcell>
                         <x-input.select name="column[2]">
                             @foreach ($columns as $column)
-                                <x-input.option :title="$column->name" :value="$column->code" select="last_name" p-name="column[2]" />
+                                <x-input.option :title="$column->name" :value="$column->code" select="first_name" p-name="column[2]" />
                             @endforeach
                         </x-input.select>
                     </x-table.hcell>
@@ -81,7 +90,7 @@
                                 <x-input.option :title="$column->name" :value="$column->code" select="snils" p-name="column[9]" />
                             @endforeach
                         </x-input.select>
-                    </x-table.hcell>
+                    </x-table.hcell> --}}
                 </x-table.row>
             </x-slot:thead>
             <x-slot:tbody>

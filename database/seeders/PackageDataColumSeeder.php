@@ -13,14 +13,14 @@ class PackageDataColumSeeder extends Seeder
      */
     public static function run(): void
     {
-        PackageDataColumn::create(['code' => 'first_name',  'name' => 'Фамилия']);
-        PackageDataColumn::create(['code' => 'last_name',   'name' => 'Имя']);
-        PackageDataColumn::create(['code' => 'middle_name', 'name' => 'Отчество']);
-        PackageDataColumn::create(['code' => 'account',     'name' => 'Счёт']);
-        PackageDataColumn::create(['code' => 'summ',        'name' => 'Сумма']);
-        PackageDataColumn::create(['code' => 'pasp',        'name' => '№ Пасп']);
-        PackageDataColumn::create(['code' => 'birth',       'name' => 'ДР']);
-        PackageDataColumn::create(['code' => 'kbk',         'name' => 'КБК']);
-        PackageDataColumn::create(['code' => 'snils',       'name' => 'СНИЛС']);
+        PackageDataColumn::create(['code' => 'last_name',   'name' => 'Фамилия',    'id' => 1]);
+        PackageDataColumn::create(['code' => 'first_name',  'name' => 'Имя',        'id' => 2]);
+        PackageDataColumn::create(['code' => 'middle_name', 'name' => 'Отчество',   'id' => 3]);
+        PackageDataColumn::create(['code' => 'account',     'name' => 'Счёт',       'id' => 4]);
+        PackageDataColumn::create(['code' => 'summ',        'name' => 'Сумма',      'id' => 5]);
+        PackageDataColumn::create(['code' => 'pasp',        'name' => '№ Пасп',     'id' => 6]);
+        PackageDataColumn::create(['code' => 'birth',       'name' => 'ДР',         'id' => 7]);
+        PackageDataColumn::create(['code' => 'kbk',         'name' => 'КБК',        'id' => 8]);
+        PackageDataColumn::create(['code' => 'snils',       'name' => 'СНИЛС',      'id' => 9]);
     }
 }
