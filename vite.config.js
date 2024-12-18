@@ -10,6 +10,7 @@ export default defineConfig({
                 // ### Стили
                 // ##################################################
                 'resources/sass/app.sass',
+                'resources/sass/layout/auth.sass',
 
                 // ### Скрипты
                 // ##################################################
