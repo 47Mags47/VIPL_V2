@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CalendarSeeder::class);
         $this->call(RaportSeeder::class);
         $this->call(PackageSeeder::class);
+        $this->call(ValidatorSeeder::class);
 
         if(env('APP_ENV') === 'local') $this->call(DevSeeder::class);
     }

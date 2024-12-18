@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Glossary\Bank;
 use App\Models\Glossary\Contract;
-use App\Models\Glossary\PackageDataColumn;
 use App\Models\Glossary\PackageFileStatus;
 use App\Models\Glossary\PackageStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -26,17 +25,6 @@ class PackageSeeder extends Seeder
 
         ### FILE
         ##################################################
-        ### COLUMNS
-        PackageDataColumn::create(['code' => 'first_name',  'name' => 'Фамилия']);
-        PackageDataColumn::create(['code' => 'last_name',   'name' => 'Имя']);
-        PackageDataColumn::create(['code' => 'middle_name', 'name' => 'Отчество']);
-        PackageDataColumn::create(['code' => 'account',     'name' => 'Счёт']);
-        PackageDataColumn::create(['code' => 'summ',        'name' => 'Сумма']);
-        PackageDataColumn::create(['code' => 'pasp',        'name' => '№ Пасп']);
-        PackageDataColumn::create(['code' => 'birth',       'name' => 'ДР']);
-        PackageDataColumn::create(['code' => 'kbk',         'name' => 'КБК']);
-        PackageDataColumn::create(['code' => 'snils',       'name' => 'СНИЛС']);
-
         ### STATUS
         PackageFileStatus::create(['code' => 'upload',          'name' => 'Загрузка']);
         PackageFileStatus::create(['code' => 'upload_error',    'name' => 'Ошибка загрузки']);
