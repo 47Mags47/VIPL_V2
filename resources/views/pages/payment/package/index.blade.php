@@ -69,7 +69,7 @@
                     <x-table.cell :title="number_format($file_count, 0, '.', ' ')" center />
                     <x-table.cell :title="number_format($data_count, 0, '.', ' ')" center />
                     <x-table.cell :title="number_format($summ_count, 2, '.', ' ')" center />
-                    <x-table.cell colspan="2" />
+                    <x-table.cell />
                 </x-table.row>
             @endif
         </x-slot:tbody>

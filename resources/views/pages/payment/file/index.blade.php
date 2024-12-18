@@ -8,9 +8,11 @@
 @section('content')
     <x-table.box :paginator="$files" search>
         <x-slot:optional-buttons>
-            <x-link.blue-button :href="route('payment.file.create', ['package' => request()->package])">
-                <x-buttons.ico create />
-            </x-link.blue-button>
+            @if (auth()->user()->isUser())
+                <x-link.blue-button :href="route('payment.file.create', ['package' => request()->package])">
+                    <x-buttons.ico create />
+                </x-link.blue-button>
+            @endif
         </x-slot:optional-buttons>
         <x-slot:thead>
             <x-table.row>
@@ -33,7 +35,7 @@
             @endphp
             @foreach ($files as $file)
             @php
-                $data_count += $file->data->count();
+                $data_count += $file->data()->count();
                 $summ_count += $file->allSumm();
                 $error_count += $file->errors()->dot()->count();
             @endphp
