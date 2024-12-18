@@ -14,12 +14,12 @@
                 <x-table.hcell title="ДР" w=90 />
                 <x-table.hcell title="КБК" />
                 <x-table.hcell title="СНИЛС" w=125 />
-                <x-table.hcell title="Ошибки" w=250 sort="errors" />
+                <x-table.hcell title="Ошибки" w=500 sort="errors" />
             </x-table.row>
         </x-slot:thead>
         <x-slot:tbody>
             @foreach ($data as $row)
-                <x-table.row>
+                <x-table.row :red="count($row->errors ?? []) > 0">
                     <x-table.cell :title="$row->last_name" />
                     <x-table.cell :title="$row->first_name" />
                     <x-table.cell :title="$row->middle_name" />

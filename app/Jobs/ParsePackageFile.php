@@ -44,5 +44,7 @@ class ParsePackageFile implements ShouldQueue
             }
             $data_row->save();
         }
+
+        ValidatePackageData::dispatch($this->file);
     }
 }
