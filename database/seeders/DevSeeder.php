@@ -47,12 +47,5 @@ class DevSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('admin@mail.ru'),
         ]);
-
-        CalendarGeneratorRule::factory(['status_code' => 'valid', 'date_start' => now()])->create();
-
-        $event = CalendarEvent::factory(['status_code' => 'opened'])->create();
-
-        Package::factory(['division_code' => '001', 'event_id' => $event->id]);
-        Package::factory(['division_code' => '005', 'event_id' => $event->id]);
     }
 }
