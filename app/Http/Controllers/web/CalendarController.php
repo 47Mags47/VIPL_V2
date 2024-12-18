@@ -25,14 +25,14 @@ class CalendarController extends Controller
     {
         if ($request->method() === 'POST') {
             $event->update(['status_code' => 'opened']);
-            return redirect()->route('calendar.index')->with('message', 'Выплата открыта');
+            return redirect()->route('calendar.index')->with('sys_message', 'Выплата открыта');
         }
         return view('pages.calendar.event.open', compact('event'));
     }
 
     public function close(CalendarEvent $event){
         $event->update(['status_code' => 'closed']);
-        return redirect()->route('calendar.index')->with('message', 'Выплата закрыта');
+        return redirect()->route('calendar.index')->with('sys_message', 'Выплата закрыта');
     }
 
     public function show(Request $request, CalendarEvent $event)
@@ -57,8 +57,8 @@ class CalendarController extends Controller
                     ? redirect()->route('payment.package.show', compact('package'))
                     : back()->withErrors('Пакет не найден');
             }
-            if ($event->status_code == 'future') return redirect()->route('calendar.index')->withErrors('Выплата еще закрыта');
+            if ($event->status_code == 'future') return redirect()->route('calendar.index')->with('sys_error', 'Выплата еще закрыта');
         }
-        return back()->withErrors('Действие не авторизовано');
+        return back()->with('sys_error', 'Действие не авторизовано');
     }
 }

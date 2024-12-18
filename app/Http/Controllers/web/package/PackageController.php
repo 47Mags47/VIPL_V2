@@ -18,6 +18,6 @@ class PackageController extends Controller
     public function show(Request $request, Package $package){
         return $request->user()->can('package-view', $package)
             ? redirect()->route('payment.file.index', compact('package'))
-            : back()->withErrors('Доступ заблокирован');
+            : back()->with('sys_error', 'Доступ заблокирован');
     }
 }

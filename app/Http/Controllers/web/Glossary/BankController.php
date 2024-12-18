@@ -37,7 +37,7 @@ class BankController extends Controller
 
         Bank::create($validated);
 
-        return redirect()->route('glossary.bank.index')->with('message', 'Запись успешно создана');
+        return redirect()->route('glossary.bank.index')->with('sys_message', 'Запись успешно создана');
     }
 
     public function edit(Bank $bank)
@@ -56,12 +56,12 @@ class BankController extends Controller
 
         $bank->update($validated);
 
-        return redirect()->route('glossary.bank.index')->with('message', 'Запись успешно изменена');
+        return redirect()->route('glossary.bank.index')->with('sys_message', 'Запись успешно изменена');
     }
 
     public function delete(Bank $bank)
     {
         $bank->delete();
-        return redirect()->route('glossary.bank.index')->with('message', 'Запись удалена');
+        return redirect()->route('glossary.bank.index')->with('sys_message', 'Запись удалена');
     }
 }

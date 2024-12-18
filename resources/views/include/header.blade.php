@@ -11,24 +11,24 @@
     </div>
 
     <div class="sys-alert-box">
-        @if (session('message') !== null or session('errors') !== null)
+        @if (session('sys_message') !== null or session('sys_error') !== null)
             <x-list.box>
-                @if (session('message') !== null)
-                    @if (is_array(session('message')))
-                        @foreach (session('message') as $message)
+                @if (session('sys_message') !== null)
+                    @if (is_array(session('sys_message')))
+                        @foreach (session('sys_message') as $message)
                             <x-list.item class="message">{{ $message }}</x-list.item>
                         @endforeach
                     @else
-                        <x-list.item class="message">{{ session('message') }}</x-list.item>
+                        <x-list.item class="message">{{ session('sys_message') }}</x-list.item>
                     @endif
                 @endif
-                @if (session('errors') !== null)
-                    @if (is_array(session('errors')))
-                        @foreach (session('errors') as $error)
+                @if (session('sys_error') !== null)
+                    @if (is_array(session('sys_error')))
+                        @foreach (session('sys_error') as $error)
                             <x-list.item class="error">{{ $error }}</x-list.item>
                         @endforeach
                     @else
-                        <x-list.item class="error">{{ session('errors') }}</x-list.item>
+                        <x-list.item class="error">{{ session('sys_error') }}</x-list.item>
                     @endif
                 @endif
             </x-list.box>

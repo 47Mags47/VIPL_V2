@@ -80,10 +80,10 @@ class FileController extends Controller
 
             ParsePackageFile::dispatch($file, $validated['column']);
 
-            return redirect()->route('payment.file.index', compact('package'))->with('message', 'Файл передан на сервер. Начато считывание');
+            return redirect()->route('payment.file.index', compact('package'))->with('sys_message', 'Файл передан на сервер. Начато считывание');
         } catch (\Throwable $th) {
             Log::error($th);
-            return redirect()->route('payment.file.index', compact('package'))->with('error', 'ошибка при передаче файла');
+            return redirect()->route('payment.file.index', compact('package'))->with('sys_error', 'ошибка при передаче файла');
         }
     }
 
@@ -91,6 +91,6 @@ class FileController extends Controller
     {
         return $request->user()->can('package-file-view', $file)
             ? redirect()->route('payment.data.index', compact('file'))
-            : back()->withErrors('Доступ заблокирован');
+            : back()->with('sys_error', 'Доступ заблокирован');
     }
 }
