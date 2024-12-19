@@ -8,6 +8,7 @@ use App\Policies\PackageFilePolicy;
 use App\Policies\PackagePolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Passport::ignoreRoutes();
     }
 
     /**

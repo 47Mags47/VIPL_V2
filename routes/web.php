@@ -10,5 +10,3 @@ Route::group([],[
     base_path('routes/web/package.php'),
     base_path('routes/web/raport.php'),
 ]);
-
-

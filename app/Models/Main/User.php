@@ -7,18 +7,23 @@ use App\Models\Glossary\UserRole;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     ### Трейты
     ##################################################
-    use Notifiable;
+    use Notifiable, HasApiTokens;
 
     ### Настройки
     ##################################################
     protected
         $table = 'main__users',
-        $guarded = [];
+        $guarded = [],
+        $hidden = [
+            'password',
+            'remember_token',
+        ];
 
     ### Функции
     ##################################################
@@ -37,11 +42,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
     ### Связи
     ##################################################
-    public function division(){
+    public function division()
+    {
         return $this->belongsTo(Division::class, 'division_code', 'code');
     }
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(UserRole::class, 'role_code', 'code');
     }
 }
